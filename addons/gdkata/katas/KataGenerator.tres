@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GDKataDefinition" format=3 uid="uid://01toqjwtec57"]
+
+[ext_resource type="Script" uid="uid://cve5bcny121bt" path="res://addons/gdkata/core/definitions/gdkata_definition.gd" id="1_geqae"]
+[ext_resource type="Script" uid="uid://c6ea46cl1owk4" path="res://addons/gdkata/core/definitions/gdkata_argument_definition.gd" id="1_ocae8"]
+[ext_resource type="Script" uid="uid://q31sopg7ut80" path="res://addons/gdkata/core/definitions/gdkata_test_definition.gd" id="2_ocae8"]
+
+[sub_resource type="Resource" id="Resource_xwp8a"]
+script = ExtResource("1_ocae8")
+name = "summand_a"
+type_hint = 2
+metadata/_custom_type_script = "uid://c6ea46cl1owk4"
+
+[sub_resource type="Resource" id="Resource_ambal"]
+script = ExtResource("1_ocae8")
+name = "summand_b"
+type_hint = 2
+metadata/_custom_type_script = "uid://c6ea46cl1owk4"
+
+[sub_resource type="Resource" id="Resource_lvh84"]
+script = ExtResource("2_ocae8")
+expected = 3
+name = "Addition von 2 ints"
+description = "Hier werden 2 ints addiert"
+arguments = [0, 3]
+metadata/_custom_type_script = "uid://q31sopg7ut80"
+
+[resource]
+script = ExtResource("1_geqae")
+method_name = "add"
+expected_type_hint = 2
+name = "Summiere 2 Argumente"
+description = "In diesem Kata lernst du, wie du 2 Argumente summierst"
+arguments = Array[ExtResource("1_ocae8")]([SubResource("Resource_xwp8a"), SubResource("Resource_ambal")])
+tests = Array[ExtResource("2_ocae8")]([SubResource("Resource_lvh84")])
+metadata/_custom_type_script = "uid://cve5bcny121bt"

@@ -1,0 +1,42 @@
+{
+  "method_name": "factorial",
+  "expected_type_hint": 2,
+  "name": "Fakultaet berechnen",
+  "description": "Schreibe eine Funktion, die die Fakultaet einer Zahl berechnet. Die Fakultaet von n (n!) ist das Produkt aller positiven ganzen Zahlen von 1 bis n. Beispiel: 5! = 5 * 4 * 3 * 2 * 1 = 120. Die Fakultaet von 0 ist 1.",
+  "hints": "Nutze eine Schleife oder Rekursion. Denke an den Basisfall n=0.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "n", "type_hint": 2 }],
+  "tests": [
+    {
+      "expected": 1,
+      "name": "Fakultaet von 0",
+      "description": "0! = 1",
+      "arguments": [0]
+    },
+    {
+      "expected": 1,
+      "name": "Fakultaet von 1",
+      "description": "1! = 1",
+      "arguments": [1]
+    },
+    {
+      "expected": 120,
+      "name": "Fakultaet von 5",
+      "description": "5! = 120",
+      "arguments": [5]
+    },
+    {
+      "expected": 6,
+      "name": "Fakultaet von 3",
+      "description": "3! = 6",
+      "arguments": [3]
+    },
+    {
+      "expected": 3628800,
+      "name": "Fakultaet von 10",
+      "description": "10! = 3628800",
+      "arguments": [10]
+    }
+  ]
+}

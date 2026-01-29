@@ -1,0 +1,39 @@
+{
+  "method_name": "repeat_string",
+  "expected_type_hint": 4,
+  "name": "Wort wiederholen",
+  "description": "Schreibe eine Funktion, die einen String n-mal wiederholt und das Ergebnis zurueckgibt.",
+  "hints": "Nutze die repeat() Methode oder eine for-Schleife.",
+  "language": "DE",
+  "difficulty": 1,
+  "arguments": [
+    { "name": "text", "type_hint": 4 },
+    { "name": "n", "type_hint": 2 }
+  ],
+  "tests": [
+    {
+      "expected": "HaHaHa",
+      "name": "Ha dreimal",
+      "description": "'Ha' * 3 = 'HaHaHa'",
+      "arguments": ["Ha", 3]
+    },
+    {
+      "expected": "",
+      "name": "Null mal",
+      "description": "'Test' * 0 = ''",
+      "arguments": ["Test", 0]
+    },
+    {
+      "expected": "Go",
+      "name": "Einmal",
+      "description": "'Go' * 1 = 'Go'",
+      "arguments": ["Go", 1]
+    },
+    {
+      "expected": "-----",
+      "name": "Trennlinie",
+      "description": "'-' * 5 = '-----'",
+      "arguments": ["-", 5]
+    }
+  ]
+}

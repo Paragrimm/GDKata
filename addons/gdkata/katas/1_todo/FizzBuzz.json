@@ -1,0 +1,54 @@
+{
+  "method_name": "fizzbuzz",
+  "expected_type_hint": 4,
+  "name": "FizzBuzz",
+  "description": "Schreibe die klassische FizzBuzz Funktion. Fuer eine gegebene Zahl: Gib 'FizzBuzz' zurueck wenn sie durch 3 UND 5 teilbar ist. Gib 'Fizz' zurueck wenn sie nur durch 3 teilbar ist. Gib 'Buzz' zurueck wenn sie nur durch 5 teilbar ist. Sonst gib die Zahl als String zurueck.",
+  "hints": "Pruefe zuerst die Teilbarkeit durch 15 (3 UND 5), dann durch 3, dann durch 5. Nutze den Modulo-Operator %.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "n", "type_hint": 2 }],
+  "tests": [
+    {
+      "expected": "1",
+      "name": "Eins",
+      "description": "1 ist weder durch 3 noch 5 teilbar",
+      "arguments": [1]
+    },
+    {
+      "expected": "Fizz",
+      "name": "Drei",
+      "description": "3 ist durch 3 teilbar",
+      "arguments": [3]
+    },
+    {
+      "expected": "Buzz",
+      "name": "Fuenf",
+      "description": "5 ist durch 5 teilbar",
+      "arguments": [5]
+    },
+    {
+      "expected": "FizzBuzz",
+      "name": "Fuenfzehn",
+      "description": "15 ist durch 3 und 5 teilbar",
+      "arguments": [15]
+    },
+    {
+      "expected": "Fizz",
+      "name": "Neun",
+      "description": "9 ist durch 3 teilbar",
+      "arguments": [9]
+    },
+    {
+      "expected": "Buzz",
+      "name": "Zwanzig",
+      "description": "20 ist durch 5 teilbar",
+      "arguments": [20]
+    },
+    {
+      "expected": "FizzBuzz",
+      "name": "Dreissig",
+      "description": "30 ist durch 3 und 5 teilbar",
+      "arguments": [30]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dkm8v3nqwfxr2"]
+
+[ext_resource type="Script" path="res://addons/gdkata/core/gdkata_main_screen.gd" id="1_kata_main"]
+[ext_resource type="Texture2D" uid="uid://baksgegg3a15q" path="res://addons/gdkata/GDKata.svg" id="2_axcb0"]
+
+[node name="KataMainScreen" type="PanelContainer" unique_id=664433549 node_paths=PackedStringArray("label_kata_name", "label_kata_description", "label_external_hint", "button_test", "button_cancel", "test_details_container", "scroll_container", "no_kata_label", "kata_info_container", "label_hints", "button_hints_toggle", "hints_container", "background_panel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_kata_main")
+label_kata_name = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/Header/LabelKataName")
+label_kata_description = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/LabelDescription")
+label_external_hint = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/LabelExternalHint")
+button_test = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/ButtonContainer/ButtonTest")
+button_cancel = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/ButtonContainer/ButtonCancel")
+test_details_container = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/ScrollContainer/TestDetailsContainer")
+scroll_container = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/ScrollContainer")
+no_kata_label = NodePath("MarginContainer/VBoxContainer/NoKataLabel")
+kata_info_container = NodePath("MarginContainer/VBoxContainer/KataInfoContainer")
+label_hints = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/HintsContainer/LabelHints")
+button_hints_toggle = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/ButtonHintsToggle")
+hints_container = NodePath("MarginContainer/VBoxContainer/KataInfoContainer/HintsContainer")
+background_panel = NodePath(".")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=397481663]
+self_modulate = Color(1, 1, 1, 0.2509804)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_axcb0")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=317409008]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2076649647]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="NoKataLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1918774926]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "MAINSCREEN_NO_KATA_PROMPT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KataInfoContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=66663881]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=1141997473]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LabelKataName" type="Label" parent="MarginContainer/VBoxContainer/KataInfoContainer/Header" unique_id=2087524055]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="LabelDescription" type="Label" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=579878920]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ButtonHintsToggle" type="Button" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=979421457]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tipps anzeigen"
+
+[node name="HintsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=221723421]
+visible = false
+layout_mode = 2
+
+[node name="LabelHints" type="Label" parent="MarginContainer/VBoxContainer/KataInfoContainer/HintsContainer" unique_id=1469405518]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=1283675875]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonTest" type="Button" parent="MarginContainer/VBoxContainer/KataInfoContainer/ButtonContainer" unique_id=630916173]
+layout_mode = 2
+text = "MAINSCREEN_BUTTON_RUN_TESTS"
+
+[node name="ButtonCancel" type="Button" parent="MarginContainer/VBoxContainer/KataInfoContainer/ButtonContainer" unique_id=757481756]
+layout_mode = 2
+text = "MAINSCREEN_BUTTON_CANCEL_KATA"
+
+[node name="LabelExternalHint" type="Label" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=1474238774]
+visible = false
+layout_mode = 2
+text = "MAINSCREEN_EXTERNAL_EDITOR_HINT"
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/KataInfoContainer" unique_id=1025252077]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TestDetailsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/KataInfoContainer/ScrollContainer" unique_id=1490526382]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10

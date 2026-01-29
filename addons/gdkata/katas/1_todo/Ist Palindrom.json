@@ -1,0 +1,48 @@
+{
+  "method_name": "is_palindrome",
+  "expected_type_hint": 1,
+  "name": "Ist Palindrom",
+  "description": "Schreibe eine Funktion, die prueft ob ein String ein Palindrom ist. Ein Palindrom liest sich vorwaerts und rueckwaerts gleich (z.B. 'anna', 'rentner'). Ignoriere Gross- und Kleinschreibung.",
+  "hints": "Wandle den String in Kleinbuchstaben um und vergleiche ihn mit seiner umgekehrten Version.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "text", "type_hint": 4 }],
+  "tests": [
+    {
+      "expected": true,
+      "name": "Anna",
+      "description": "'Anna' ist ein Palindrom",
+      "arguments": ["Anna"]
+    },
+    {
+      "expected": true,
+      "name": "Rentner",
+      "description": "'Rentner' ist ein Palindrom",
+      "arguments": ["Rentner"]
+    },
+    {
+      "expected": false,
+      "name": "Hallo",
+      "description": "'Hallo' ist kein Palindrom",
+      "arguments": ["Hallo"]
+    },
+    {
+      "expected": true,
+      "name": "Ein Zeichen",
+      "description": "'a' ist ein Palindrom",
+      "arguments": ["a"]
+    },
+    {
+      "expected": true,
+      "name": "Leer",
+      "description": "'' ist ein Palindrom",
+      "arguments": [""]
+    },
+    {
+      "expected": true,
+      "name": "Otto",
+      "description": "'Otto' ist ein Palindrom",
+      "arguments": ["Otto"]
+    }
+  ]
+}

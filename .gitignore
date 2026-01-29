@@ -1,0 +1,25 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# Project files (only the addon should be tracked)
+project.godot
+icon.svg
+
+# GDKata user progress tracking - these folders contain user solutions
+# and should not be committed to keep the repo clean for new users
+addons/gdkata/katas/2_in_progress/
+addons/gdkata/katas/3_done/

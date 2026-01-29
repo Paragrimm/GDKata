@@ -1,0 +1,36 @@
+{
+  "method_name": "reverse_string",
+  "expected_type_hint": 4,
+  "name": "String umkehren",
+  "description": "Schreibe eine Funktion, die einen String umkehrt. Aus 'Hallo' wird 'ollaH'.",
+  "hints": "Nutze eine for-Schleife oder die reverse() Methode.",
+  "language": "DE",
+  "difficulty": 1,
+  "arguments": [{ "name": "text", "type_hint": 4 }],
+  "tests": [
+    {
+      "expected": "ollaH",
+      "name": "Einfaches Wort",
+      "description": "'Hallo' wird zu 'ollaH'",
+      "arguments": ["Hallo"]
+    },
+    {
+      "expected": "toDoG",
+      "name": "Godot rueckwaerts",
+      "description": "'GoDot' wird zu 'toDoG'",
+      "arguments": ["GoDot"]
+    },
+    {
+      "expected": "a",
+      "name": "Ein Zeichen",
+      "description": "'a' bleibt 'a'",
+      "arguments": ["a"]
+    },
+    {
+      "expected": "",
+      "name": "Leerer String",
+      "description": "'' bleibt ''",
+      "arguments": [""]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "method_name": "count_vowels",
+  "expected_type_hint": 2,
+  "name": "Vokale zaehlen",
+  "description": "Schreibe eine Funktion, die die Anzahl der Vokale (a, e, i, o, u) in einem String zaehlt. Gross- und Kleinschreibung sollen gleich behandelt werden.",
+  "hints": "Wandle den String in Kleinbuchstaben um und pruefe jeden Buchstaben.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "text", "type_hint": 4 }],
+  "tests": [
+    {
+      "expected": 2,
+      "name": "Hallo",
+      "description": "'Hallo' hat 2 Vokale (a, o)",
+      "arguments": ["Hallo"]
+    },
+    {
+      "expected": 5,
+      "name": "Alle Vokale",
+      "description": "'aeiou' hat 5 Vokale",
+      "arguments": ["aeiou"]
+    },
+    {
+      "expected": 0,
+      "name": "Keine Vokale",
+      "description": "'xyz' hat 0 Vokale",
+      "arguments": ["xyz"]
+    },
+    {
+      "expected": 3,
+      "name": "Gemischt gross klein",
+      "description": "'GoDot Engine' hat 3 Vokale",
+      "arguments": ["GoDot Engine"]
+    },
+    {
+      "expected": 0,
+      "name": "Leerer String",
+      "description": "'' hat 0 Vokale",
+      "arguments": [""]
+    }
+  ]
+}

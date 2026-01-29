@@ -1,0 +1,36 @@
+{
+  "method_name": "to_title_case",
+  "expected_type_hint": 4,
+  "name": "Titel formatieren",
+  "description": "Schreibe eine Funktion, die einen String in Title Case umwandelt. Jedes Wort beginnt mit einem Grossbuchstaben, der Rest ist klein.",
+  "hints": "Nutze split(), capitalize() und join().",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "text", "type_hint": 4 }],
+  "tests": [
+    {
+      "expected": "Hallo Welt",
+      "name": "Zwei Woerter",
+      "description": "'hallo welt' wird zu 'Hallo Welt'",
+      "arguments": ["hallo welt"]
+    },
+    {
+      "expected": "Godot Engine",
+      "name": "Gemischt",
+      "description": "'GODOT ENGINE' wird zu 'Godot Engine'",
+      "arguments": ["GODOT ENGINE"]
+    },
+    {
+      "expected": "Test",
+      "name": "Ein Wort",
+      "description": "'test' wird zu 'Test'",
+      "arguments": ["test"]
+    },
+    {
+      "expected": "",
+      "name": "Leerer String",
+      "description": "'' bleibt ''",
+      "arguments": [""]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "method_name": "power",
+  "expected_type_hint": 2,
+  "name": "Potenz berechnen",
+  "description": "Schreibe eine Funktion, die die Potenz berechnet (basis hoch exponent). Implementiere dies ohne die eingebaute pow() Funktion zu nutzen. Nutze stattdessen eine Schleife.",
+  "hints": "Multipliziere die Basis exponent-mal mit sich selbst. Denke daran: n^0 = 1 fuer alle n.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [
+    { "name": "base", "type_hint": 2 },
+    { "name": "exponent", "type_hint": 2 }
+  ],
+  "tests": [
+    {
+      "expected": 8,
+      "name": "Zwei hoch drei",
+      "description": "2^3 = 8",
+      "arguments": [2, 3]
+    },
+    {
+      "expected": 1,
+      "name": "Exponent null",
+      "description": "5^0 = 1",
+      "arguments": [5, 0]
+    },
+    {
+      "expected": 10,
+      "name": "Exponent eins",
+      "description": "10^1 = 10",
+      "arguments": [10, 1]
+    },
+    {
+      "expected": 81,
+      "name": "Drei hoch vier",
+      "description": "3^4 = 81",
+      "arguments": [3, 4]
+    },
+    {
+      "expected": 1024,
+      "name": "Zwei hoch zehn",
+      "description": "2^10 = 1024",
+      "arguments": [2, 10]
+    }
+  ]
+}

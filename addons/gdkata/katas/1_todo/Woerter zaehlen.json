@@ -1,0 +1,36 @@
+{
+  "method_name": "count_words",
+  "expected_type_hint": 2,
+  "name": "Woerter zaehlen",
+  "description": "Schreibe eine Funktion, die die Anzahl der Woerter in einem String zaehlt. Woerter sind durch Leerzeichen getrennt. Ein leerer String hat 0 Woerter.",
+  "hints": "Nutze split() und filtere leere Strings heraus.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "text", "type_hint": 4 }],
+  "tests": [
+    {
+      "expected": 3,
+      "name": "Drei Woerter",
+      "description": "'Eins Zwei Drei' hat 3 Woerter",
+      "arguments": ["Eins Zwei Drei"]
+    },
+    {
+      "expected": 1,
+      "name": "Ein Wort",
+      "description": "'Hallo' hat 1 Wort",
+      "arguments": ["Hallo"]
+    },
+    {
+      "expected": 0,
+      "name": "Leerer String",
+      "description": "'' hat 0 Woerter",
+      "arguments": [""]
+    },
+    {
+      "expected": 4,
+      "name": "Mit extra Leerzeichen",
+      "description": "'Godot ist wirklich toll' hat 4 Woerter",
+      "arguments": ["Godot ist wirklich toll"]
+    }
+  ]
+}

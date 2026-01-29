@@ -1,0 +1,46 @@
+{
+  "method_name": "clamp_value",
+  "expected_type_hint": 2,
+  "name": "Zahl in Bereich",
+  "description": "Schreibe eine Funktion, die eine Zahl in einen bestimmten Bereich begrenzt. Wenn die Zahl kleiner als min ist, gib min zurueck. Wenn sie groesser als max ist, gib max zurueck. Sonst gib die Zahl selbst zurueck.",
+  "hints": "Du kannst clamp() nutzen oder if-Abfragen.",
+  "language": "DE",
+  "difficulty": 1,
+  "arguments": [
+    { "name": "value", "type_hint": 2 },
+    { "name": "min_val", "type_hint": 2 },
+    { "name": "max_val", "type_hint": 2 }
+  ],
+  "tests": [
+    {
+      "expected": 5,
+      "name": "In Bereich",
+      "description": "clamp(5, 0, 10) = 5",
+      "arguments": [5, 0, 10]
+    },
+    {
+      "expected": 0,
+      "name": "Unter Minimum",
+      "description": "clamp(-5, 0, 10) = 0",
+      "arguments": [-5, 0, 10]
+    },
+    {
+      "expected": 10,
+      "name": "Ueber Maximum",
+      "description": "clamp(15, 0, 10) = 10",
+      "arguments": [15, 0, 10]
+    },
+    {
+      "expected": 50,
+      "name": "Am Minimum",
+      "description": "clamp(50, 50, 100) = 50",
+      "arguments": [50, 50, 100]
+    },
+    {
+      "expected": 100,
+      "name": "Am Maximum",
+      "description": "clamp(100, 50, 100) = 100",
+      "arguments": [100, 50, 100]
+    }
+  ]
+}

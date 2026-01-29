@@ -1,0 +1,1 @@
+{"arguments":[{"name":"summand_a","type_hint":2},{"name":"summand_b","type_hint":2}],"description":"In diesem Kata lernst du, wie du 2 Argumente summierst","expected_type_hint":2,"method_name":"add","name":"Summiere 2 Argumente","tests":[{"arguments":[0,3],"description":"Hier werden 2 ints addiert","expected":3,"name":"Addition von 2 ints"}]}

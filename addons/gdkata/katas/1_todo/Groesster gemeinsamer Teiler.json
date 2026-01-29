@@ -1,0 +1,45 @@
+{
+  "method_name": "gcd",
+  "expected_type_hint": 2,
+  "name": "Groesster gemeinsamer Teiler",
+  "description": "Schreibe eine Funktion, die den groessten gemeinsamen Teiler (GGT) zweier Zahlen berechnet. Nutze den Euklidischen Algorithmus: gcd(a, b) = gcd(b, a % b) bis b = 0, dann ist a der GGT.",
+  "hints": "Implementiere den Euklidischen Algorithmus mit einer while-Schleife oder Rekursion.",
+  "language": "DE",
+  "difficulty": 3,
+  "arguments": [
+    { "name": "a", "type_hint": 2 },
+    { "name": "b", "type_hint": 2 }
+  ],
+  "tests": [
+    {
+      "expected": 6,
+      "name": "GGT von 12 und 18",
+      "description": "gcd(12, 18) = 6",
+      "arguments": [12, 18]
+    },
+    {
+      "expected": 1,
+      "name": "Teilerfremd",
+      "description": "gcd(7, 13) = 1",
+      "arguments": [7, 13]
+    },
+    {
+      "expected": 5,
+      "name": "GGT von 25 und 15",
+      "description": "gcd(25, 15) = 5",
+      "arguments": [25, 15]
+    },
+    {
+      "expected": 10,
+      "name": "Gleiche Zahlen",
+      "description": "gcd(10, 10) = 10",
+      "arguments": [10, 10]
+    },
+    {
+      "expected": 8,
+      "name": "Eine ist null",
+      "description": "gcd(0, 8) = 8",
+      "arguments": [0, 8]
+    }
+  ]
+}

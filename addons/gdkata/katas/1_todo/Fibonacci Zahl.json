@@ -1,0 +1,48 @@
+{
+  "method_name": "fibonacci",
+  "expected_type_hint": 2,
+  "name": "Fibonacci Zahl",
+  "description": "Schreibe eine Funktion, die die n-te Fibonacci-Zahl berechnet. Die Fibonacci-Folge beginnt mit 0, 1 und jede weitere Zahl ist die Summe der beiden vorherigen: 0, 1, 1, 2, 3, 5, 8, 13, ... Dabei ist fib(0) = 0 und fib(1) = 1.",
+  "hints": "Nutze eine Schleife mit zwei Variablen fuer die letzten beiden Zahlen, oder Rekursion.",
+  "language": "DE",
+  "difficulty": 3,
+  "arguments": [{ "name": "n", "type_hint": 2 }],
+  "tests": [
+    {
+      "expected": 0,
+      "name": "Fibonacci 0",
+      "description": "fib(0) = 0",
+      "arguments": [0]
+    },
+    {
+      "expected": 1,
+      "name": "Fibonacci 1",
+      "description": "fib(1) = 1",
+      "arguments": [1]
+    },
+    {
+      "expected": 1,
+      "name": "Fibonacci 2",
+      "description": "fib(2) = 1",
+      "arguments": [2]
+    },
+    {
+      "expected": 5,
+      "name": "Fibonacci 5",
+      "description": "fib(5) = 5",
+      "arguments": [5]
+    },
+    {
+      "expected": 55,
+      "name": "Fibonacci 10",
+      "description": "fib(10) = 55",
+      "arguments": [10]
+    },
+    {
+      "expected": 144,
+      "name": "Fibonacci 12",
+      "description": "fib(12) = 144",
+      "arguments": [12]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "method_name": "find_max",
+  "expected_type_hint": 2,
+  "name": "Maximum finden",
+  "description": "Schreibe eine Funktion, die zwei Zahlen vergleicht und die groessere zurueckgibt.",
+  "hints": "Nutze eine if-else Verzweigung oder die max() Funktion.",
+  "language": "DE",
+  "difficulty": 1,
+  "arguments": [
+    { "name": "a", "type_hint": 2 },
+    { "name": "b", "type_hint": 2 }
+  ],
+  "tests": [
+    {
+      "expected": 10,
+      "name": "Erste groesser",
+      "description": "max(10, 5) = 10",
+      "arguments": [10, 5]
+    },
+    {
+      "expected": 20,
+      "name": "Zweite groesser",
+      "description": "max(15, 20) = 20",
+      "arguments": [15, 20]
+    },
+    {
+      "expected": 7,
+      "name": "Beide gleich",
+      "description": "max(7, 7) = 7",
+      "arguments": [7, 7]
+    },
+    {
+      "expected": 0,
+      "name": "Mit Null",
+      "description": "max(-5, 0) = 0",
+      "arguments": [-5, 0]
+    },
+    {
+      "expected": -3,
+      "name": "Negative Zahlen",
+      "description": "max(-3, -10) = -3",
+      "arguments": [-3, -10]
+    }
+  ]
+}

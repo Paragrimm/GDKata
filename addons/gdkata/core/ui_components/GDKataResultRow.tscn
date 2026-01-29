@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://de17l5wudxdoo"]
+
+[ext_resource type="Script" uid="uid://qjs3svkkfr2e" path="res://addons/gdkata/core/ui_components/gdkata_result_row.gd" id="1_3t5iw"]
+
+[node name="GdKataResultRow" type="HBoxContainer" unique_id=397260220 node_paths=PackedStringArray("key", "value")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("1_3t5iw")
+key = NodePath("Key")
+value = NodePath("Value")
+
+[node name="Key" type="Label" parent="." unique_id=469715875]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="." unique_id=990319141]
+layout_mode = 2

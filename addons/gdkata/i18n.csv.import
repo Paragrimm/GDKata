@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c5lomg3nyh0lq"
+
+[deps]
+
+files=["res://addons/gdkata/i18n.en.translation", "res://addons/gdkata/i18n.de.translation"]
+
+source_file="res://addons/gdkata/i18n.csv"
+dest_files=["res://addons/gdkata/i18n.en.translation", "res://addons/gdkata/i18n.de.translation"]
+
+[params]
+
+compress=0
+delimiter=0
+unescape_keys=false
+unescape_translations=true

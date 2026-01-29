@@ -1,0 +1,8 @@
+extends RefCounted
+
+##{{title}}
+##
+##{{description}}
+
+#func {{method_name}}({{arguments}}) -> {{expected_type}}:
+#	pass

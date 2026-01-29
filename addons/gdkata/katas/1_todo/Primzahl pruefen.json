@@ -1,0 +1,60 @@
+{
+  "method_name": "is_prime",
+  "expected_type_hint": 1,
+  "name": "Primzahl pruefen",
+  "description": "Schreibe eine Funktion, die prueft ob eine Zahl eine Primzahl ist. Eine Primzahl ist nur durch 1 und sich selbst teilbar. Zahlen kleiner als 2 sind keine Primzahlen.",
+  "hints": "Pruefe Teilbarkeit nur bis zur Wurzel der Zahl. Nutze eine Schleife von 2 bis sqrt(n).",
+  "language": "DE",
+  "difficulty": 3,
+  "arguments": [{ "name": "n", "type_hint": 2 }],
+  "tests": [
+    {
+      "expected": true,
+      "name": "Zwei",
+      "description": "2 ist eine Primzahl",
+      "arguments": [2]
+    },
+    {
+      "expected": true,
+      "name": "Drei",
+      "description": "3 ist eine Primzahl",
+      "arguments": [3]
+    },
+    {
+      "expected": false,
+      "name": "Vier",
+      "description": "4 ist keine Primzahl",
+      "arguments": [4]
+    },
+    {
+      "expected": true,
+      "name": "Siebzehn",
+      "description": "17 ist eine Primzahl",
+      "arguments": [17]
+    },
+    {
+      "expected": false,
+      "name": "Eins",
+      "description": "1 ist keine Primzahl",
+      "arguments": [1]
+    },
+    {
+      "expected": false,
+      "name": "Null",
+      "description": "0 ist keine Primzahl",
+      "arguments": [0]
+    },
+    {
+      "expected": false,
+      "name": "Negativ",
+      "description": "-5 ist keine Primzahl",
+      "arguments": [-5]
+    },
+    {
+      "expected": true,
+      "name": "Grosse Primzahl",
+      "description": "97 ist eine Primzahl",
+      "arguments": [97]
+    }
+  ]
+}

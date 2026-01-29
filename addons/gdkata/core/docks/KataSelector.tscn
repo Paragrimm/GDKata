@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://23ki6wty7dbv"]
+
+[ext_resource type="Script" uid="uid://dn78asjcyiwpr" path="res://addons/gdkata/core/docks/gdkata_selector.gd" id="1_epgbr"]
+[ext_resource type="Texture2D" uid="uid://baksgegg3a15q" path="res://addons/gdkata/GDKata.svg" id="2_14p7u"]
+
+[sub_resource type="DPITexture" id="DPITexture_1ji2j"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M5 8a4 4 0 1 1 4 4v2a6 6 0 1 0-6-6H1l3 4 3-4z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[node name="Select Kata" type="PanelContainer" unique_id=695923868 node_paths=PackedStringArray("dropdown_language", "dropdown_difficulty", "dropdown_katas", "label_description", "label_in_progress", "button_run", "button_refresh", "background_panel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_epgbr")
+dropdown_language = NodePath("VBoxContainer/FilterContainer/LanguageDropdown")
+dropdown_difficulty = NodePath("VBoxContainer/FilterContainer/DifficultyDropdown")
+dropdown_katas = NodePath("VBoxContainer/HBoxContainer/OptionButton")
+label_description = NodePath("VBoxContainer/Description")
+label_in_progress = NodePath("VBoxContainer/InProgressLabel")
+button_run = NodePath("VBoxContainer/Start")
+button_refresh = NodePath("VBoxContainer/HBoxContainer/Refresh")
+background_panel = NodePath(".")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=273136261]
+self_modulate = Color(1, 1, 1, 0.2509804)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_14p7u")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=848955524]
+layout_mode = 2
+
+[node name="FilterContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LanguageDropdown" type="OptionButton" parent="VBoxContainer/FilterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DifficultyDropdown" type="OptionButton" parent="VBoxContainer/FilterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=837225463]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1764477800]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Refresh" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1639392560]
+layout_mode = 2
+icon = SubResource("DPITexture_1ji2j")
+
+[node name="InProgressLabel" type="Label" parent="VBoxContainer" unique_id=524933370]
+visible = false
+layout_mode = 2
+text = "A Kata is already in progress"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=99083043]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1365128322]
+layout_mode = 2
+text = "Start Kata"

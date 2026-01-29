@@ -1,0 +1,36 @@
+{
+  "method_name": "average",
+  "expected_type_hint": 3,
+  "name": "Durchschnitt berechnen",
+  "description": "Schreibe eine Funktion, die den Durchschnitt (Mittelwert) aller Zahlen in einem Array berechnet. Gib 0.0 zurueck wenn das Array leer ist.",
+  "hints": "Achte auf Integer-Division! Teile durch float(array.size()) oder multipliziere mit 1.0.",
+  "language": "DE",
+  "difficulty": 2,
+  "arguments": [{ "name": "numbers", "type_hint": 28 }],
+  "tests": [
+    {
+      "expected": 3.0,
+      "name": "Einfacher Durchschnitt",
+      "description": "[1, 2, 3, 4, 5] = 3.0",
+      "arguments": [[1, 2, 3, 4, 5]]
+    },
+    {
+      "expected": 0.0,
+      "name": "Leeres Array",
+      "description": "[] = 0.0",
+      "arguments": [[]]
+    },
+    {
+      "expected": 10.0,
+      "name": "Ein Element",
+      "description": "[10] = 10.0",
+      "arguments": [[10]]
+    },
+    {
+      "expected": 2.5,
+      "name": "Dezimal Ergebnis",
+      "description": "[1, 2, 3, 4] = 2.5",
+      "arguments": [[1, 2, 3, 4]]
+    }
+  ]
+}
