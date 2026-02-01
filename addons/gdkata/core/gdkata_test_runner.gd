@@ -14,10 +14,13 @@ static func run_tests() -> GDKataResultDefinition:
 	if config == null:
 		return _error(result, _tr("TESTRUNNER_ERR_CONFIG_PARSE"))
 
-	if not FileAccess.file_exists(GDKataDefinition.get_script_path()):
+	var kata_name: String = config["name"]
+	var script_path := GDKataDefinition.get_script_path_for(kata_name)
+
+	if not FileAccess.file_exists(script_path):
 		return _error(result, _tr("TESTRUNNER_ERR_SCRIPT_MISSING"))
 
-	var user_script: Resource = load(GDKataDefinition.get_script_path())
+	var user_script: Resource = load(script_path)
 	if user_script == null:
 		return _error(result, _tr("TESTRUNNER_ERR_SCRIPT_COMPILE"))
 

@@ -156,10 +156,8 @@ func _move_selected_kata() -> void:
 
 
 func _create_template_script() -> void:
-	var dest := GDKataDefinition.get_script_path()
+	var dest := _selected_kata.get_script_path()
 	var template_file := FileAccess.open(GDKataDefinition.TEMPLATE_PATH, FileAccess.READ)
-	DirAccess.remove_absolute(dest)
-	EditorInterface.get_resource_filesystem().scan()
 
 	var template := template_file.get_as_text()
 	template_file.close()

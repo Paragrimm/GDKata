@@ -144,14 +144,12 @@ func _on_submit() -> void:
 	DirAccess.make_dir_recursive_absolute(done_path)
 
 	var in_progress := GDKataDefinition.IN_PROGRESS_PATH
+	var script_filename := GDKataDefinition.get_script_filename(_current_kata.name)
 	_move_file(
 		in_progress + GDKataDefinition.KATA_CONFIG_FILE,
 		done_path + GDKataDefinition.KATA_CONFIG_FILE
 	)
-	_move_file(
-		in_progress + GDKataDefinition.KATA_SCRIPT_FILE,
-		done_path + GDKataDefinition.KATA_SCRIPT_FILE
-	)
+	_move_file(in_progress + script_filename, done_path + script_filename)
 	_move_file(
 		GDKataResultDefinition.get_result_file_path(),
 		done_path + GDKataResultDefinition.RESULT_FILE_NAME

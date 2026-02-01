@@ -7,7 +7,6 @@ const IN_PROGRESS_PATH: String = "res://addons/gdkata/katas/2_in_progress/"
 const DONE_PATH: String = "res://addons/gdkata/katas/3_done/"
 
 const KATA_CONFIG_FILE: String = "kata.json"
-const KATA_SCRIPT_FILE: String = "kata.gd"
 
 const TEMPLATE_PATH: String = "res://addons/gdkata/core/gdkata_solution_template.txt"
 const TEMPLATE_METHOD_NAME_PLACEHOLDER: String = "{{method_name}}"
@@ -41,12 +40,25 @@ static func get_config_path() -> String:
 	return IN_PROGRESS_PATH + KATA_CONFIG_FILE
 
 
-static func get_script_path() -> String:
-	return IN_PROGRESS_PATH + KATA_SCRIPT_FILE
+static func get_script_filename(kata_name: String) -> String:
+	return kata_name.to_snake_case() + ".gd"
+
+
+static func get_script_path_for(kata_name: String) -> String:
+	return IN_PROGRESS_PATH + get_script_filename(kata_name)
+
+
+func get_script_path() -> String:
+	return get_script_path_for(name)
 
 
 static func has_valid_in_progress() -> bool:
-	return FileAccess.file_exists(get_config_path()) and FileAccess.file_exists(get_script_path())
+	if not FileAccess.file_exists(get_config_path()):
+		return false
+	var kata := load_in_progress()
+	if not kata:
+		return false
+	return FileAccess.file_exists(get_script_path_for(kata.name))
 
 
 static func is_external_editor_configured() -> bool:

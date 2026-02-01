@@ -10,6 +10,7 @@ var dock_result_view: GDKataResultView
 
 var _kata_active: bool = false
 var _main_screen_visible: bool = false
+var _current_kata: GDKataDefinition
 
 
 func _has_main_screen() -> bool:
@@ -99,6 +100,7 @@ func _restore_active_kata() -> void:
 		return
 
 	_kata_active = true
+	_current_kata = kata
 	main_screen.set_kata(kata)
 	dock_result_view.set_current_kata(kata)
 	main_screen.show_external_editor_hint(GDKataDefinition.is_external_editor_configured())
@@ -107,6 +109,7 @@ func _restore_active_kata() -> void:
 
 func _on_kata_started(kata: GDKataDefinition) -> void:
 	_kata_active = true
+	_current_kata = kata
 	main_screen.set_kata(kata)
 	dock_result_view.set_current_kata(kata)
 	_update_dock_visibility()
@@ -131,6 +134,7 @@ func _on_kata_cancelled(kata: GDKataDefinition) -> void:
 	_wipe_in_progress_folder()
 
 	_kata_active = false
+	_current_kata = null
 	dock_result_view.clear_current_kata()
 	dock_selector.on_kata_finished()
 	_update_highlights()
@@ -139,6 +143,7 @@ func _on_kata_cancelled(kata: GDKataDefinition) -> void:
 
 func _on_kata_submitted(_kata: GDKataDefinition) -> void:
 	_kata_active = false
+	_current_kata = null
 	main_screen.show_no_kata_state()
 	dock_selector.on_kata_finished()
 	_update_highlights()
@@ -152,7 +157,9 @@ func _on_tests_completed(result: GDKataResultDefinition) -> void:
 
 func _open_kata_script() -> void:
 	await EditorInterface.get_resource_filesystem().filesystem_changed
-	var script: Script = load(GDKataDefinition.get_script_path())
+	if not _current_kata:
+		return
+	var script: Script = load(_current_kata.get_script_path())
 	if script:
 		EditorInterface.edit_script(script)
 		EditorInterface.set_main_screen_editor(GDKataDefinition.MAINSCREEN_SCRIPT)
