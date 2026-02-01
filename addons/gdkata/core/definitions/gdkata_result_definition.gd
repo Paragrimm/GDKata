@@ -12,6 +12,7 @@ const RESULT_FILE_NAME: String = "result.json"
 
 
 static func get_result_file_path() -> String:
+	DirAccess.make_dir_recursive_absolute(GDKataDefinition.DONE_PATH)
 	return GDKataDefinition.DONE_PATH + RESULT_FILE_NAME
 
 

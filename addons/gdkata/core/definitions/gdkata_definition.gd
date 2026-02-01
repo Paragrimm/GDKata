@@ -37,6 +37,7 @@ const EDITOR_ICON_CATEGORY: String = "EditorIcons"
 
 
 static func get_config_path() -> String:
+	DirAccess.make_dir_recursive_absolute(IN_PROGRESS_PATH)
 	return IN_PROGRESS_PATH + KATA_CONFIG_FILE
 
 
