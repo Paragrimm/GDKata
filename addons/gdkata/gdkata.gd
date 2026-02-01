@@ -1,5 +1,8 @@
 @tool
+class_name GDKata
 extends EditorPlugin
+
+const CONFIG_PATH := "res://addons/gdkata/gdkata.cfg"
 
 var main_screen: GDKataMainScreen
 var dock_selector: GDKataSelector

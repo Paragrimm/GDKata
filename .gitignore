@@ -23,3 +23,4 @@ icon.svg
 # and should not be committed to keep the repo clean for new users
 addons/gdkata/katas/2_in_progress/
 addons/gdkata/katas/3_done/
+addons/gdkata/gdkata.cfg

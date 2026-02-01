@@ -2,6 +2,8 @@
 class_name GDKataSelector
 extends PanelContainer
 
+const CONFIG_SECTION := "selector"
+
 signal kata_started(kata: GDKataDefinition)
 
 @export var dropdown_language: OptionButton
@@ -63,6 +65,7 @@ func _load() -> void:
 	label_description.text = ""
 	_load_katas()
 	_init_filter_dropdowns()
+	_load_config()
 	_apply_filters()
 	_update_state()
 
@@ -193,6 +196,7 @@ func _build_arguments_string() -> String:
 
 func _on_filter_changed(_index: int) -> void:
 	_apply_filters()
+	_save_config()
 
 
 func _on_item_selected(index: int) -> void:
@@ -213,3 +217,55 @@ func _on_run() -> void:
 
 func _on_refresh() -> void:
 	_load()
+
+
+func _save_config() -> void:
+	var config := ConfigFile.new()
+	config.load(GDKata.CONFIG_PATH)
+	_save_config_language(config)
+	_save_config_difficulty(config)
+	config.save(GDKata.CONFIG_PATH)
+
+
+func _save_config_language(config: ConfigFile) -> void:
+	var language_text := (
+		dropdown_language.get_item_text(dropdown_language.selected)
+		if dropdown_language.selected >= 0
+		else ""
+	)
+	config.set_value(CONFIG_SECTION, "language", language_text)
+
+
+func _save_config_difficulty(config: ConfigFile) -> void:
+	var difficulty_text := (
+		dropdown_difficulty.get_item_text(dropdown_difficulty.selected)
+		if dropdown_difficulty.selected >= 0
+		else ""
+	)
+	config.set_value(CONFIG_SECTION, "difficulty", difficulty_text)
+
+
+func _load_config() -> void:
+	var config := ConfigFile.new()
+	if config.load(GDKata.CONFIG_PATH) != OK:
+		return
+	_load_config_language(config)
+	_load_config_difficulty(config)
+
+
+func _load_config_language(config: ConfigFile) -> void:
+	var language_text: String = config.get_value(CONFIG_SECTION, "language", "")
+
+	for i in range(dropdown_language.item_count):
+		if dropdown_language.get_item_text(i) == language_text:
+			dropdown_language.select(i)
+			break
+
+
+func _load_config_difficulty(config: ConfigFile) -> void:
+	var difficulty_text: String = config.get_value(CONFIG_SECTION, "difficulty", "")
+
+	for i in range(dropdown_difficulty.item_count):
+		if dropdown_difficulty.get_item_text(i) == difficulty_text:
+			dropdown_difficulty.select(i)
+			break
