@@ -14,6 +14,7 @@ const TEMPLATE_ARGUMENTS_PLACEHOLDER: String = "{{arguments}}"
 const TEMPLATE_EXPECTED_TYPE_PLACEHOLDER: String = "{{expected_type}}"
 const TEMPLATE_TITLE_PLACEHOLDER: String = "{{title}}"
 const TEMPLATE_DESCRIPTION_PLACEHOLDER: String = "{{description}}"
+const TEMPLATE_DEFAULT_RETURN_PLACEHOLDER: String = "{{default_return}}"
 
 const EDITOR_SETTING_EXTERNAL_EXEC: String = "text_editor/external/use_external_editor"
 const MAINSCREEN_NAME: String = "Kata"
@@ -33,6 +34,56 @@ const EDITOR_ICON_CATEGORY: String = "EditorIcons"
 @export var difficulty: int = 1
 @export var arguments: Array[GDKataArgumentDefinition] = []
 @export var tests: Array[GDKataTestDefinition] = []
+
+
+static func get_default_return_for_type(type: Variant.Type) -> String:
+	match type:
+		TYPE_BOOL:
+			return "false"
+		TYPE_INT:
+			return "0"
+		TYPE_FLOAT:
+			return "0.0"
+		TYPE_STRING:
+			return '""'
+		TYPE_ARRAY:
+			return "[]"
+		TYPE_DICTIONARY:
+			return "{}"
+		TYPE_VECTOR2:
+			return "Vector2.ZERO"
+		TYPE_VECTOR2I:
+			return "Vector2i.ZERO"
+		TYPE_VECTOR3:
+			return "Vector3.ZERO"
+		TYPE_VECTOR3I:
+			return "Vector3i.ZERO"
+		TYPE_VECTOR4:
+			return "Vector4.ZERO"
+		TYPE_VECTOR4I:
+			return "Vector4i.ZERO"
+		TYPE_COLOR:
+			return "Color.BLACK"
+		TYPE_PACKED_BYTE_ARRAY:
+			return "PackedByteArray()"
+		TYPE_PACKED_INT32_ARRAY:
+			return "PackedInt32Array()"
+		TYPE_PACKED_INT64_ARRAY:
+			return "PackedInt64Array()"
+		TYPE_PACKED_FLOAT32_ARRAY:
+			return "PackedFloat32Array()"
+		TYPE_PACKED_FLOAT64_ARRAY:
+			return "PackedFloat64Array()"
+		TYPE_PACKED_STRING_ARRAY:
+			return "PackedStringArray()"
+		TYPE_PACKED_VECTOR2_ARRAY:
+			return "PackedVector2Array()"
+		TYPE_PACKED_VECTOR3_ARRAY:
+			return "PackedVector3Array()"
+		TYPE_PACKED_COLOR_ARRAY:
+			return "PackedColorArray()"
+		_:
+			return "null"
 
 
 static func get_config_path() -> String:

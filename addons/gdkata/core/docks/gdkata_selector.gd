@@ -175,6 +175,10 @@ func _create_template_script() -> void:
 	template = template.replace(
 		GDKataDefinition.TEMPLATE_DESCRIPTION_PLACEHOLDER, _selected_kata.description
 	)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_DEFAULT_RETURN_PLACEHOLDER,
+		GDKataDefinition.get_default_return_for_type(_selected_kata.expected_type_hint)
+	)
 
 	var dest_file := FileAccess.open(dest, FileAccess.WRITE)
 	dest_file.store_string(template)

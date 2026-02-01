@@ -4,5 +4,5 @@ extends RefCounted
 ##
 ##{{description}}
 
-#func {{method_name}}({{arguments}}) -> {{expected_type}}:
-#	pass
+func {{method_name}}({{arguments}}) -> {{expected_type}}:
+	return {{default_return}}
