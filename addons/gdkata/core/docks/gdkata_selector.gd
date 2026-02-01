@@ -188,7 +188,11 @@ func _create_template_script() -> void:
 func _build_arguments_string() -> String:
 	var parts: PackedStringArray = []
 	for i in range(_selected_kata.arguments.size()):
-		var letter := char(ord("a") + i)
+		var letter := (
+			_selected_kata.arguments[i].name
+			if not _selected_kata.arguments[i].name.is_empty()
+			else char(ord("a") + i)
+		)
 		var type := type_string(_selected_kata.arguments[i].type_hint)
 		parts.append("%s: %s" % [letter, type])
 	return ", ".join(parts)
