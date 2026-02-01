@@ -30,6 +30,8 @@ static func run_tests() -> GDKataResultDefinition:
 	if not user_instance.has_method(method_name):
 		return _error(result, _tr("TESTRUNNER_ERR_METHOD_NOT_FOUND") % method_name)
 
+	var expected_type: int = config.get("expected_type_hint", TYPE_NIL)
+
 	for test: Variant in config["tests"]:
 		result.total_count += 1
 		var args: Array = test["arguments"]
@@ -40,7 +42,18 @@ static func run_tests() -> GDKataResultDefinition:
 		var detail := GDKataTestResultDefinition.new()
 		detail.name = test_name
 
-		if actual == expected:
+		var actual_type: int = typeof(actual)
+		var type_matches: bool = expected_type == TYPE_NIL or actual_type == expected_type
+
+		if not type_matches:
+			result.type_check_passed = false
+			result.failed_count += 1
+			detail.status = false
+			detail.message = (
+				_tr("TESTRUNNER_TEST_RESULT_TYPE_MISMATCH")
+				% [type_string(expected_type), type_string(actual_type)]
+			)
+		elif actual == expected:
 			result.passed_count += 1
 			detail.status = true
 			detail.message = _tr("TESTRUNNER_TEST_RESULT_PASS") % str(actual)

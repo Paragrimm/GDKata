@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://baksgegg3a15q" path="res://addons/gdkata/GDKata.svg" id="2_bfu0i"]
 [ext_resource type="PackedScene" uid="uid://de17l5wudxdoo" path="res://addons/gdkata/core/ui_components/GDKataResultRow.tscn" id="2_xhepv"]
 
-[node name="Result of Kata" type="PanelContainer" unique_id=2042615788 node_paths=PackedStringArray("label_message", "label_header", "row_passed", "row_failed", "row_total", "button_submit", "stats_container", "background_panel")]
+[node name="Result of Kata" type="PanelContainer" unique_id=2042615788 node_paths=PackedStringArray("label_message", "label_header", "row_type_check", "row_passed", "row_failed", "row_total", "button_submit", "stats_container", "background_panel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,6 +15,7 @@ size_flags_vertical = 3
 script = ExtResource("1_ga8bb")
 label_message = NodePath("VBoxContainer/Message")
 label_header = NodePath("VBoxContainer/Header")
+row_type_check = NodePath("VBoxContainer/StatsContainer/TypeCheck")
 row_passed = NodePath("VBoxContainer/StatsContainer/Passed")
 row_failed = NodePath("VBoxContainer/StatsContainer/Failed")
 row_total = NodePath("VBoxContainer/StatsContainer/Total")
@@ -44,6 +45,17 @@ layout_mode = 2
 
 [node name="StatsContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1662188161]
 layout_mode = 2
+
+[node name="TypeCheck" parent="VBoxContainer/StatsContainer" instance=ExtResource("2_xhepv")]
+layout_mode = 2
+
+[node name="Key" parent="VBoxContainer/StatsContainer/TypeCheck" index="0"]
+theme_override_font_sizes/font_size = 15
+text = "Type Check"
+
+[node name="Value" parent="VBoxContainer/StatsContainer/TypeCheck" index="1"]
+theme_override_font_sizes/font_size = 15
+text = "-"
 
 [node name="Passed" parent="VBoxContainer/StatsContainer" unique_id=397260220 instance=ExtResource("2_xhepv")]
 layout_mode = 2
@@ -83,6 +95,7 @@ layout_mode = 2
 disabled = true
 text = "Submit Kata"
 
+[editable path="VBoxContainer/StatsContainer/TypeCheck"]
 [editable path="VBoxContainer/StatsContainer/Passed"]
 [editable path="VBoxContainer/StatsContainer/Failed"]
 [editable path="VBoxContainer/StatsContainer/Total"]

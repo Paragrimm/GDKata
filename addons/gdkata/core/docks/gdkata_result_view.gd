@@ -6,6 +6,7 @@ signal kata_submitted(kata: GDKataDefinition)
 
 @export var label_message: Label
 @export var label_header: Label
+@export var row_type_check: GDKataResultRow
 @export var row_passed: GDKataResultRow
 @export var row_failed: GDKataResultRow
 @export var row_total: GDKataResultRow
@@ -22,6 +23,7 @@ func _ready() -> void:
 	button_submit.pressed.connect(_on_submit)
 	label_header.text = GDKataTr.translate("RESULTVIEW_RESULT_HEADER")
 	button_submit.text = GDKataTr.translate("RESULTVIEW_BUTTON_SUBMIT")
+	row_type_check.key.text = GDKataTr.translate("RESULTVIEW_LABEL_TYPE_CHECK")
 	row_passed.key.text = GDKataTr.translate("RESULTVIEW_LABEL_PASSED")
 	row_failed.key.text = GDKataTr.translate("RESULTVIEW_LABEL_FAILED")
 	row_total.key.text = GDKataTr.translate("RESULTVIEW_LABEL_TOTAL")
@@ -80,6 +82,7 @@ func _show_idle_state() -> void:
 
 
 func _reset_values() -> void:
+	row_type_check.value.text = GDKataTr.translate("RESULTVIEW_LABEL_NO_VALUE")
 	row_passed.value.text = GDKataTr.translate("RESULTVIEW_LABEL_NO_VALUE")
 	row_failed.value.text = GDKataTr.translate("RESULTVIEW_LABEL_NO_VALUE")
 	row_total.value.text = GDKataTr.translate("RESULTVIEW_LABEL_NO_VALUE")
@@ -96,30 +99,37 @@ func _apply_result(result: GDKataResultDefinition) -> void:
 	if result.error:
 		label_message.text = result.message
 		label_message.show()
+		row_type_check.value.text = GDKataTr.translate("RESULTVIEW_LABEL_NO_VALUE")
 		row_passed.value.text = "0"
 		row_failed.value.text = "0"
 		row_total.value.text = "0"
 		_clear_value_colors()
 	else:
 		label_message.hide()
+		row_type_check.value.text = str(result.type_check_passed).to_lower()
 		row_passed.value.text = str(result.passed_count)
 		row_failed.value.text = str(result.failed_count)
 		row_total.value.text = str(result.total_count)
-		_apply_value_colors()
+		_apply_value_colors(result)
 
 
-func _apply_value_colors() -> void:
+func _apply_value_colors(result: GDKataResultDefinition) -> void:
+	if result.type_check_passed:
+		row_type_check.value.add_theme_color_override("font_color", Color.GREEN)
+	else:
+		row_type_check.value.add_theme_color_override("font_color", Color.RED)
 	row_passed.value.add_theme_color_override("font_color", Color.GREEN)
 	row_failed.value.add_theme_color_override("font_color", Color.RED)
 
 
 func _clear_value_colors() -> void:
+	row_type_check.value.remove_theme_color_override("font_color")
 	row_passed.value.remove_theme_color_override("font_color")
 	row_failed.value.remove_theme_color_override("font_color")
 
 
 func _apply_bold_keys() -> void:
-	for row: GDKataResultRow in [row_passed, row_failed, row_total]:
+	for row: GDKataResultRow in [row_type_check, row_passed, row_failed, row_total]:
 		row.key.add_theme_font_size_override("font_size", 15)
 		row.value.add_theme_font_size_override("font_size", 15)
 

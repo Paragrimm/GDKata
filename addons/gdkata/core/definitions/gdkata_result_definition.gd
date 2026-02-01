@@ -6,6 +6,7 @@ const RESULT_FILE_NAME: String = "result.json"
 @export var passed_count: int = 0
 @export var failed_count: int = 0
 @export var total_count: int = 0
+@export var type_check_passed: bool = true
 @export var error: bool = false
 @export var message: String
 @export var details: Array[GDKataTestResultDefinition] = []
@@ -29,6 +30,7 @@ static func from_json(json: JSON) -> GDKataResultDefinition:
 	result.passed_count = json.data["passed_count"]
 	result.failed_count = json.data["failed_count"]
 	result.total_count = json.data["total_count"]
+	result.type_check_passed = json.data["type_check_passed"]
 	for detail in json.data["details"]:
 		var d := GDKataTestResultDefinition.new()
 		d.name = detail.get("name", "")
@@ -60,6 +62,7 @@ func to_json() -> String:
 		"passed_count": passed_count,
 		"failed_count": failed_count,
 		"total_count": total_count,
+		"type_check_passed": type_check_passed,
 		"details": [],
 	}
 	for detail: GDKataTestResultDefinition in details:
