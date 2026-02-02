@@ -27,10 +27,10 @@
       "arguments": ["xyz"]
     },
     {
-      "expected": 3,
+      "expected": 5,
       "name": "Gemischt gross klein",
-      "description": "'GoDot Engine' hat 3 Vokale",
-      "arguments": ["GoDot Engine"]
+      "description": "'Godot Engine' hat 5 Vokale",
+      "arguments": ["Godot Engine"]
     },
     {
       "expected": 0,
