@@ -1,112 +1,102 @@
 {
-	"active_script_filename": "",
-	"arguments": [
-		{
-			"name": "text",
-			"type_hint": 4
-		}
-	],
-	"difficulty": 2,
-	"expected_type_hint": 2,
-	"id": "count_vowels",
-	"method_name": "count_vowels",
-	"status": "todo",
-	"tests": [
-		{
-			"arguments": [
-				"Hello"
-			],
-			"description": "'Hello' has 2 vowels (e, o)",
-			"expected": 2.0,
-			"name": "Hello"
-		},
-		{
-			"arguments": [
-				"aeiou"
-			],
-			"description": "'aeiou' has 5 vowels",
-			"expected": 5.0,
-			"name": "All vowels"
-		},
-		{
-			"arguments": [
-				"xyz"
-			],
-			"description": "'xyz' has 0 vowels",
-			"expected": 0.0,
-			"name": "No vowels"
-		},
-		{
-			"arguments": [
-				"Godot Engine"
-			],
-			"description": "'Godot Engine' has 4 vowels",
-			"expected": 4.0,
-			"name": "Mixed case"
-		},
-		{
-			"arguments": [
-				""
-			],
-			"description": "'' has 0 vowels",
-			"expected": 0.0,
-			"name": "Empty string"
-		}
-	],
-	"translations": {
-		"de": {
-			"description": "Schreibe eine Funktion, die die Anzahl der Vokale (a, e, i, o, u) in einem String zaehlt. Gross- und Kleinschreibung sollen gleich behandelt werden.",
-			"hints": "Wandle den String in Kleinbuchstaben um und pruefe jeden Buchstaben.",
-			"name": "Vokale zaehlen",
-			"tests": [
-				{
-					"description": "'Hallo' hat 2 Vokale (a, o)",
-					"name": "Hallo"
-				},
-				{
-					"description": "'aeiou' hat 5 Vokale",
-					"name": "Alle Vokale"
-				},
-				{
-					"description": "'xyz' hat 0 Vokale",
-					"name": "Keine Vokale"
-				},
-				{
-					"description": "'GoDot Engine' hat 3 Vokale",
-					"name": "Gemischt gross klein"
-				},
-				{
-					"description": "'' hat 0 Vokale",
-					"name": "Leerer String"
-				}
-			]
-		},
-		"en": {
-			"description": "Write a function that counts the number of vowels (a, e, i, o, u) in a string. Treat uppercase and lowercase the same.",
-			"hints": "Convert the string to lowercase and check each character.",
-			"name": "Count Vowels",
-			"tests": [
-				{
-					"description": "'Hello' has 2 vowels (e, o)",
-					"name": "Hello"
-				},
-				{
-					"description": "'aeiou' has 5 vowels",
-					"name": "All vowels"
-				},
-				{
-					"description": "'xyz' has 0 vowels",
-					"name": "No vowels"
-				},
-				{
-					"description": "'Godot Engine' has 4 vowels",
-					"name": "Mixed case"
-				},
-				{
-					"description": "'' has 0 vowels",
-					"name": "Empty string"
-				}
-			]
-		}
-	}
+  "active_script_filename": "",
+  "arguments": [
+    {
+      "name": "text",
+      "type_hint": 4
+    }
+  ],
+  "difficulty": 2,
+  "expected_type_hint": 2,
+  "id": "count_vowels",
+  "method_name": "count_vowels",
+  "status": "todo",
+  "tests": [
+    {
+      "arguments": ["Hello"],
+      "description": "'Hello' has 2 vowels (e, o)",
+      "expected": 2.0,
+      "name": "Hello"
+    },
+    {
+      "arguments": ["aeiou"],
+      "description": "'aeiou' has 5 vowels",
+      "expected": 5.0,
+      "name": "All vowels"
+    },
+    {
+      "arguments": ["xyz"],
+      "description": "'xyz' has 0 vowels",
+      "expected": 0.0,
+      "name": "No vowels"
+    },
+    {
+      "arguments": ["Godot Engine"],
+      "description": "'Godot Engine' has 5 vowels",
+      "expected": 5.0,
+      "name": "Mixed case"
+    },
+    {
+      "arguments": [""],
+      "description": "'' has 0 vowels",
+      "expected": 0.0,
+      "name": "Empty string"
+    }
+  ],
+  "translations": {
+    "de": {
+      "description": "Schreibe eine Funktion, die die Anzahl der Vokale (a, e, i, o, u) in einem String zaehlt. Gross- und Kleinschreibung sollen gleich behandelt werden.",
+      "hints": "Wandle den String in Kleinbuchstaben um und pruefe jeden Buchstaben.",
+      "name": "Vokale zaehlen",
+      "tests": [
+        {
+          "description": "'Hallo' hat 2 Vokale (a, o)",
+          "name": "Hallo"
+        },
+        {
+          "description": "'aeiou' hat 5 Vokale",
+          "name": "Alle Vokale"
+        },
+        {
+          "description": "'xyz' hat 0 Vokale",
+          "name": "Keine Vokale"
+        },
+        {
+          "description": "'GoDot Engine' hat 5 Vokale",
+          "name": "Gemischt gross klein"
+        },
+        {
+          "description": "'' hat 0 Vokale",
+          "name": "Leerer String"
+        }
+      ]
+    },
+    "en": {
+      "description": "Write a function that counts the number of vowels (a, e, i, o, u) in a string. Treat uppercase and lowercase the same.",
+      "hints": "Convert the string to lowercase and check each character.",
+      "name": "Count Vowels",
+      "tests": [
+        {
+          "description": "'Hello' has 2 vowels (e, o)",
+          "name": "Hello"
+        },
+        {
+          "description": "'aeiou' has 5 vowels",
+          "name": "All vowels"
+        },
+        {
+          "description": "'xyz' has 0 vowels",
+          "name": "No vowels"
+        },
+        {
+          "description": "'Godot Engine' has 5 vowels",
+          "name": "Mixed case"
+        },
+        {
+          "description": "'' has 0 vowels",
+          "name": "Empty string"
+        }
+      ]
+    }
+  }
 }
