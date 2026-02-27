@@ -1,0 +1,121 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "base",
+			"type_hint": 2
+		},
+		{
+			"name": "exponent",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 2,
+	"id": "power",
+	"method_name": "power",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				2.0,
+				3.0
+			],
+			"description": "2^3 = 8",
+			"expected": 8.0,
+			"name": "Two to the power of three"
+		},
+		{
+			"arguments": [
+				5.0,
+				0.0
+			],
+			"description": "5^0 = 1",
+			"expected": 1.0,
+			"name": "Exponent zero"
+		},
+		{
+			"arguments": [
+				10.0,
+				1.0
+			],
+			"description": "10^1 = 10",
+			"expected": 10.0,
+			"name": "Exponent one"
+		},
+		{
+			"arguments": [
+				3.0,
+				4.0
+			],
+			"description": "3^4 = 81",
+			"expected": 81.0,
+			"name": "Three to the power of four"
+		},
+		{
+			"arguments": [
+				2.0,
+				10.0
+			],
+			"description": "2^10 = 1024",
+			"expected": 1024.0,
+			"name": "Two to the power of ten"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die die Potenz berechnet (basis hoch exponent). Implementiere dies ohne die eingebaute pow() Funktion zu nutzen. Nutze stattdessen eine Schleife.",
+			"hints": "Multipliziere die Basis exponent-mal mit sich selbst. Denke daran: n^0 = 1 fuer alle n.",
+			"name": "Potenz berechnen",
+			"tests": [
+				{
+					"description": "2^3 = 8",
+					"name": "Zwei hoch drei"
+				},
+				{
+					"description": "5^0 = 1",
+					"name": "Exponent null"
+				},
+				{
+					"description": "10^1 = 10",
+					"name": "Exponent eins"
+				},
+				{
+					"description": "3^4 = 81",
+					"name": "Drei hoch vier"
+				},
+				{
+					"description": "2^10 = 1024",
+					"name": "Zwei hoch zehn"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that computes exponentiation (base to the power of exponent). Implement it without using the built-in pow() function. Use a loop instead.",
+			"hints": "Multiply the base by itself exponent times. Remember: n^0 = 1 for all n.",
+			"name": "Calculate Power",
+			"tests": [
+				{
+					"description": "2^3 = 8",
+					"name": "Two to the power of three"
+				},
+				{
+					"description": "5^0 = 1",
+					"name": "Exponent zero"
+				},
+				{
+					"description": "10^1 = 10",
+					"name": "Exponent one"
+				},
+				{
+					"description": "3^4 = 81",
+					"name": "Three to the power of four"
+				},
+				{
+					"description": "2^10 = 1024",
+					"name": "Two to the power of ten"
+				}
+			]
+		}
+	}
+}

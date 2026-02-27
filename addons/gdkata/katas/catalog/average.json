@@ -1,0 +1,109 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "numbers",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 3,
+	"id": "average",
+	"method_name": "average",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0,
+					4.0,
+					5.0
+				]
+			],
+			"description": "[1, 2, 3, 4, 5] = 3.0",
+			"expected": 3.0,
+			"name": "Simple average"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] = 0.0",
+			"expected": 0.0,
+			"name": "Empty array"
+		},
+		{
+			"arguments": [
+				[
+					10.0
+				]
+			],
+			"description": "[10] = 10.0",
+			"expected": 10.0,
+			"name": "Single element"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0,
+					4.0
+				]
+			],
+			"description": "[1, 2, 3, 4] = 2.5",
+			"expected": 2.5,
+			"name": "Decimal result"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die den Durchschnitt (Mittelwert) aller Zahlen in einem Array berechnet. Gib 0.0 zurueck wenn das Array leer ist.",
+			"hints": "Achte auf Integer-Division! Teile durch float(array.size()) oder multipliziere mit 1.0.",
+			"name": "Durchschnitt berechnen",
+			"tests": [
+				{
+					"description": "[1, 2, 3, 4, 5] = 3.0",
+					"name": "Einfacher Durchschnitt"
+				},
+				{
+					"description": "[] = 0.0",
+					"name": "Leeres Array"
+				},
+				{
+					"description": "[10] = 10.0",
+					"name": "Ein Element"
+				},
+				{
+					"description": "[1, 2, 3, 4] = 2.5",
+					"name": "Dezimal Ergebnis"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that calculates the average (mean) of all numbers in an array. Return 0.0 if the array is empty.",
+			"hints": "Watch out for integer division! Divide by float(array.size()) or multiply by 1.0.",
+			"name": "Calculate Average",
+			"tests": [
+				{
+					"description": "[1, 2, 3, 4, 5] = 3.0",
+					"name": "Simple average"
+				},
+				{
+					"description": "[] = 0.0",
+					"name": "Empty array"
+				},
+				{
+					"description": "[10] = 10.0",
+					"name": "Single element"
+				},
+				{
+					"description": "[1, 2, 3, 4] = 2.5",
+					"name": "Decimal result"
+				}
+			]
+		}
+	}
+}

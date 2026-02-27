@@ -1,0 +1,152 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 5,
+	"expected_type_hint": 28,
+	"id": "merge_sort",
+	"method_name": "merge_sort",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					5.0,
+					3.0,
+					1.0,
+					4.0,
+					2.0
+				]
+			],
+			"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0,
+				4.0,
+				5.0
+			],
+			"name": "Unsorted"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[1,2,3] -> [1,2,3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Already sorted"
+		},
+		{
+			"arguments": [
+				[
+					3.0,
+					2.0,
+					1.0
+				]
+			],
+			"description": "[3,2,1] -> [1,2,3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Reverse"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> []",
+			"expected": [],
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				[
+					2.0,
+					1.0,
+					3.0,
+					1.0,
+					2.0
+				]
+			],
+			"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+			"expected": [
+				1.0,
+				1.0,
+				2.0,
+				2.0,
+				3.0
+			],
+			"name": "Duplicates"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere den Merge Sort Algorithmus mit Divide and Conquer. Teile das Array in der Mitte, sortiere rekursiv beide Haelften, dann fuege die sortierten Haelften zusammen.",
+			"hints": "Basisfall: Arrays der Laenge 0 oder 1 sind bereits sortiert. Erstelle eine merge-Funktion, die zwei sortierte Arrays zu einem zusammenfuegt.",
+			"name": "Merge Sort",
+			"tests": [
+				{
+					"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+					"name": "Unsortiert"
+				},
+				{
+					"description": "[1,2,3] -> [1,2,3]",
+					"name": "Schon sortiert"
+				},
+				{
+					"description": "[3,2,1] -> [1,2,3]",
+					"name": "Rueckwaerts"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Leer"
+				},
+				{
+					"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+					"name": "Duplikate"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement the Merge Sort algorithm using divide and conquer. Split the array in half, recursively sort each half, then merge the sorted halves.",
+			"hints": "Base case: arrays of length 0 or 1 are already sorted. Create a merge function that combines two sorted arrays into one sorted array.",
+			"name": "Merge Sort",
+			"tests": [
+				{
+					"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+					"name": "Unsorted"
+				},
+				{
+					"description": "[1,2,3] -> [1,2,3]",
+					"name": "Already sorted"
+				},
+				{
+					"description": "[3,2,1] -> [1,2,3]",
+					"name": "Reverse"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Empty"
+				},
+				{
+					"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+					"name": "Duplicates"
+				}
+			]
+		}
+	}
+}

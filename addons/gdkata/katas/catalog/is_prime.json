@@ -1,0 +1,160 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 3,
+	"expected_type_hint": 1,
+	"id": "is_prime",
+	"method_name": "is_prime",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				2.0
+			],
+			"description": "2 is a prime number",
+			"expected": true,
+			"name": "Two"
+		},
+		{
+			"arguments": [
+				3.0
+			],
+			"description": "3 is a prime number",
+			"expected": true,
+			"name": "Three"
+		},
+		{
+			"arguments": [
+				4.0
+			],
+			"description": "4 is not a prime number",
+			"expected": false,
+			"name": "Four"
+		},
+		{
+			"arguments": [
+				17.0
+			],
+			"description": "17 is a prime number",
+			"expected": true,
+			"name": "Seventeen"
+		},
+		{
+			"arguments": [
+				1.0
+			],
+			"description": "1 is not a prime number",
+			"expected": false,
+			"name": "One"
+		},
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "0 is not a prime number",
+			"expected": false,
+			"name": "Zero"
+		},
+		{
+			"arguments": [
+				-5.0
+			],
+			"description": "-5 is not a prime number",
+			"expected": false,
+			"name": "Negative"
+		},
+		{
+			"arguments": [
+				97.0
+			],
+			"description": "97 is a prime number",
+			"expected": true,
+			"name": "Large prime"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die prueft ob eine Zahl eine Primzahl ist. Eine Primzahl ist nur durch 1 und sich selbst teilbar. Zahlen kleiner als 2 sind keine Primzahlen.",
+			"hints": "Pruefe Teilbarkeit nur bis zur Wurzel der Zahl. Nutze eine Schleife von 2 bis sqrt(n).",
+			"name": "Primzahl pruefen",
+			"tests": [
+				{
+					"description": "2 ist eine Primzahl",
+					"name": "Zwei"
+				},
+				{
+					"description": "3 ist eine Primzahl",
+					"name": "Drei"
+				},
+				{
+					"description": "4 ist keine Primzahl",
+					"name": "Vier"
+				},
+				{
+					"description": "17 ist eine Primzahl",
+					"name": "Siebzehn"
+				},
+				{
+					"description": "1 ist keine Primzahl",
+					"name": "Eins"
+				},
+				{
+					"description": "0 ist keine Primzahl",
+					"name": "Null"
+				},
+				{
+					"description": "-5 ist keine Primzahl",
+					"name": "Negativ"
+				},
+				{
+					"description": "97 ist eine Primzahl",
+					"name": "Grosse Primzahl"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that checks whether a number is prime. A prime number is divisible only by 1 and itself. Numbers smaller than 2 are not prime.",
+			"hints": "Only check divisors up to sqrt(n). Loop from 2 to sqrt(n).",
+			"name": "Check Prime Number",
+			"tests": [
+				{
+					"description": "2 is a prime number",
+					"name": "Two"
+				},
+				{
+					"description": "3 is a prime number",
+					"name": "Three"
+				},
+				{
+					"description": "4 is not a prime number",
+					"name": "Four"
+				},
+				{
+					"description": "17 is a prime number",
+					"name": "Seventeen"
+				},
+				{
+					"description": "1 is not a prime number",
+					"name": "One"
+				},
+				{
+					"description": "0 is not a prime number",
+					"name": "Zero"
+				},
+				{
+					"description": "-5 is not a prime number",
+					"name": "Negative"
+				},
+				{
+					"description": "97 is a prime number",
+					"name": "Large prime"
+				}
+			]
+		}
+	}
+}

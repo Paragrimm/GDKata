@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "roman",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 4,
+	"expected_type_hint": 2,
+	"id": "from_roman",
+	"method_name": "from_roman",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"I"
+			],
+			"description": "I = 1",
+			"expected": 1.0,
+			"name": "I"
+		},
+		{
+			"arguments": [
+				"IV"
+			],
+			"description": "IV = 4",
+			"expected": 4.0,
+			"name": "IV"
+		},
+		{
+			"arguments": [
+				"IX"
+			],
+			"description": "IX = 9",
+			"expected": 9.0,
+			"name": "IX"
+		},
+		{
+			"arguments": [
+				"LVIII"
+			],
+			"description": "LVIII = 58",
+			"expected": 58.0,
+			"name": "LVIII"
+		},
+		{
+			"arguments": [
+				"MCMXCIV"
+			],
+			"description": "MCMXCIV = 1994",
+			"expected": 1994.0,
+			"name": "MCMXCIV"
+		},
+		{
+			"arguments": [
+				"MMMCMXCIX"
+			],
+			"description": "MMMCMXCIX = 3999",
+			"expected": 3999.0,
+			"name": "MMMCMXCIX"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die roemische Ziffern (I, V, X, L, C, D, M) in eine Dezimalzahl umwandelt. Beachte Subtraktionsregeln: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900.",
+			"hints": "Gehe von links nach rechts. Wenn ein kleinerer Wert vor einem groesseren steht, subtrahiere ihn. Sonst addiere ihn.",
+			"name": "Roemisch zu Zahl",
+			"tests": [
+				{
+					"description": "I = 1",
+					"name": "I"
+				},
+				{
+					"description": "IV = 4",
+					"name": "IV"
+				},
+				{
+					"description": "IX = 9",
+					"name": "IX"
+				},
+				{
+					"description": "LVIII = 58",
+					"name": "LVIII"
+				},
+				{
+					"description": "MCMXCIV = 1994",
+					"name": "MCMXCIV"
+				},
+				{
+					"description": "MMMCMXCIX = 3999",
+					"name": "MMMCMXCIX"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that converts Roman numerals (I, V, X, L, C, D, M) to a decimal number. Consider subtraction rules: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900.",
+			"hints": "Go from left to right. If a smaller value precedes a larger one, subtract it. Otherwise add it.",
+			"name": "Roman to Number",
+			"tests": [
+				{
+					"description": "I = 1",
+					"name": "I"
+				},
+				{
+					"description": "IV = 4",
+					"name": "IV"
+				},
+				{
+					"description": "IX = 9",
+					"name": "IX"
+				},
+				{
+					"description": "LVIII = 58",
+					"name": "LVIII"
+				},
+				{
+					"description": "MCMXCIV = 1994",
+					"name": "MCMXCIV"
+				},
+				{
+					"description": "MMMCMXCIX = 3999",
+					"name": "MMMCMXCIX"
+				}
+			]
+		}
+	}
+}

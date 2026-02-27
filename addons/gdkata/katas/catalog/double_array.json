@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 28,
+	"id": "double_array",
+	"method_name": "double_array",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[1,2,3] -> [2,4,6]",
+			"expected": [
+				2.0,
+				4.0,
+				6.0
+			],
+			"name": "Simple"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> []",
+			"expected": [],
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				[
+					0.0,
+					-1.0,
+					5.0
+				]
+			],
+			"description": "[0,-1,5] -> [0,-2,10]",
+			"expected": [
+				0.0,
+				-2.0,
+				10.0
+			],
+			"name": "Mixed"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die jedes Element eines Integer-Arrays verdoppelt und das neue Array zurueckgibt.",
+			"hints": "Erstelle ein neues Array und fuege die verdoppelten Werte hinzu, oder nutze map().",
+			"name": "Array verdoppeln",
+			"tests": [
+				{
+					"description": "[1,2,3] -> [2,4,6]",
+					"name": "Einfach"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Leer"
+				},
+				{
+					"description": "[0,-1,5] -> [0,-2,10]",
+					"name": "Gemischt"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that doubles each element of an integer array and returns the new array.",
+			"hints": "Create a new array and add the doubled values, or use map().",
+			"name": "Double Array",
+			"tests": [
+				{
+					"description": "[1,2,3] -> [2,4,6]",
+					"name": "Simple"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Empty"
+				},
+				{
+					"description": "[0,-1,5] -> [0,-2,10]",
+					"name": "Mixed"
+				}
+			]
+		}
+	}
+}

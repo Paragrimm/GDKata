@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "strings",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 5,
+	"expected_type_hint": 4,
+	"id": "longest_common_prefix",
+	"method_name": "longest_common_prefix",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					"Blume",
+					"Blatt",
+					"Blitz"
+				]
+			],
+			"description": "['flower','flow','flight'] -> 'fl'",
+			"expected": "Bl",
+			"name": "Common fl"
+		},
+		{
+			"arguments": [
+				[
+					"Hund",
+					"Auto",
+					"Baum"
+				]
+			],
+			"description": "['dog','racecar','car'] -> ''",
+			"expected": "",
+			"name": "No common"
+		},
+		{
+			"arguments": [
+				[
+					"a",
+					"ab",
+					"abc"
+				]
+			],
+			"description": "['a','ab','abc'] -> 'a'",
+			"expected": "a",
+			"name": "Single char"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> ''",
+			"expected": "",
+			"name": "Empty array"
+		},
+		{
+			"arguments": [
+				[
+					"Hallo",
+					"Hallo",
+					"Hallo"
+				]
+			],
+			"description": "['hello','hello','hello'] -> 'hello'",
+			"expected": "Hallo",
+			"name": "All same"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Finde das laengste gemeinsame Praefix unter einem Array von Strings. Wenn es kein gemeinsames Praefix gibt, gib einen leeren String zurueck.",
+			"hints": "Vergleiche Zeichen an jeder Position ueber alle Strings. Stoppe wenn du einen Unterschied findest oder das Ende eines Strings erreichst.",
+			"name": "Laengstes gemeinsames Praefix",
+			"tests": [
+				{
+					"description": "['Blume','Blatt','Blitz'] -> 'Bl'",
+					"name": "Gemeinsam Bl"
+				},
+				{
+					"description": "['Hund','Auto','Baum'] -> ''",
+					"name": "Kein gemeinsames"
+				},
+				{
+					"description": "['a','ab','abc'] -> 'a'",
+					"name": "Ein Zeichen"
+				},
+				{
+					"description": "[] -> ''",
+					"name": "Leeres Array"
+				},
+				{
+					"description": "['Hallo','Hallo','Hallo'] -> 'Hallo'",
+					"name": "Alle gleich"
+				}
+			]
+		},
+		"en": {
+			"description": "Find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string.",
+			"hints": "Compare characters at each position across all strings. Stop when you find a mismatch or reach the end of any string.",
+			"name": "Longest Common Prefix",
+			"tests": [
+				{
+					"description": "['flower','flow','flight'] -> 'fl'",
+					"name": "Common fl"
+				},
+				{
+					"description": "['dog','racecar','car'] -> ''",
+					"name": "No common"
+				},
+				{
+					"description": "['a','ab','abc'] -> 'a'",
+					"name": "Single char"
+				},
+				{
+					"description": "[] -> ''",
+					"name": "Empty array"
+				},
+				{
+					"description": "['hello','hello','hello'] -> 'hello'",
+					"name": "All same"
+				}
+			]
+		}
+	}
+}

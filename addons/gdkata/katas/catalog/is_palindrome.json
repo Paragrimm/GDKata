@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 1,
+	"id": "is_palindrome",
+	"method_name": "is_palindrome",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Racecar"
+			],
+			"description": "'Racecar' is a palindrome",
+			"expected": true,
+			"name": "Racecar"
+		},
+		{
+			"arguments": [
+				"Level"
+			],
+			"description": "'Level' is a palindrome",
+			"expected": true,
+			"name": "Level"
+		},
+		{
+			"arguments": [
+				"Hello"
+			],
+			"description": "'Hello' is not a palindrome",
+			"expected": false,
+			"name": "Hello"
+		},
+		{
+			"arguments": [
+				"a"
+			],
+			"description": "'a' is a palindrome",
+			"expected": true,
+			"name": "Single char"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' is a palindrome",
+			"expected": true,
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				"Noon"
+			],
+			"description": "'Noon' is a palindrome",
+			"expected": true,
+			"name": "Noon"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die prueft ob ein String ein Palindrom ist. Ein Palindrom liest sich vorwaerts und rueckwaerts gleich (z.B. 'anna', 'rentner'). Ignoriere Gross- und Kleinschreibung.",
+			"hints": "Wandle den String in Kleinbuchstaben um und vergleiche ihn mit seiner umgekehrten Version.",
+			"name": "Ist Palindrom",
+			"tests": [
+				{
+					"description": "'Anna' ist ein Palindrom",
+					"name": "Anna"
+				},
+				{
+					"description": "'Rentner' ist ein Palindrom",
+					"name": "Rentner"
+				},
+				{
+					"description": "'Hallo' ist kein Palindrom",
+					"name": "Hallo"
+				},
+				{
+					"description": "'a' ist ein Palindrom",
+					"name": "Ein Zeichen"
+				},
+				{
+					"description": "'' ist ein Palindrom",
+					"name": "Leer"
+				},
+				{
+					"description": "'Otto' ist ein Palindrom",
+					"name": "Otto"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that checks if a string is a palindrome. A palindrome reads the same forwards and backwards (e.g. 'racecar', 'level'). Ignore case sensitivity.",
+			"hints": "Convert the string to lowercase and compare it with its reversed version.",
+			"name": "Is Palindrome",
+			"tests": [
+				{
+					"description": "'Racecar' is a palindrome",
+					"name": "Racecar"
+				},
+				{
+					"description": "'Level' is a palindrome",
+					"name": "Level"
+				},
+				{
+					"description": "'Hello' is not a palindrome",
+					"name": "Hello"
+				},
+				{
+					"description": "'a' is a palindrome",
+					"name": "Single char"
+				},
+				{
+					"description": "'' is a palindrome",
+					"name": "Empty"
+				},
+				{
+					"description": "'Noon' is a palindrome",
+					"name": "Noon"
+				}
+			]
+		}
+	}
+}

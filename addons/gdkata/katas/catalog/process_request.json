@@ -1,0 +1,112 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "user",
+			"type_hint": 4
+		},
+		{
+			"name": "requests",
+			"type_hint": 2
+		},
+		{
+			"name": "data",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 10,
+	"expected_type_hint": 4,
+	"id": "process_request",
+	"method_name": "process_request",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"admin",
+				50.0,
+				"valid"
+			],
+			"description": "admin, 50, 'valid' -> success",
+			"expected": "success",
+			"name": "All pass"
+		},
+		{
+			"arguments": [
+				"guest",
+				50.0,
+				"valid"
+			],
+			"description": "guest, 50, 'valid' -> auth_rejected",
+			"expected": "auth_rejected",
+			"name": "Auth fails"
+		},
+		{
+			"arguments": [
+				"admin",
+				150.0,
+				"valid"
+			],
+			"description": "admin, 150, 'valid' -> rate_limit_exceeded",
+			"expected": "rate_limit_exceeded",
+			"name": "Rate limit"
+		},
+		{
+			"arguments": [
+				"admin",
+				50.0,
+				""
+			],
+			"description": "admin, 50, '' -> validation_failed",
+			"expected": "validation_failed",
+			"name": "Invalid data"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere Anfrageverarbeitung mit Chain of Responsibility. Handler: 'auth' (lehnt ab wenn user='guest'), 'rate_limit' (lehnt ab wenn requests>100), 'validation' (lehnt ab wenn data leer), 'process' (gibt 'success' zurueck). Gegeben [user, requests, data], gib das Ergebnis oder welcher Handler abgelehnt hat zurueck.",
+			"hints": "Erstelle eine Kette wo jeder Handler entweder verarbeitet oder an den naechsten weitergibt. Chain of Responsibility entkoppelt Sender von Empfaengern indem mehrere Objekte die Chance bekommen die Anfrage zu bearbeiten.",
+			"name": "Chain of Responsibility",
+			"tests": [
+				{
+					"description": "admin, 50, 'valid' -> success",
+					"name": "Alle bestanden"
+				},
+				{
+					"description": "guest, 50, 'valid' -> auth_rejected",
+					"name": "Auth fehlgeschlagen"
+				},
+				{
+					"description": "admin, 150, 'valid' -> rate_limit_exceeded",
+					"name": "Rate Limit"
+				},
+				{
+					"description": "admin, 50, '' -> validation_failed",
+					"name": "Ungueltige Daten"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement request handling with chain of responsibility. Handlers: 'auth' (rejects if user='guest'), 'rate_limit' (rejects if requests>100), 'validation' (rejects if data empty), 'process' (returns 'success'). Given [user, requests, data], return the result or which handler rejected.",
+			"hints": "Create a chain where each handler either processes or passes to the next. The chain of responsibility decouples sender from receivers by giving multiple objects a chance to handle the request.",
+			"name": "Chain of Responsibility",
+			"tests": [
+				{
+					"description": "admin, 50, 'valid' -> success",
+					"name": "All pass"
+				},
+				{
+					"description": "guest, 50, 'valid' -> auth_rejected",
+					"name": "Auth fails"
+				},
+				{
+					"description": "admin, 150, 'valid' -> rate_limit_exceeded",
+					"name": "Rate limit"
+				},
+				{
+					"description": "admin, 50, '' -> validation_failed",
+					"name": "Invalid data"
+				}
+			]
+		}
+	}
+}

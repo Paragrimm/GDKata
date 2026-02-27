@@ -1,0 +1,86 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "first_element",
+	"method_name": "first_element",
+	"status": "done",
+	"tests": [
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[1, 2, 3] -> 1",
+			"expected": 1.0,
+			"name": "Normal array"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> -1",
+			"expected": -1.0,
+			"name": "Empty array"
+		},
+		{
+			"arguments": [
+				[
+					42.0
+				]
+			],
+			"description": "[42] -> 42",
+			"expected": 42.0,
+			"name": "Single element"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die das erste Element eines Integer-Arrays zurueckgibt. Gib -1 zurueck wenn das Array leer ist.",
+			"hints": "Pruefe zuerst ob das Array leer ist mit is_empty() oder size() == 0.",
+			"name": "Erstes Element",
+			"tests": [
+				{
+					"description": "[1, 2, 3] -> 1",
+					"name": "Normales Array"
+				},
+				{
+					"description": "[] -> -1",
+					"name": "Leeres Array"
+				},
+				{
+					"description": "[42] -> 42",
+					"name": "Ein Element"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that returns the first element of an integer array. Return -1 if the array is empty.",
+			"hints": "First check if the array is empty using is_empty() or size() == 0.",
+			"name": "First Element",
+			"tests": [
+				{
+					"description": "[1, 2, 3] -> 1",
+					"name": "Normal array"
+				},
+				{
+					"description": "[] -> -1",
+					"name": "Empty array"
+				},
+				{
+					"description": "[42] -> 42",
+					"name": "Single element"
+				}
+			]
+		}
+	}
+}

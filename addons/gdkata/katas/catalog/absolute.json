@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "absolute",
+	"method_name": "absolute",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "abs(5) = 5",
+			"expected": 5.0,
+			"name": "Positive number"
+		},
+		{
+			"arguments": [
+				-5.0
+			],
+			"description": "abs(-5) = 5",
+			"expected": 5.0,
+			"name": "Negative number"
+		},
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "abs(0) = 0",
+			"expected": 0.0,
+			"name": "Zero"
+		},
+		{
+			"arguments": [
+				-100.0
+			],
+			"description": "abs(-100) = 100",
+			"expected": 100.0,
+			"name": "Large negative"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die den Absolutwert einer Zahl zurueckgibt. Der Absolutwert ist immer positiv.",
+			"hints": "Wenn die Zahl negativ ist, multipliziere sie mit -1. Oder nutze abs().",
+			"name": "Absolutwert",
+			"tests": [
+				{
+					"description": "abs(5) = 5",
+					"name": "Positive Zahl"
+				},
+				{
+					"description": "abs(-5) = 5",
+					"name": "Negative Zahl"
+				},
+				{
+					"description": "abs(0) = 0",
+					"name": "Null"
+				},
+				{
+					"description": "abs(-100) = 100",
+					"name": "Grosse negative"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that returns the absolute value of a number. The absolute value is always positive.",
+			"hints": "If the number is negative, multiply it by -1. Or use abs().",
+			"name": "Absolute Value",
+			"tests": [
+				{
+					"description": "abs(5) = 5",
+					"name": "Positive number"
+				},
+				{
+					"description": "abs(-5) = 5",
+					"name": "Negative number"
+				},
+				{
+					"description": "abs(0) = 0",
+					"name": "Zero"
+				},
+				{
+					"description": "abs(-100) = 100",
+					"name": "Large negative"
+				}
+			]
+		}
+	}
+}

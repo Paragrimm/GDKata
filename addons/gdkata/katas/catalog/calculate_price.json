@@ -1,0 +1,130 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "base_price",
+			"type_hint": 3
+		},
+		{
+			"name": "quantity",
+			"type_hint": 2
+		},
+		{
+			"name": "strategy",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 7,
+	"expected_type_hint": 3,
+	"id": "calculate_price",
+	"method_name": "calculate_price",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				10.0,
+				10.0,
+				"none"
+			],
+			"description": "10.0, 10, 'none' -> 100.0",
+			"expected": 100.0,
+			"name": "No discount"
+		},
+		{
+			"arguments": [
+				10.0,
+				10.0,
+				"percentage"
+			],
+			"description": "10.0, 10, 'percentage' -> 90.0",
+			"expected": 90.0,
+			"name": "Percentage"
+		},
+		{
+			"arguments": [
+				10.0,
+				10.0,
+				"bulk"
+			],
+			"description": "10.0, 10, 'bulk' -> 85.0",
+			"expected": 85.0,
+			"name": "Bulk with qty"
+		},
+		{
+			"arguments": [
+				10.0,
+				5.0,
+				"bulk"
+			],
+			"description": "10.0, 5, 'bulk' -> 50.0 (no discount)",
+			"expected": 50.0,
+			"name": "Bulk no qty"
+		},
+		{
+			"arguments": [
+				10.0,
+				10.0,
+				"vip"
+			],
+			"description": "10.0, 10, 'vip' -> 80.0",
+			"expected": 80.0,
+			"name": "VIP"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere ein Preisberechnungs-Strategy Pattern. Gegeben ein Basispreis, Menge und Rabattstrategie ('none', 'percentage', 'bulk', 'vip'), berechne den Endpreis. None: kein Rabatt. Percentage: 10% Rabatt. Bulk: 15% Rabatt wenn Menge >= 10. VIP: 20% Rabatt immer.",
+			"hints": "Erstelle verschiedene Strategie-Funktionen fuer jeden Rabatttyp. Das Strategy Pattern erlaubt das Wechseln von Algorithmen zur Laufzeit.",
+			"name": "Strategy Pattern",
+			"tests": [
+				{
+					"description": "10.0, 10, 'none' -> 100.0",
+					"name": "Kein Rabatt"
+				},
+				{
+					"description": "10.0, 10, 'percentage' -> 90.0",
+					"name": "Prozent"
+				},
+				{
+					"description": "10.0, 10, 'bulk' -> 85.0",
+					"name": "Bulk mit Menge"
+				},
+				{
+					"description": "10.0, 5, 'bulk' -> 50.0 (kein Rabatt)",
+					"name": "Bulk ohne Menge"
+				},
+				{
+					"description": "10.0, 10, 'vip' -> 80.0",
+					"name": "VIP"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a pricing strategy pattern. Given a base price, quantity, and discount strategy ('none', 'percentage', 'bulk', 'vip'), calculate the final price. None: no discount. Percentage: 10% off. Bulk: 15% off if qty >= 10. VIP: 20% off always.",
+			"hints": "Create different strategy functions for each discount type. The strategy pattern allows switching algorithms at runtime.",
+			"name": "Strategy Pattern",
+			"tests": [
+				{
+					"description": "10.0, 10, 'none' -> 100.0",
+					"name": "No discount"
+				},
+				{
+					"description": "10.0, 10, 'percentage' -> 90.0",
+					"name": "Percentage"
+				},
+				{
+					"description": "10.0, 10, 'bulk' -> 85.0",
+					"name": "Bulk with qty"
+				},
+				{
+					"description": "10.0, 5, 'bulk' -> 50.0 (no discount)",
+					"name": "Bulk no qty"
+				},
+				{
+					"description": "10.0, 10, 'vip' -> 80.0",
+					"name": "VIP"
+				}
+			]
+		}
+	}
+}

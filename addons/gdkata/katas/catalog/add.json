@@ -1,0 +1,104 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "a",
+			"type_hint": 2
+		},
+		{
+			"name": "b",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "add",
+	"method_name": "add",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				1.0,
+				4.0
+			],
+			"description": "Hier werden 2 ints addiert",
+			"expected": 5.0,
+			"name": "Addition von 2 ints"
+		},
+		{
+			"arguments": [
+				0.0,
+				0.0
+			],
+			"description": "0 + 0 = 0",
+			"expected": 0.0,
+			"name": "Null addieren"
+		},
+		{
+			"arguments": [
+				-1.0,
+				-2.0
+			],
+			"description": "-1 + -2 = -3",
+			"expected": -3.0,
+			"name": "Negative Zahlen"
+		},
+		{
+			"arguments": [
+				42.0,
+				58.0
+			],
+			"description": "42 + 58 = 100",
+			"expected": 100.0,
+			"name": "Groessere Zahlen"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die zwei Integer addiert und das Ergebnis zurueckgibt.",
+			"hints": "",
+			"name": "Addiere zwei Zahlen",
+			"tests": [
+				{
+					"description": "1 + 4 = 5",
+					"name": "Positive Zahlen"
+				},
+				{
+					"description": "0 + 0 = 0",
+					"name": "Null addieren"
+				},
+				{
+					"description": "-1 + -2 = -3",
+					"name": "Negative Zahlen"
+				},
+				{
+					"description": "42 + 58 = 100",
+					"name": "Groessere Zahlen"
+				}
+			]
+		},
+		"en": {
+			"description": "In diesem Kata lernst du, wie du 2 Argumente summierst",
+			"hints": "",
+			"name": "Summiere 2 Argumente",
+			"tests": [
+				{
+					"description": "Hier werden 2 ints addiert",
+					"name": "Addition von 2 ints"
+				},
+				{
+					"description": "0 + 0 = 0",
+					"name": "Null addieren"
+				},
+				{
+					"description": "-1 + -2 = -3",
+					"name": "Negative Zahlen"
+				},
+				{
+					"description": "42 + 58 = 100",
+					"name": "Groessere Zahlen"
+				}
+			]
+		}
+	}
+}

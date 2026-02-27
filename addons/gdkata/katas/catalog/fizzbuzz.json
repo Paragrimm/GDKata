@@ -1,0 +1,144 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 4,
+	"id": "fizzbuzz",
+	"method_name": "fizzbuzz",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				1.0
+			],
+			"description": "1 is not divisible by 3 or 5",
+			"expected": "1",
+			"name": "One"
+		},
+		{
+			"arguments": [
+				3.0
+			],
+			"description": "3 is divisible by 3",
+			"expected": "Fizz",
+			"name": "Three"
+		},
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "5 is divisible by 5",
+			"expected": "Buzz",
+			"name": "Five"
+		},
+		{
+			"arguments": [
+				15.0
+			],
+			"description": "15 is divisible by 3 and 5",
+			"expected": "FizzBuzz",
+			"name": "Fifteen"
+		},
+		{
+			"arguments": [
+				9.0
+			],
+			"description": "9 is divisible by 3",
+			"expected": "Fizz",
+			"name": "Nine"
+		},
+		{
+			"arguments": [
+				20.0
+			],
+			"description": "20 is divisible by 5",
+			"expected": "Buzz",
+			"name": "Twenty"
+		},
+		{
+			"arguments": [
+				30.0
+			],
+			"description": "30 is divisible by 3 and 5",
+			"expected": "FizzBuzz",
+			"name": "Thirty"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe die klassische FizzBuzz Funktion. Fuer eine gegebene Zahl: Gib 'FizzBuzz' zurueck wenn sie durch 3 UND 5 teilbar ist. Gib 'Fizz' zurueck wenn sie nur durch 3 teilbar ist. Gib 'Buzz' zurueck wenn sie nur durch 5 teilbar ist. Sonst gib die Zahl als String zurueck.",
+			"hints": "Pruefe zuerst die Teilbarkeit durch 15 (3 UND 5), dann durch 3, dann durch 5. Nutze den Modulo-Operator %.",
+			"name": "FizzBuzz",
+			"tests": [
+				{
+					"description": "1 ist weder durch 3 noch 5 teilbar",
+					"name": "Eins"
+				},
+				{
+					"description": "3 ist durch 3 teilbar",
+					"name": "Drei"
+				},
+				{
+					"description": "5 ist durch 5 teilbar",
+					"name": "Fuenf"
+				},
+				{
+					"description": "15 ist durch 3 und 5 teilbar",
+					"name": "Fuenfzehn"
+				},
+				{
+					"description": "9 ist durch 3 teilbar",
+					"name": "Neun"
+				},
+				{
+					"description": "20 ist durch 5 teilbar",
+					"name": "Zwanzig"
+				},
+				{
+					"description": "30 ist durch 3 und 5 teilbar",
+					"name": "Dreissig"
+				}
+			]
+		},
+		"en": {
+			"description": "Write the classic FizzBuzz function. For a given number: Return 'FizzBuzz' if divisible by both 3 AND 5. Return 'Fizz' if only divisible by 3. Return 'Buzz' if only divisible by 5. Otherwise return the number as a string.",
+			"hints": "Check divisibility by 15 (3 AND 5) first, then by 3, then by 5. Use the modulo operator %.",
+			"name": "FizzBuzz",
+			"tests": [
+				{
+					"description": "1 is not divisible by 3 or 5",
+					"name": "One"
+				},
+				{
+					"description": "3 is divisible by 3",
+					"name": "Three"
+				},
+				{
+					"description": "5 is divisible by 5",
+					"name": "Five"
+				},
+				{
+					"description": "15 is divisible by 3 and 5",
+					"name": "Fifteen"
+				},
+				{
+					"description": "9 is divisible by 3",
+					"name": "Nine"
+				},
+				{
+					"description": "20 is divisible by 5",
+					"name": "Twenty"
+				},
+				{
+					"description": "30 is divisible by 3 and 5",
+					"name": "Thirty"
+				}
+			]
+		}
+	}
+}

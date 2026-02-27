@@ -1,0 +1,121 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "a",
+			"type_hint": 2
+		},
+		{
+			"name": "b",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "find_max",
+	"method_name": "find_max",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				10.0,
+				5.0
+			],
+			"description": "max(10, 5) = 10",
+			"expected": 10.0,
+			"name": "First larger"
+		},
+		{
+			"arguments": [
+				15.0,
+				20.0
+			],
+			"description": "max(15, 20) = 20",
+			"expected": 20.0,
+			"name": "Second larger"
+		},
+		{
+			"arguments": [
+				7.0,
+				7.0
+			],
+			"description": "max(7, 7) = 7",
+			"expected": 7.0,
+			"name": "Both equal"
+		},
+		{
+			"arguments": [
+				-5.0,
+				0.0
+			],
+			"description": "max(-5, 0) = 0",
+			"expected": 0.0,
+			"name": "With zero"
+		},
+		{
+			"arguments": [
+				-3.0,
+				-10.0
+			],
+			"description": "max(-3, -10) = -3",
+			"expected": -3.0,
+			"name": "Negative numbers"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die zwei Zahlen vergleicht und die groessere zurueckgibt.",
+			"hints": "Nutze eine if-else Verzweigung oder die max() Funktion.",
+			"name": "Maximum finden",
+			"tests": [
+				{
+					"description": "max(10, 5) = 10",
+					"name": "Erste groesser"
+				},
+				{
+					"description": "max(15, 20) = 20",
+					"name": "Zweite groesser"
+				},
+				{
+					"description": "max(7, 7) = 7",
+					"name": "Beide gleich"
+				},
+				{
+					"description": "max(-5, 0) = 0",
+					"name": "Mit Null"
+				},
+				{
+					"description": "max(-3, -10) = -3",
+					"name": "Negative Zahlen"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that compares two numbers and returns the larger one.",
+			"hints": "Use an if-else statement or the max() function.",
+			"name": "Find Maximum",
+			"tests": [
+				{
+					"description": "max(10, 5) = 10",
+					"name": "First larger"
+				},
+				{
+					"description": "max(15, 20) = 20",
+					"name": "Second larger"
+				},
+				{
+					"description": "max(7, 7) = 7",
+					"name": "Both equal"
+				},
+				{
+					"description": "max(-5, 0) = 0",
+					"name": "With zero"
+				},
+				{
+					"description": "max(-3, -10) = -3",
+					"name": "Negative numbers"
+				}
+			]
+		}
+	}
+}

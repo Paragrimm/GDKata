@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "get_sign",
+	"method_name": "get_sign",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "sign(5) = 1",
+			"expected": 1.0,
+			"name": "Positive"
+		},
+		{
+			"arguments": [
+				-3.0
+			],
+			"description": "sign(-3) = -1",
+			"expected": -1.0,
+			"name": "Negative"
+		},
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "sign(0) = 0",
+			"expected": 0.0,
+			"name": "Zero"
+		},
+		{
+			"arguments": [
+				1000.0
+			],
+			"description": "sign(1000) = 1",
+			"expected": 1.0,
+			"name": "Large number"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die das Vorzeichen einer Zahl bestimmt. Gib 1 fuer positive Zahlen, -1 fuer negative Zahlen und 0 fuer Null zurueck.",
+			"hints": "Nutze if-elif-else oder die sign() Funktion.",
+			"name": "Vorzeichen bestimmen",
+			"tests": [
+				{
+					"description": "sign(5) = 1",
+					"name": "Positiv"
+				},
+				{
+					"description": "sign(-3) = -1",
+					"name": "Negativ"
+				},
+				{
+					"description": "sign(0) = 0",
+					"name": "Null"
+				},
+				{
+					"description": "sign(1000) = 1",
+					"name": "Grosse Zahl"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that determines the sign of a number. Return 1 for positive numbers, -1 for negative numbers, and 0 for zero.",
+			"hints": "Use if-elif-else or the sign() function.",
+			"name": "Get Sign",
+			"tests": [
+				{
+					"description": "sign(5) = 1",
+					"name": "Positive"
+				},
+				{
+					"description": "sign(-3) = -1",
+					"name": "Negative"
+				},
+				{
+					"description": "sign(0) = 0",
+					"name": "Zero"
+				},
+				{
+					"description": "sign(1000) = 1",
+					"name": "Large number"
+				}
+			]
+		}
+	}
+}

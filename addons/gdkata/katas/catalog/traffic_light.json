@@ -1,0 +1,121 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "start_state",
+			"type_hint": 4
+		},
+		{
+			"name": "transitions",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 7,
+	"expected_type_hint": 4,
+	"id": "traffic_light",
+	"method_name": "traffic_light",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"red",
+				1.0
+			],
+			"description": "'red', 1 -> 'green'",
+			"expected": "green",
+			"name": "Red to green"
+		},
+		{
+			"arguments": [
+				"red",
+				2.0
+			],
+			"description": "'red', 2 -> 'yellow'",
+			"expected": "yellow",
+			"name": "Red to yellow"
+		},
+		{
+			"arguments": [
+				"red",
+				3.0
+			],
+			"description": "'red', 3 -> 'red'",
+			"expected": "red",
+			"name": "Full cycle"
+		},
+		{
+			"arguments": [
+				"red",
+				7.0
+			],
+			"description": "'red', 7 -> 'green'",
+			"expected": "green",
+			"name": "Multiple cycles"
+		},
+		{
+			"arguments": [
+				"red",
+				0.0
+			],
+			"description": "'red', 0 -> 'red'",
+			"expected": "red",
+			"name": "No transition"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere eine Ampel-Zustandsmaschine. Zustaende: 'red', 'yellow', 'green'. Uebergaenge: red->green, green->yellow, yellow->red. Gegeben ein Startzustand und Anzahl Uebergaenge, gib den Endzustand zurueck.",
+			"hints": "Definiere gueltige Uebergaenge in einem Dictionary. Das State Pattern erlaubt einem Objekt sein Verhalten zu aendern wenn sich sein interner Zustand aendert.",
+			"name": "State Machine",
+			"tests": [
+				{
+					"description": "'red', 1 -> 'green'",
+					"name": "Rot zu Gruen"
+				},
+				{
+					"description": "'red', 2 -> 'yellow'",
+					"name": "Rot zu Gelb"
+				},
+				{
+					"description": "'red', 3 -> 'red'",
+					"name": "Voller Zyklus"
+				},
+				{
+					"description": "'red', 7 -> 'green'",
+					"name": "Mehrere Zyklen"
+				},
+				{
+					"description": "'red', 0 -> 'red'",
+					"name": "Kein Uebergang"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a traffic light state machine. States: 'red', 'yellow', 'green'. Transitions: red->green, green->yellow, yellow->red. Given a starting state and number of transitions, return the final state.",
+			"hints": "Define valid transitions in a dictionary. The state pattern allows an object to change its behavior when its internal state changes.",
+			"name": "State Machine",
+			"tests": [
+				{
+					"description": "'red', 1 -> 'green'",
+					"name": "Red to green"
+				},
+				{
+					"description": "'red', 2 -> 'yellow'",
+					"name": "Red to yellow"
+				},
+				{
+					"description": "'red', 3 -> 'red'",
+					"name": "Full cycle"
+				},
+				{
+					"description": "'red', 7 -> 'green'",
+					"name": "Multiple cycles"
+				},
+				{
+					"description": "'red', 0 -> 'red'",
+					"name": "No transition"
+				}
+			]
+		}
+	}
+}

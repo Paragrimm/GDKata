@@ -1,0 +1,134 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 4,
+	"expected_type_hint": 28,
+	"id": "pascal_row",
+	"method_name": "pascal_row",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "Row 0 = [1]",
+			"expected": [
+				1.0
+			],
+			"name": "Row 0"
+		},
+		{
+			"arguments": [
+				1.0
+			],
+			"description": "Row 1 = [1,1]",
+			"expected": [
+				1.0,
+				1.0
+			],
+			"name": "Row 1"
+		},
+		{
+			"arguments": [
+				2.0
+			],
+			"description": "Row 2 = [1,2,1]",
+			"expected": [
+				1.0,
+				2.0,
+				1.0
+			],
+			"name": "Row 2"
+		},
+		{
+			"arguments": [
+				4.0
+			],
+			"description": "Row 4 = [1,4,6,4,1]",
+			"expected": [
+				1.0,
+				4.0,
+				6.0,
+				4.0,
+				1.0
+			],
+			"name": "Row 4"
+		},
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "Row 5 = [1,5,10,10,5,1]",
+			"expected": [
+				1.0,
+				5.0,
+				10.0,
+				10.0,
+				5.0,
+				1.0
+			],
+			"name": "Row 5"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Berechne die n-te Zeile des Pascalschen Dreiecks (0-indexiert). Das Pascalsche Dreieck beginnt mit [1], dann [1,1], dann [1,2,1], usw. Jede Zahl ist die Summe der zwei Zahlen darueber.",
+			"hints": "Starte mit [1] und berechne jede neue Zeile aus der vorherigen. Jedes Element (ausser den Raendern) ist die Summe von zwei Elementen der vorherigen Zeile.",
+			"name": "Pascal Dreieck Zeile",
+			"tests": [
+				{
+					"description": "Zeile 0 = [1]",
+					"name": "Zeile 0"
+				},
+				{
+					"description": "Zeile 1 = [1,1]",
+					"name": "Zeile 1"
+				},
+				{
+					"description": "Zeile 2 = [1,2,1]",
+					"name": "Zeile 2"
+				},
+				{
+					"description": "Zeile 4 = [1,4,6,4,1]",
+					"name": "Zeile 4"
+				},
+				{
+					"description": "Zeile 5 = [1,5,10,10,5,1]",
+					"name": "Zeile 5"
+				}
+			]
+		},
+		"en": {
+			"description": "Calculate the n-th row of Pascal's Triangle (0-indexed). Pascal's Triangle starts with [1], then [1,1], then [1,2,1], etc. Each number is the sum of the two numbers above it.",
+			"hints": "Start with [1] and calculate each new row from the previous one. Each element (except the edges) is the sum of two elements from the previous row.",
+			"name": "Pascal Triangle Row",
+			"tests": [
+				{
+					"description": "Row 0 = [1]",
+					"name": "Row 0"
+				},
+				{
+					"description": "Row 1 = [1,1]",
+					"name": "Row 1"
+				},
+				{
+					"description": "Row 2 = [1,2,1]",
+					"name": "Row 2"
+				},
+				{
+					"description": "Row 4 = [1,4,6,4,1]",
+					"name": "Row 4"
+				},
+				{
+					"description": "Row 5 = [1,5,10,10,5,1]",
+					"name": "Row 5"
+				}
+			]
+		}
+	}
+}

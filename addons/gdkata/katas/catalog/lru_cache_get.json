@@ -1,0 +1,145 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "operations",
+			"type_hint": 28
+		},
+		{
+			"name": "capacity",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 6,
+	"expected_type_hint": 2,
+	"id": "lru_cache_get",
+	"method_name": "lru_cache_get",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"put",
+						1.0,
+						1.0
+					],
+					[
+						"get",
+						1.0,
+						0.0
+					]
+				],
+				2.0
+			],
+			"description": "put(1,1), get(1) -> 1",
+			"expected": 1.0,
+			"name": "Simple get"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"put",
+						1.0,
+						1.0
+					],
+					[
+						"put",
+						2.0,
+						2.0
+					],
+					[
+						"put",
+						3.0,
+						3.0
+					],
+					[
+						"get",
+						1.0,
+						0.0
+					]
+				],
+				2.0
+			],
+			"description": "put(1,1), put(2,2), put(3,3), get(1) -> -1 (evicted)",
+			"expected": -1.0,
+			"name": "Evicted"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"put",
+						1.0,
+						1.0
+					],
+					[
+						"put",
+						2.0,
+						2.0
+					],
+					[
+						"get",
+						1.0,
+						0.0
+					],
+					[
+						"put",
+						3.0,
+						3.0
+					],
+					[
+						"get",
+						2.0,
+						0.0
+					]
+				],
+				2.0
+			],
+			"description": "put(1,1), put(2,2), get(1), put(3,3), get(2) -> -1",
+			"expected": 2.0,
+			"name": "Recently used"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere eine LRU (Least Recently Used) Cache Simulation. Gegeben Operationen als [operation, key, value] wobei operation 'put' oder 'get' ist, und eine Kapazitaet, gib das Ergebnis der letzten 'get' Operation zurueck. Gib -1 zurueck wenn der Key nicht gefunden wird.",
+			"hints": "Nutze ein Dictionary fuer O(1) Zugriff und ein Array um die Nutzungsreihenfolge zu verfolgen. Wenn die Kapazitaet ueberschritten wird, entferne das am laengsten nicht genutzte Element.",
+			"name": "LRU Cache",
+			"tests": [
+				{
+					"description": "put(1,1), get(1) -> 1",
+					"name": "Einfaches get"
+				},
+				{
+					"description": "put(1,1), put(2,2), put(3,3), get(1) -> -1 (entfernt)",
+					"name": "Entfernt"
+				},
+				{
+					"description": "put(1,1), put(2,2), get(1), put(3,3), get(2) -> -1",
+					"name": "Kuerzlich genutzt"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement an LRU (Least Recently Used) cache simulation. Given operations as [operation, key, value] where operation is 'put' or 'get', and a capacity, return the result of the last 'get' operation. Return -1 if key not found.",
+			"hints": "Use a Dictionary for O(1) access and an Array to track usage order. When capacity is exceeded, remove the least recently used item.",
+			"name": "LRU Cache",
+			"tests": [
+				{
+					"description": "put(1,1), get(1) -> 1",
+					"name": "Simple get"
+				},
+				{
+					"description": "put(1,1), put(2,2), put(3,3), get(1) -> -1 (evicted)",
+					"name": "Evicted"
+				},
+				{
+					"description": "put(1,1), put(2,2), get(1), put(3,3), get(2) -> -1",
+					"name": "Recently used"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 4,
+	"id": "reverse_string",
+	"method_name": "reverse_string",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Hello"
+			],
+			"description": "'Hello' becomes 'olleH'",
+			"expected": "olleH",
+			"name": "Simple word"
+		},
+		{
+			"arguments": [
+				"GoDot"
+			],
+			"description": "'GoDot' becomes 'toDoG'",
+			"expected": "toDoG",
+			"name": "Godot backwards"
+		},
+		{
+			"arguments": [
+				"a"
+			],
+			"description": "'a' stays 'a'",
+			"expected": "a",
+			"name": "Single character"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' stays ''",
+			"expected": "",
+			"name": "Empty string"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die einen String umkehrt. Aus 'Hallo' wird 'ollaH'.",
+			"hints": "Nutze eine for-Schleife oder die reverse() Methode.",
+			"name": "String umkehren",
+			"tests": [
+				{
+					"description": "'Hallo' wird zu 'ollaH'",
+					"name": "Einfaches Wort"
+				},
+				{
+					"description": "'GoDot' wird zu 'toDoG'",
+					"name": "Godot rueckwaerts"
+				},
+				{
+					"description": "'a' bleibt 'a'",
+					"name": "Ein Zeichen"
+				},
+				{
+					"description": "'' bleibt ''",
+					"name": "Leerer String"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that reverses a string. 'Hello' becomes 'olleH'.",
+			"hints": "Use a for-loop or the reverse() method.",
+			"name": "Reverse String",
+			"tests": [
+				{
+					"description": "'Hello' becomes 'olleH'",
+					"name": "Simple word"
+				},
+				{
+					"description": "'GoDot' becomes 'toDoG'",
+					"name": "Godot backwards"
+				},
+				{
+					"description": "'a' stays 'a'",
+					"name": "Single character"
+				},
+				{
+					"description": "'' stays ''",
+					"name": "Empty string"
+				}
+			]
+		}
+	}
+}

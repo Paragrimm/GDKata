@@ -1,0 +1,114 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "shape_type",
+			"type_hint": 4
+		},
+		{
+			"name": "dimensions",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 7,
+	"expected_type_hint": 3,
+	"id": "create_shape_area",
+	"method_name": "create_shape_area",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"circle",
+				[
+					5.0
+				]
+			],
+			"description": "circle, [5] -> ~78.54",
+			"expected": 78.54,
+			"name": "Circle"
+		},
+		{
+			"arguments": [
+				"rectangle",
+				[
+					4.0,
+					5.0
+				]
+			],
+			"description": "rectangle, [4, 5] -> 20",
+			"expected": 20.0,
+			"name": "Rectangle"
+		},
+		{
+			"arguments": [
+				"triangle",
+				[
+					6.0,
+					5.0
+				]
+			],
+			"description": "triangle, [6, 5] -> 15",
+			"expected": 15.0,
+			"name": "Triangle"
+		},
+		{
+			"arguments": [
+				"circle",
+				[
+					1.0
+				]
+			],
+			"description": "circle, [1] -> ~3.14",
+			"expected": 3.14,
+			"name": "Unit circle"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere eine Form-Factory. Gegeben ein Formtyp ('circle', 'rectangle', 'triangle') und ein Dimensionen-Array, gib die Flaeche zurueck. Kreis: [radius], Rechteck: [breite, hoehe], Dreieck: [basis, hoehe]. Nutze das Factory Pattern um den passenden Flaechenrechner zu erstellen.",
+			"hints": "Erstelle eine Factory-Funktion die die richtige Berechnungsfunktion basierend auf dem Formtyp zurueckgibt. Kreisflaeche = PI * r^2, Rechteck = b * h, Dreieck = 0.5 * b * h.",
+			"name": "Factory Pattern",
+			"tests": [
+				{
+					"description": "circle, [5] -> ~78.54",
+					"name": "Kreis"
+				},
+				{
+					"description": "rectangle, [4, 5] -> 20",
+					"name": "Rechteck"
+				},
+				{
+					"description": "triangle, [6, 5] -> 15",
+					"name": "Dreieck"
+				},
+				{
+					"description": "circle, [1] -> ~3.14",
+					"name": "Einheitskreis"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a shape factory. Given a shape type ('circle', 'rectangle', 'triangle') and dimensions array, return the area. Circle: [radius], Rectangle: [width, height], Triangle: [base, height]. Use the factory pattern to create the appropriate shape calculator.",
+			"hints": "Create a factory function that returns the correct calculation function based on shape type. Circle area = PI * r^2, Rectangle = w * h, Triangle = 0.5 * b * h.",
+			"name": "Factory Pattern",
+			"tests": [
+				{
+					"description": "circle, [5] -> ~78.54",
+					"name": "Circle"
+				},
+				{
+					"description": "rectangle, [4, 5] -> 20",
+					"name": "Rectangle"
+				},
+				{
+					"description": "triangle, [6, 5] -> 15",
+					"name": "Triangle"
+				},
+				{
+					"description": "circle, [1] -> ~3.14",
+					"name": "Unit circle"
+				}
+			]
+		}
+	}
+}

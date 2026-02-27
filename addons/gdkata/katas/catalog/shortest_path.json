@@ -1,0 +1,165 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "graph",
+			"type_hint": 27
+		},
+		{
+			"name": "start",
+			"type_hint": 4
+		},
+		{
+			"name": "end",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 10,
+	"expected_type_hint": 2,
+	"id": "shortest_path",
+	"method_name": "shortest_path",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				{
+					"A": [
+						[
+							"B",
+							1.0
+						],
+						[
+							"C",
+							4.0
+						]
+					],
+					"B": [
+						[
+							"C",
+							2.0
+						]
+					],
+					"C": []
+				},
+				"A",
+				"C"
+			],
+			"description": "A->B->C shortest",
+			"expected": 4.0,
+			"name": "Simple path"
+		},
+		{
+			"arguments": [
+				{
+					"A": [
+						[
+							"B",
+							1.0
+						],
+						[
+							"C",
+							3.0
+						]
+					],
+					"B": [
+						[
+							"C",
+							5.0
+						]
+					],
+					"C": []
+				},
+				"A",
+				"C"
+			],
+			"description": "Direct path wins",
+			"expected": 3.0,
+			"name": "Direct shorter"
+		},
+		{
+			"arguments": [
+				{
+					"A": [
+						[
+							"B",
+							1.0
+						]
+					],
+					"B": [],
+					"C": []
+				},
+				"A",
+				"C"
+			],
+			"description": "Disconnected",
+			"expected": -1.0,
+			"name": "No path"
+		},
+		{
+			"arguments": [
+				{
+					"A": [
+						[
+							"B",
+							1.0
+						]
+					],
+					"B": []
+				},
+				"A",
+				"A"
+			],
+			"description": "Start equals end",
+			"expected": 0.0,
+			"name": "Same node"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere Dijkstras Kuerzester-Pfad-Algorithmus. Gegeben ein Graph als Adjazenzliste {knoten: [[nachbar, gewicht], ...]}, ein Startknoten und Endknoten, finde die kuerzeste Pfaddistanz. Gib -1 zurueck wenn kein Pfad existiert.",
+			"hints": "Nutze eine Prioritaetswarteschlange (oder sortiertes Array). Verfolge Distanzen und besuchte Knoten. Verarbeite immer den unbesuchten Knoten mit kleinster bekannter Distanz.",
+			"name": "Dijkstra Algorithmus",
+			"tests": [
+				{
+					"description": "A->B->C kuerzester",
+					"name": "Einfacher Pfad"
+				},
+				{
+					"description": "Direkter Pfad gewinnt",
+					"name": "Direkt kuerzer"
+				},
+				{
+					"description": "Nicht verbunden",
+					"name": "Kein Pfad"
+				},
+				{
+					"description": "Start gleich Ende",
+					"name": "Gleicher Knoten"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement Dijkstra's shortest path algorithm. Given a graph as adjacency list {node: [[neighbor, weight], ...]}, a start node, and end node, find the shortest path distance. Return -1 if no path exists.",
+			"hints": "Use a priority queue (or sorted array). Track distances and visited nodes. Always process the unvisited node with smallest known distance.",
+			"name": "Dijkstra Algorithm",
+			"tests": [
+				{
+					"description": "A->B->C shortest",
+					"name": "Simple path"
+				},
+				{
+					"description": "Direct path wins",
+					"name": "Direct shorter"
+				},
+				{
+					"description": "Disconnected",
+					"name": "No path"
+				},
+				{
+					"description": "Start equals end",
+					"name": "Same node"
+				}
+			]
+		}
+	}
+}

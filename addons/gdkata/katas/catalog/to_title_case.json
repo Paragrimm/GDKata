@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 4,
+	"id": "to_title_case",
+	"method_name": "to_title_case",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"hallo welt"
+			],
+			"description": "'hallo welt' becomes 'Hallo Welt'",
+			"expected": "Hallo Welt",
+			"name": "Two words"
+		},
+		{
+			"arguments": [
+				"GODOT ENGINE"
+			],
+			"description": "'GODOT ENGINE' becomes 'Godot Engine'",
+			"expected": "Godot Engine",
+			"name": "Mixed casing"
+		},
+		{
+			"arguments": [
+				"test"
+			],
+			"description": "'test' becomes 'Test'",
+			"expected": "Test",
+			"name": "One word"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' stays ''",
+			"expected": "",
+			"name": "Empty string"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die einen String in Title Case umwandelt. Jedes Wort beginnt mit einem Grossbuchstaben, der Rest ist klein.",
+			"hints": "Nutze split(), capitalize() und join().",
+			"name": "Titel formatieren",
+			"tests": [
+				{
+					"description": "'hallo welt' wird zu 'Hallo Welt'",
+					"name": "Zwei Woerter"
+				},
+				{
+					"description": "'GODOT ENGINE' wird zu 'Godot Engine'",
+					"name": "Gemischt"
+				},
+				{
+					"description": "'test' wird zu 'Test'",
+					"name": "Ein Wort"
+				},
+				{
+					"description": "'' bleibt ''",
+					"name": "Leerer String"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that converts a string to title case. Each word starts with an uppercase letter and the remaining letters are lowercase.",
+			"hints": "Use split(), capitalize(), and join().",
+			"name": "Format Title Case",
+			"tests": [
+				{
+					"description": "'hallo welt' becomes 'Hallo Welt'",
+					"name": "Two words"
+				},
+				{
+					"description": "'GODOT ENGINE' becomes 'Godot Engine'",
+					"name": "Mixed casing"
+				},
+				{
+					"description": "'test' becomes 'Test'",
+					"name": "One word"
+				},
+				{
+					"description": "'' stays ''",
+					"name": "Empty string"
+				}
+			]
+		}
+	}
+}

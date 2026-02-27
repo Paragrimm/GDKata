@@ -1,0 +1,119 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "numbers",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 28,
+	"id": "filter_positive",
+	"method_name": "filter_positive",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					-1.0,
+					0.0,
+					1.0,
+					-2.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[-1, 0, 1, -2, 2, 3] becomes [1, 2, 3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Mixed array"
+		},
+		{
+			"arguments": [
+				[
+					-5.0,
+					-3.0,
+					-1.0
+				]
+			],
+			"description": "[-5, -3, -1] becomes []",
+			"expected": [],
+			"name": "Only negative"
+		},
+		{
+			"arguments": [
+				[
+					5.0,
+					10.0,
+					15.0
+				]
+			],
+			"description": "[5, 10, 15] stays [5, 10, 15]",
+			"expected": [
+				5.0,
+				10.0,
+				15.0
+			],
+			"name": "Only positive"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] stays []",
+			"expected": [],
+			"name": "Empty array"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die ein Array filtert und nur die positiven Zahlen (groesser als 0) zurueckgibt. Tipp: Nutze filter() oder eine for-Schleife mit append().",
+			"hints": "",
+			"name": "Array filtern",
+			"tests": [
+				{
+					"description": "[-1, 0, 1, -2, 2, 3] wird zu [1, 2, 3]",
+					"name": "Gemischtes Array"
+				},
+				{
+					"description": "[-5, -3, -1] wird zu []",
+					"name": "Nur negative"
+				},
+				{
+					"description": "[5, 10, 15] bleibt [5, 10, 15]",
+					"name": "Nur positive"
+				},
+				{
+					"description": "[] bleibt []",
+					"name": "Leeres Array"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that filters an array and returns only positive numbers (greater than 0).",
+			"hints": "Use filter() or a for loop with append().",
+			"name": "Filter Array",
+			"tests": [
+				{
+					"description": "[-1, 0, 1, -2, 2, 3] becomes [1, 2, 3]",
+					"name": "Mixed array"
+				},
+				{
+					"description": "[-5, -3, -1] becomes []",
+					"name": "Only negative"
+				},
+				{
+					"description": "[5, 10, 15] stays [5, 10, 15]",
+					"name": "Only positive"
+				},
+				{
+					"description": "[] stays []",
+					"name": "Empty array"
+				}
+			]
+		}
+	}
+}

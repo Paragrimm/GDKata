@@ -1,0 +1,112 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 2,
+	"id": "factorial",
+	"method_name": "factorial",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "0! = 1",
+			"expected": 1.0,
+			"name": "Factorial of 0"
+		},
+		{
+			"arguments": [
+				1.0
+			],
+			"description": "1! = 1",
+			"expected": 1.0,
+			"name": "Factorial of 1"
+		},
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "5! = 120",
+			"expected": 120.0,
+			"name": "Factorial of 5"
+		},
+		{
+			"arguments": [
+				3.0
+			],
+			"description": "3! = 6",
+			"expected": 6.0,
+			"name": "Factorial of 3"
+		},
+		{
+			"arguments": [
+				10.0
+			],
+			"description": "10! = 3628800",
+			"expected": 3628800.0,
+			"name": "Factorial of 10"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die die Fakultaet einer Zahl berechnet. Die Fakultaet von n (n!) ist das Produkt aller positiven ganzen Zahlen von 1 bis n. Beispiel: 5! = 5 * 4 * 3 * 2 * 1 = 120. Die Fakultaet von 0 ist 1.",
+			"hints": "Nutze eine Schleife oder Rekursion. Denke an den Basisfall n=0.",
+			"name": "Fakultaet berechnen",
+			"tests": [
+				{
+					"description": "0! = 1",
+					"name": "Fakultaet von 0"
+				},
+				{
+					"description": "1! = 1",
+					"name": "Fakultaet von 1"
+				},
+				{
+					"description": "5! = 120",
+					"name": "Fakultaet von 5"
+				},
+				{
+					"description": "3! = 6",
+					"name": "Fakultaet von 3"
+				},
+				{
+					"description": "10! = 3628800",
+					"name": "Fakultaet von 10"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that calculates the factorial of a number. The factorial of n (n!) is the product of all positive integers from 1 to n. Example: 5! = 5 * 4 * 3 * 2 * 1 = 120. The factorial of 0 is 1.",
+			"hints": "Use a loop or recursion. Don't forget the base case n = 0.",
+			"name": "Calculate Factorial",
+			"tests": [
+				{
+					"description": "0! = 1",
+					"name": "Factorial of 0"
+				},
+				{
+					"description": "1! = 1",
+					"name": "Factorial of 1"
+				},
+				{
+					"description": "5! = 120",
+					"name": "Factorial of 5"
+				},
+				{
+					"description": "3! = 6",
+					"name": "Factorial of 3"
+				},
+				{
+					"description": "10! = 3628800",
+					"name": "Factorial of 10"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "s",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 4,
+	"expected_type_hint": 1,
+	"id": "valid_parentheses",
+	"method_name": "valid_parentheses",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"()"
+			],
+			"description": "'()' is valid",
+			"expected": true,
+			"name": "Simple"
+		},
+		{
+			"arguments": [
+				"([{}])"
+			],
+			"description": "'([{}])' is valid",
+			"expected": true,
+			"name": "Nested"
+		},
+		{
+			"arguments": [
+				"()[]{}"
+			],
+			"description": "'()[]{}' is valid",
+			"expected": true,
+			"name": "Multiple"
+		},
+		{
+			"arguments": [
+				"([)]"
+			],
+			"description": "'([)]' is invalid",
+			"expected": false,
+			"name": "Wrong order"
+		},
+		{
+			"arguments": [
+				"("
+			],
+			"description": "'(' is invalid",
+			"expected": false,
+			"name": "Not closed"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' is valid",
+			"expected": true,
+			"name": "Empty"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die prueft ob ein String aus Klammern '()[]{}' gueltig ist. Jede oeffnende Klammer muss durch eine passende schliessende Klammer in der richtigen Reihenfolge geschlossen werden.",
+			"hints": "Nutze einen Stack. Lege oeffnende Klammern auf den Stack. Bei schliessenden Klammern pruefe ob die oberste Klammer auf dem Stack passt.",
+			"name": "Klammern validieren",
+			"tests": [
+				{
+					"description": "'()' ist gueltig",
+					"name": "Einfach"
+				},
+				{
+					"description": "'([{}])' ist gueltig",
+					"name": "Verschachtelt"
+				},
+				{
+					"description": "'()[]{}' ist gueltig",
+					"name": "Mehrere"
+				},
+				{
+					"description": "'([)]' ist ungueltig",
+					"name": "Falsche Reihenfolge"
+				},
+				{
+					"description": "'(' ist ungueltig",
+					"name": "Nicht geschlossen"
+				},
+				{
+					"description": "'' ist gueltig",
+					"name": "Leer"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that checks if a string of brackets '()[]{}' is valid. Every opening bracket must be closed by a matching closing bracket in the correct order.",
+			"hints": "Use a stack. Push opening brackets onto the stack. For closing brackets, check if the top of the stack matches.",
+			"name": "Valid Parentheses",
+			"tests": [
+				{
+					"description": "'()' is valid",
+					"name": "Simple"
+				},
+				{
+					"description": "'([{}])' is valid",
+					"name": "Nested"
+				},
+				{
+					"description": "'()[]{}' is valid",
+					"name": "Multiple"
+				},
+				{
+					"description": "'([)]' is invalid",
+					"name": "Wrong order"
+				},
+				{
+					"description": "'(' is invalid",
+					"name": "Not closed"
+				},
+				{
+					"description": "'' is valid",
+					"name": "Empty"
+				}
+			]
+		}
+	}
+}

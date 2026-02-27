@@ -1,0 +1,125 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "base",
+			"type_hint": 4
+		},
+		{
+			"name": "decorators",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 8,
+	"expected_type_hint": 28,
+	"id": "decorate_coffee",
+	"method_name": "decorate_coffee",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"espresso",
+				[
+					"milk"
+				]
+			],
+			"description": "espresso + milk -> [2.5, 'espresso + milk']",
+			"expected": [
+				2.5,
+				"espresso + milk"
+			],
+			"name": "With milk"
+		},
+		{
+			"arguments": [
+				"americano",
+				[
+					"milk",
+					"whip"
+				]
+			],
+			"description": "americano + milk + whip -> [3.7, ...]",
+			"expected": [
+				3.7,
+				"americano + milk + whip"
+			],
+			"name": "Multiple decorators"
+		},
+		{
+			"arguments": [
+				"espresso",
+				[]
+			],
+			"description": "espresso -> [2.0, 'espresso']",
+			"expected": [
+				2.0,
+				"espresso"
+			],
+			"name": "No decorators"
+		},
+		{
+			"arguments": [
+				"espresso",
+				[
+					"milk",
+					"sugar",
+					"whip"
+				]
+			],
+			"description": "espresso + all -> [3.4, ...]",
+			"expected": [
+				3.4,
+				"espresso + milk + sugar + whip"
+			],
+			"name": "All decorators"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere ein Kaffee-Decorator Pattern. Gegeben ein Basis-Kaffeetyp ('espresso'=2.0, 'americano'=2.5) und ein Dekoratoren-Array (['milk'=0.5, 'sugar'=0.2, 'whip'=0.7]), gib [gesamtpreis, beschreibung] zurueck. Baue die Beschreibung wie 'espresso + milk + sugar'.",
+			"hints": "Starte mit Basis-Kaffee, dann wende jeden Dekorator an um Preis und Beschreibung zu erweitern. Dekoratoren umhuellen und erweitern das Verhalten des Basisobjekts.",
+			"name": "Decorator Pattern",
+			"tests": [
+				{
+					"description": "espresso + milk -> [2.5, 'espresso + milk']",
+					"name": "Mit Milch"
+				},
+				{
+					"description": "americano + milk + whip -> [3.7, ...]",
+					"name": "Mehrere Dekoratoren"
+				},
+				{
+					"description": "espresso -> [2.0, 'espresso']",
+					"name": "Keine Dekoratoren"
+				},
+				{
+					"description": "espresso + all -> [3.4, ...]",
+					"name": "Alle Dekoratoren"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a coffee decorator pattern. Given a base coffee type ('espresso'=2.0, 'americano'=2.5) and decorators array (['milk'=0.5, 'sugar'=0.2, 'whip'=0.7]), return [total_price, description]. Build the description like 'espresso + milk + sugar'.",
+			"hints": "Start with base coffee, then apply each decorator to add to price and description. Decorators wrap and extend the base object's behavior.",
+			"name": "Decorator Pattern",
+			"tests": [
+				{
+					"description": "espresso + milk -> [2.5, 'espresso + milk']",
+					"name": "With milk"
+				},
+				{
+					"description": "americano + milk + whip -> [3.7, ...]",
+					"name": "Multiple decorators"
+				},
+				{
+					"description": "espresso -> [2.0, 'espresso']",
+					"name": "No decorators"
+				},
+				{
+					"description": "espresso + all -> [3.4, ...]",
+					"name": "All decorators"
+				}
+			]
+		}
+	}
+}

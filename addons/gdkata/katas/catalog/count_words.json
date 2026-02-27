@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 2,
+	"expected_type_hint": 2,
+	"id": "count_words",
+	"method_name": "count_words",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Eins Zwei Drei"
+			],
+			"description": "'Eins Zwei Drei' has 3 words",
+			"expected": 3.0,
+			"name": "Three words"
+		},
+		{
+			"arguments": [
+				"Hallo"
+			],
+			"description": "'Hallo' has 1 word",
+			"expected": 1.0,
+			"name": "One word"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' has 0 words",
+			"expected": 0.0,
+			"name": "Empty string"
+		},
+		{
+			"arguments": [
+				"Godot ist wirklich toll"
+			],
+			"description": "'Godot ist wirklich toll' has 4 words",
+			"expected": 4.0,
+			"name": "With extra spaces"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die die Anzahl der Woerter in einem String zaehlt. Woerter sind durch Leerzeichen getrennt. Ein leerer String hat 0 Woerter.",
+			"hints": "Nutze split() und filtere leere Strings heraus.",
+			"name": "Woerter zaehlen",
+			"tests": [
+				{
+					"description": "'Eins Zwei Drei' hat 3 Woerter",
+					"name": "Drei Woerter"
+				},
+				{
+					"description": "'Hallo' hat 1 Wort",
+					"name": "Ein Wort"
+				},
+				{
+					"description": "'' hat 0 Woerter",
+					"name": "Leerer String"
+				},
+				{
+					"description": "'Godot ist wirklich toll' hat 4 Woerter",
+					"name": "Mit extra Leerzeichen"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that counts the number of words in a string. Words are separated by spaces. An empty string has 0 words.",
+			"hints": "Use split() and filter out empty strings.",
+			"name": "Count Words",
+			"tests": [
+				{
+					"description": "'Eins Zwei Drei' has 3 words",
+					"name": "Three words"
+				},
+				{
+					"description": "'Hallo' has 1 word",
+					"name": "One word"
+				},
+				{
+					"description": "'' has 0 words",
+					"name": "Empty string"
+				},
+				{
+					"description": "'Godot ist wirklich toll' has 4 words",
+					"name": "With extra spaces"
+				}
+			]
+		}
+	}
+}

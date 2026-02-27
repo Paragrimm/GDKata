@@ -1,0 +1,174 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "operations",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 10,
+	"expected_type_hint": 4,
+	"id": "text_editor_memento",
+	"method_name": "text_editor_memento",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"write",
+						"Hallo"
+					]
+				]
+			],
+			"description": "write('Hello') -> 'Hello'",
+			"expected": "Hallo",
+			"name": "Simple write"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"write",
+						"Hallo"
+					],
+					[
+						"write",
+						" Welt"
+					],
+					[
+						"undo"
+					]
+				]
+			],
+			"description": "write + write + undo",
+			"expected": "Hallo",
+			"name": "Write and undo"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"write",
+						"Hallo"
+					],
+					[
+						"write",
+						" Welt"
+					],
+					[
+						"undo"
+					],
+					[
+						"redo"
+					]
+				]
+			],
+			"description": "undo then redo",
+			"expected": "Hallo Welt",
+			"name": "Undo and redo"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"undo"
+					]
+				]
+			],
+			"description": "undo on empty",
+			"expected": "",
+			"name": "Undo empty"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"write",
+						"A"
+					],
+					[
+						"write",
+						"B"
+					],
+					[
+						"write",
+						"C"
+					],
+					[
+						"undo"
+					],
+					[
+						"write",
+						"D"
+					],
+					[
+						"undo"
+					],
+					[
+						"undo"
+					]
+				]
+			],
+			"description": "Complex sequence",
+			"expected": "AB",
+			"name": "Multiple ops"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere einen Texteditor mit Undo/Redo unter Verwendung des Memento Patterns. Operationen: ['write', text], ['undo'], ['redo']. Gib den finalen Textinhalt zurueck.",
+			"hints": "Speichere Snapshots (Mementos) des Zustands. Verwalte Undo- und Redo-Stacks. Das Memento Pattern erfasst und externalisiert den internen Zustand eines Objekts zur spaeteren Wiederherstellung.",
+			"name": "Memento Pattern",
+			"tests": [
+				{
+					"description": "write('Hallo') -> 'Hallo'",
+					"name": "Einfaches Schreiben"
+				},
+				{
+					"description": "write + write + undo",
+					"name": "Schreiben und Undo"
+				},
+				{
+					"description": "undo dann redo",
+					"name": "Undo und Redo"
+				},
+				{
+					"description": "undo bei leerem Text",
+					"name": "Undo leer"
+				},
+				{
+					"description": "Komplexe Sequenz",
+					"name": "Mehrere Ops"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a text editor with undo/redo using the memento pattern. Operations: ['write', text], ['undo'], ['redo']. Return the final text content.",
+			"hints": "Store snapshots (mementos) of state. Maintain undo and redo stacks. The memento pattern captures and externalizes an object's internal state for later restoration.",
+			"name": "Memento Pattern",
+			"tests": [
+				{
+					"description": "write('Hello') -> 'Hello'",
+					"name": "Simple write"
+				},
+				{
+					"description": "write + write + undo",
+					"name": "Write and undo"
+				},
+				{
+					"description": "undo then redo",
+					"name": "Undo and redo"
+				},
+				{
+					"description": "undo on empty",
+					"name": "Undo empty"
+				},
+				{
+					"description": "Complex sequence",
+					"name": "Multiple ops"
+				}
+			]
+		}
+	}
+}

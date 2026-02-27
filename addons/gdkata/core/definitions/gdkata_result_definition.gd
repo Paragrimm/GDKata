@@ -13,8 +13,8 @@ const RESULT_FILE_NAME: String = "result.json"
 
 
 static func get_result_file_path() -> String:
-	DirAccess.make_dir_recursive_absolute(GDKataDefinition.DONE_PATH)
-	return GDKataDefinition.DONE_PATH + RESULT_FILE_NAME
+	GDKataDefinition.ensure_directories()
+	return GDKataDefinition.WORKSPACE_PATH + RESULT_FILE_NAME
 
 
 static func from_json(json: JSON) -> GDKataResultDefinition:
@@ -27,15 +27,17 @@ static func from_json(json: JSON) -> GDKataResultDefinition:
 		result.message = json.data["message"]
 		return result
 
-	result.passed_count = json.data["passed_count"]
-	result.failed_count = json.data["failed_count"]
-	result.total_count = json.data["total_count"]
-	result.type_check_passed = json.data["type_check_passed"]
-	for detail in json.data["details"]:
+	result.passed_count = int(json.data.get("passed_count", 0))
+	result.failed_count = int(json.data.get("failed_count", 0))
+	result.total_count = int(json.data.get("total_count", result.passed_count + result.failed_count))
+	result.type_check_passed = bool(json.data.get("type_check_passed", true))
+	for detail_data in json.data.get("details", []):
+		if typeof(detail_data) != TYPE_DICTIONARY:
+			continue
 		var d := GDKataTestResultDefinition.new()
-		d.name = detail.get("name", "")
-		d.message = detail["message"]
-		d.status = detail["status"]
+		d.name = str(detail_data.get("name", ""))
+		d.message = str(detail_data.get("message", ""))
+		d.status = bool(detail_data.get("status", false))
 		result.details.append(d)
 
 	return result
@@ -65,15 +67,12 @@ func to_json() -> String:
 		"type_check_passed": type_check_passed,
 		"details": [],
 	}
-	for detail: GDKataTestResultDefinition in details:
-		(
-			data["details"]
-			. append(
-				{
-					"name": detail.name,
-					"message": detail.message,
-					"status": detail.status,
-				}
-			)
+	for detail in details:
+		data["details"].append(
+			{
+				"name": detail.name,
+				"message": detail.message,
+				"status": detail.status,
+			}
 		)
 	return JSON.stringify(data, "\t")

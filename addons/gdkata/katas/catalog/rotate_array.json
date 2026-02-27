@@ -1,0 +1,161 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		},
+		{
+			"name": "k",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 4,
+	"expected_type_hint": 28,
+	"id": "rotate_array",
+	"method_name": "rotate_array",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0,
+					4.0,
+					5.0
+				],
+				2.0
+			],
+			"description": "[1,2,3,4,5], k=2 -> [4,5,1,2,3]",
+			"expected": [
+				4.0,
+				5.0,
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Rotate 2"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0,
+					4.0,
+					5.0
+				],
+				1.0
+			],
+			"description": "[1,2,3,4,5], k=1 -> [5,1,2,3,4]",
+			"expected": [
+				5.0,
+				1.0,
+				2.0,
+				3.0,
+				4.0
+			],
+			"name": "Rotate 1"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				],
+				3.0
+			],
+			"description": "[1,2,3], k=3 -> [1,2,3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Full rotation"
+		},
+		{
+			"arguments": [
+				[],
+				2.0
+			],
+			"description": "[], k=2 -> []",
+			"expected": [],
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				],
+				4.0
+			],
+			"description": "[1,2,3], k=4 -> [3,1,2]",
+			"expected": [
+				2.0,
+				3.0,
+				1.0
+			],
+			"name": "K larger"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die ein Array um k Positionen nach rechts rotiert. Elemente, die ueber das Ende hinausgehen, kommen am Anfang wieder rein.",
+			"hints": "Nutze Modulo fuer den Fall dass k groesser als die Array-Laenge ist. Du kannst slicing verwenden oder die Elemente einzeln verschieben.",
+			"name": "Array rotieren",
+			"tests": [
+				{
+					"description": "[1,2,3,4,5], k=2 -> [4,5,1,2,3]",
+					"name": "Rotation 2"
+				},
+				{
+					"description": "[1,2,3,4,5], k=1 -> [5,1,2,3,4]",
+					"name": "Rotation 1"
+				},
+				{
+					"description": "[1,2,3], k=3 -> [1,2,3]",
+					"name": "Volle Rotation"
+				},
+				{
+					"description": "[], k=2 -> []",
+					"name": "Leer"
+				},
+				{
+					"description": "[1,2,3], k=4 -> [3,1,2]",
+					"name": "K groesser"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that rotates an array by k positions to the right. Elements that go past the end wrap around to the beginning.",
+			"hints": "Use modulo for cases where k is larger than the array length. You can use slicing or shift elements individually.",
+			"name": "Rotate Array",
+			"tests": [
+				{
+					"description": "[1,2,3,4,5], k=2 -> [4,5,1,2,3]",
+					"name": "Rotate 2"
+				},
+				{
+					"description": "[1,2,3,4,5], k=1 -> [5,1,2,3,4]",
+					"name": "Rotate 1"
+				},
+				{
+					"description": "[1,2,3], k=3 -> [1,2,3]",
+					"name": "Full rotation"
+				},
+				{
+					"description": "[], k=2 -> []",
+					"name": "Empty"
+				},
+				{
+					"description": "[1,2,3], k=4 -> [3,1,2]",
+					"name": "K larger"
+				}
+			]
+		}
+	}
+}

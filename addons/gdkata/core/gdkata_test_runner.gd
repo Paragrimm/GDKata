@@ -3,44 +3,37 @@ class_name GDKataTestRunner
 extends RefCounted
 
 
-static func run_tests() -> GDKataResultDefinition:
+static func run_tests(kata: GDKataDefinition = null) -> GDKataResultDefinition:
 	var result := GDKataResultDefinition.new()
 
-	if not FileAccess.file_exists(GDKataDefinition.get_config_path()):
+	var active_kata := kata
+	if not active_kata:
+		active_kata = GDKataDefinition.load_in_progress()
+	if not active_kata:
 		return _error(result, _tr("TESTRUNNER_ERR_CONFIG_NOT_FOUND"))
 
-	var config_text := FileAccess.get_file_as_string(GDKataDefinition.get_config_path())
-	var config: Variant = JSON.parse_string(config_text)
-	if config == null:
-		return _error(result, _tr("TESTRUNNER_ERR_CONFIG_PARSE"))
-
-	var kata_name: String = config["name"]
-	var script_path := GDKataDefinition.get_script_path_for(kata_name)
-
+	var script_path := active_kata.get_script_path()
 	if not FileAccess.file_exists(script_path):
-		return _error(result, _tr("TESTRUNNER_ERR_SCRIPT_MISSING"))
+		return _error(result, _tr("TESTRUNNER_ERR_SCRIPT_MISSING") % active_kata.ensure_active_script_filename())
 
 	var user_script: Resource = load(script_path)
 	if user_script == null:
 		return _error(result, _tr("TESTRUNNER_ERR_SCRIPT_COMPILE"))
 
 	var user_instance: Variant = user_script.new()
-	var method_name: String = config["method_name"]
-
+	var method_name: String = active_kata.method_name
 	if not user_instance.has_method(method_name):
 		return _error(result, _tr("TESTRUNNER_ERR_METHOD_NOT_FOUND") % method_name)
 
-	var expected_type: int = config.get("expected_type_hint", TYPE_NIL)
+	var expected_type: int = active_kata.expected_type_hint
 
-	for test: Variant in config["tests"]:
+	for test in active_kata.tests:
 		result.total_count += 1
-		var args: Array = test["arguments"]
-		var expected: Variant = test["expected"]
-		var test_name: String = test.get("name", "Test %d" % result.total_count)
-		var actual: Variant = user_instance.callv(method_name, args)
+		var actual: Variant = user_instance.callv(method_name, test.arguments)
+		var expected: Variant = test.expected
 
 		var detail := GDKataTestResultDefinition.new()
-		detail.name = test_name
+		detail.name = test.name
 
 		var actual_type: int = typeof(actual)
 		var type_matches: bool = expected_type == TYPE_NIL or actual_type == expected_type
@@ -69,7 +62,8 @@ static func run_tests() -> GDKataResultDefinition:
 
 static func save_results(result: GDKataResultDefinition) -> void:
 	var path := GDKataResultDefinition.get_result_file_path()
-	DirAccess.remove_absolute(path)
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file:
 		file.store_string(result.to_json())

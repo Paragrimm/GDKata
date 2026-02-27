@@ -1,0 +1,104 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		},
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 4,
+	"id": "repeat_string",
+	"method_name": "repeat_string",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Ha",
+				3.0
+			],
+			"description": "'Ha' * 3 = 'HaHaHa'",
+			"expected": "HaHaHa",
+			"name": "Ha three times"
+		},
+		{
+			"arguments": [
+				"Test",
+				0.0
+			],
+			"description": "'Test' * 0 = ''",
+			"expected": "",
+			"name": "Zero times"
+		},
+		{
+			"arguments": [
+				"Go",
+				1.0
+			],
+			"description": "'Go' * 1 = 'Go'",
+			"expected": "Go",
+			"name": "Once"
+		},
+		{
+			"arguments": [
+				"-",
+				5.0
+			],
+			"description": "'-' * 5 = '-----'",
+			"expected": "-----",
+			"name": "Separator line"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die einen String n-mal wiederholt und das Ergebnis zurueckgibt.",
+			"hints": "Nutze die repeat() Methode oder eine for-Schleife.",
+			"name": "Wort wiederholen",
+			"tests": [
+				{
+					"description": "'Ha' * 3 = 'HaHaHa'",
+					"name": "Ha dreimal"
+				},
+				{
+					"description": "'Test' * 0 = ''",
+					"name": "Null mal"
+				},
+				{
+					"description": "'Go' * 1 = 'Go'",
+					"name": "Einmal"
+				},
+				{
+					"description": "'-' * 5 = '-----'",
+					"name": "Trennlinie"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that repeats a string n times and returns the result.",
+			"hints": "Use the repeat() method or a for loop.",
+			"name": "Repeat String",
+			"tests": [
+				{
+					"description": "'Ha' * 3 = 'HaHaHa'",
+					"name": "Ha three times"
+				},
+				{
+					"description": "'Test' * 0 = ''",
+					"name": "Zero times"
+				},
+				{
+					"description": "'Go' * 1 = 'Go'",
+					"name": "Once"
+				},
+				{
+					"description": "'-' * 5 = '-----'",
+					"name": "Separator line"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 4,
+	"id": "to_lower",
+	"method_name": "to_lower",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"HALLO"
+			],
+			"description": "'HELLO' -> 'hello'",
+			"expected": "hallo",
+			"name": "Upper to lower"
+		},
+		{
+			"arguments": [
+				"hallo"
+			],
+			"description": "'hello' -> 'hello'",
+			"expected": "hallo",
+			"name": "Already lower"
+		},
+		{
+			"arguments": [
+				"Hello World"
+			],
+			"description": "'Hello World' -> 'hello world'",
+			"expected": "hello world",
+			"name": "Mixed"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' -> ''",
+			"expected": "",
+			"name": "Empty"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die einen String in Kleinbuchstaben umwandelt.",
+			"hints": "Nutze die to_lower() Methode des Strings.",
+			"name": "String zu Kleinbuchstaben",
+			"tests": [
+				{
+					"description": "'HALLO' -> 'hallo'",
+					"name": "Gross zu klein"
+				},
+				{
+					"description": "'hallo' -> 'hallo'",
+					"name": "Schon klein"
+				},
+				{
+					"description": "'Hello World' -> 'hello world'",
+					"name": "Gemischt"
+				},
+				{
+					"description": "'' -> ''",
+					"name": "Leer"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that converts a string to lowercase.",
+			"hints": "Use the to_lower() method of the string.",
+			"name": "To Lowercase",
+			"tests": [
+				{
+					"description": "'HELLO' -> 'hello'",
+					"name": "Upper to lower"
+				},
+				{
+					"description": "'hello' -> 'hello'",
+					"name": "Already lower"
+				},
+				{
+					"description": "'Hello World' -> 'hello world'",
+					"name": "Mixed"
+				},
+				{
+					"description": "'' -> ''",
+					"name": "Empty"
+				}
+			]
+		}
+	}
+}

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://baksgegg3a15q" path="res://addons/gdkata/GDKata.svg" id="2_bfu0i"]
 [ext_resource type="PackedScene" uid="uid://de17l5wudxdoo" path="res://addons/gdkata/core/ui_components/GDKataResultRow.tscn" id="2_xhepv"]
 
-[node name="Result of Kata" type="PanelContainer" unique_id=2042615788 node_paths=PackedStringArray("label_message", "label_header", "row_type_check", "row_passed", "row_failed", "row_total", "button_submit", "stats_container", "background_panel")]
+[node name="Result of Kata" type="PanelContainer" node_paths=PackedStringArray("label_message", "label_header", "row_type_check", "row_passed", "row_failed", "button_run_tests", "button_cancel", "button_submit", "stats_container", "details_container", "background_panel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,12 +18,14 @@ label_header = NodePath("VBoxContainer/Header")
 row_type_check = NodePath("VBoxContainer/StatsContainer/TypeCheck")
 row_passed = NodePath("VBoxContainer/StatsContainer/Passed")
 row_failed = NodePath("VBoxContainer/StatsContainer/Failed")
-row_total = NodePath("VBoxContainer/StatsContainer/Total")
+button_run_tests = NodePath("VBoxContainer/ButtonBar/RunTests")
+button_cancel = NodePath("VBoxContainer/ButtonBar/Cancel")
 button_submit = NodePath("VBoxContainer/Submit")
 stats_container = NodePath("VBoxContainer/StatsContainer")
+details_container = NodePath("VBoxContainer/DetailsScroll/DetailsContainer")
 background_panel = NodePath(".")
 
-[node name="Logo" type="TextureRect" parent="." unique_id=544431823]
+[node name="Logo" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.2509804)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -31,71 +33,78 @@ size_flags_vertical = 4
 texture = ExtResource("2_bfu0i")
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1952628392]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="Header" type="Label" parent="VBoxContainer" unique_id=1224390113]
+[node name="Header" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Results"
 
-[node name="Message" type="Label" parent="VBoxContainer" unique_id=777082466]
+[node name="Message" type="Label" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
+autowrap_mode = 2
 
-[node name="StatsContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1662188161]
+[node name="ButtonBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RunTests" type="Button" parent="VBoxContainer/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Run tests"
+
+[node name="Cancel" type="Button" parent="VBoxContainer/ButtonBar"]
+layout_mode = 2
+text = "Cancel Kata"
+
+[node name="StatsContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="TypeCheck" parent="VBoxContainer/StatsContainer" instance=ExtResource("2_xhepv")]
 layout_mode = 2
 
 [node name="Key" parent="VBoxContainer/StatsContainer/TypeCheck" index="0"]
-theme_override_font_sizes/font_size = 15
 text = "Type Check"
 
 [node name="Value" parent="VBoxContainer/StatsContainer/TypeCheck" index="1"]
-theme_override_font_sizes/font_size = 15
 text = "-"
 
-[node name="Passed" parent="VBoxContainer/StatsContainer" unique_id=397260220 instance=ExtResource("2_xhepv")]
+[node name="Passed" parent="VBoxContainer/StatsContainer" instance=ExtResource("2_xhepv")]
 layout_mode = 2
 
-[node name="Key" parent="VBoxContainer/StatsContainer/Passed" index="0" unique_id=469715875]
-theme_override_font_sizes/font_size = 15
+[node name="Key" parent="VBoxContainer/StatsContainer/Passed" index="0"]
 text = "Passed"
 
-[node name="Value" parent="VBoxContainer/StatsContainer/Passed" index="1" unique_id=990319141]
-theme_override_font_sizes/font_size = 15
+[node name="Value" parent="VBoxContainer/StatsContainer/Passed" index="1"]
 text = "0"
 
-[node name="Failed" parent="VBoxContainer/StatsContainer" unique_id=1119391914 instance=ExtResource("2_xhepv")]
+[node name="Failed" parent="VBoxContainer/StatsContainer" instance=ExtResource("2_xhepv")]
 layout_mode = 2
 
-[node name="Key" parent="VBoxContainer/StatsContainer/Failed" index="0" unique_id=469715875]
-theme_override_font_sizes/font_size = 15
+[node name="Key" parent="VBoxContainer/StatsContainer/Failed" index="0"]
 text = "Failed"
 
-[node name="Value" parent="VBoxContainer/StatsContainer/Failed" index="1" unique_id=990319141]
-theme_override_font_sizes/font_size = 15
-text = "1"
+[node name="Value" parent="VBoxContainer/StatsContainer/Failed" index="1"]
+text = "0"
 
-[node name="Total" parent="VBoxContainer/StatsContainer" unique_id=1905419328 instance=ExtResource("2_xhepv")]
-layout_mode = 2
-
-[node name="Key" parent="VBoxContainer/StatsContainer/Total" index="0" unique_id=469715875]
-theme_override_font_sizes/font_size = 15
-text = "Total"
-
-[node name="Value" parent="VBoxContainer/StatsContainer/Total" index="1" unique_id=990319141]
-theme_override_font_sizes/font_size = 15
-text = "1"
-
-[node name="Submit" type="Button" parent="VBoxContainer" unique_id=47326802]
+[node name="Submit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 disabled = true
-text = "Submit Kata"
+text = "Submit completed Kata"
+
+[node name="DetailsScroll" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DetailsContainer" type="VBoxContainer" parent="VBoxContainer/DetailsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
 [editable path="VBoxContainer/StatsContainer/TypeCheck"]
 [editable path="VBoxContainer/StatsContainer/Passed"]
 [editable path="VBoxContainer/StatsContainer/Failed"]
-[editable path="VBoxContainer/StatsContainer/Total"]

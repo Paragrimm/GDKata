@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "string_length",
+	"method_name": "string_length",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Hallo"
+			],
+			"description": "'Hello' has 5 characters",
+			"expected": 5.0,
+			"name": "Hello"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' has 0 characters",
+			"expected": 0.0,
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				"X"
+			],
+			"description": "'X' has 1 character",
+			"expected": 1.0,
+			"name": "Single char"
+		},
+		{
+			"arguments": [
+				"Hello World"
+			],
+			"description": "'Hello World' has 11 characters",
+			"expected": 11.0,
+			"name": "With spaces"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die die Laenge eines Strings zurueckgibt.",
+			"hints": "Nutze die length() Methode des Strings.",
+			"name": "String Laenge",
+			"tests": [
+				{
+					"description": "'Hallo' hat 5 Zeichen",
+					"name": "Hallo"
+				},
+				{
+					"description": "'' hat 0 Zeichen",
+					"name": "Leer"
+				},
+				{
+					"description": "'X' hat 1 Zeichen",
+					"name": "Ein Zeichen"
+				},
+				{
+					"description": "'Hello World' hat 11 Zeichen",
+					"name": "Mit Leerzeichen"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that returns the length of a string.",
+			"hints": "Use the length() method of the string.",
+			"name": "String Length",
+			"tests": [
+				{
+					"description": "'Hello' has 5 characters",
+					"name": "Hello"
+				},
+				{
+					"description": "'' has 0 characters",
+					"name": "Empty"
+				},
+				{
+					"description": "'X' has 1 character",
+					"name": "Single char"
+				},
+				{
+					"description": "'Hello World' has 11 characters",
+					"name": "With spaces"
+				}
+			]
+		}
+	}
+}

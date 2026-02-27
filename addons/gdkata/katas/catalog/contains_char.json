@@ -1,0 +1,104 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		},
+		{
+			"name": "char",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 1,
+	"id": "contains_char",
+	"method_name": "contains_char",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"Hello",
+				"e"
+			],
+			"description": "'Hello' contains 'e'",
+			"expected": true,
+			"name": "Contains"
+		},
+		{
+			"arguments": [
+				"Hello",
+				"x"
+			],
+			"description": "'Hello' does not contain 'x'",
+			"expected": false,
+			"name": "Not contained"
+		},
+		{
+			"arguments": [
+				"",
+				"a"
+			],
+			"description": "'' does not contain 'a'",
+			"expected": false,
+			"name": "Empty string"
+		},
+		{
+			"arguments": [
+				"Hello",
+				"H"
+			],
+			"description": "'Hello' contains 'H'",
+			"expected": true,
+			"name": "Case sensitive"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die prueft ob ein String ein bestimmtes Zeichen enthaelt.",
+			"hints": "Nutze die contains() oder find() Methode des Strings.",
+			"name": "Enthaelt Zeichen",
+			"tests": [
+				{
+					"description": "'Hallo' enthaelt 'a'",
+					"name": "Enthalten"
+				},
+				{
+					"description": "'Hallo' enthaelt kein 'x'",
+					"name": "Nicht enthalten"
+				},
+				{
+					"description": "'' enthaelt kein 'a'",
+					"name": "Leerer String"
+				},
+				{
+					"description": "'Hello' enthaelt 'H'",
+					"name": "Gross und Klein"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that checks if a string contains a specific character.",
+			"hints": "Use the contains() or find() method of the string.",
+			"name": "Contains Character",
+			"tests": [
+				{
+					"description": "'Hello' contains 'e'",
+					"name": "Contains"
+				},
+				{
+					"description": "'Hello' does not contain 'x'",
+					"name": "Not contained"
+				},
+				{
+					"description": "'' does not contain 'a'",
+					"name": "Empty string"
+				},
+				{
+					"description": "'Hello' contains 'H'",
+					"name": "Case sensitive"
+				}
+			]
+		}
+	}
+}

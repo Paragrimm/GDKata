@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "operations",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 7,
+	"expected_type_hint": 2,
+	"id": "get_instance_count",
+	"method_name": "get_instance_count",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"get",
+						"increment",
+						"get"
+					]
+				]
+			],
+			"description": "['get','increment','get'] -> 0 + 1 = 1",
+			"expected": 1.0,
+			"name": "Simple"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"increment",
+						"increment",
+						"get",
+						"increment",
+						"get"
+					]
+				]
+			],
+			"description": "['increment','increment','get','increment','get'] -> 2 + 3 = 5",
+			"expected": 5.0,
+			"name": "Multiple increments"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"increment",
+						"increment",
+						"reset",
+						"get"
+					]
+				]
+			],
+			"description": "['increment','increment','reset','get'] -> 0",
+			"expected": 0.0,
+			"name": "With reset"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"get",
+						"increment",
+						"get",
+						"increment",
+						"get",
+						"reset",
+						"increment",
+						"get"
+					]
+				]
+			],
+			"description": "['get','increment','get','increment','get','reset','increment','get'] -> 0+1+2+1 = 4",
+			"expected": 4.0,
+			"name": "Complex"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere eine Singleton-Zaehler Simulation. Gegeben eine Sequenz von Operationen ['get', 'increment', 'get', 'reset', 'get'], simuliere ein Singleton das eine einzelne Zaehler-Instanz verwaltet. 'get' gibt den aktuellen Wert zurueck, 'increment' addiert 1, 'reset' setzt auf 0. Gib die Summe aller 'get' Ergebnisse zurueck.",
+			"hints": "Das Singleton Pattern stellt sicher dass nur eine Instanz existiert. Nutze eine Klassenvariable oder Closure um den Zustand ueber alle Operationen zu erhalten.",
+			"name": "Singleton Pattern",
+			"tests": [
+				{
+					"description": "['get','increment','get'] -> 0 + 1 = 1",
+					"name": "Einfach"
+				},
+				{
+					"description": "['increment','increment','get','increment','get'] -> 2 + 3 = 5",
+					"name": "Mehrere Increments"
+				},
+				{
+					"description": "['increment','increment','reset','get'] -> 0",
+					"name": "Mit Reset"
+				},
+				{
+					"description": "['get','increment','get','increment','get','reset','increment','get'] -> 0+1+2+1 = 4",
+					"name": "Komplex"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a singleton counter simulation. Given a sequence of operations ['get', 'increment', 'get', 'reset', 'get'], simulate a singleton that maintains a single counter instance. 'get' returns current value, 'increment' adds 1, 'reset' sets to 0. Return the sum of all 'get' results.",
+			"hints": "The singleton pattern ensures only one instance exists. Use a class variable or closure to maintain state across all operations.",
+			"name": "Singleton Pattern",
+			"tests": [
+				{
+					"description": "['get','increment','get'] -> 0 + 1 = 1",
+					"name": "Simple"
+				},
+				{
+					"description": "['increment','increment','get','increment','get'] -> 2 + 3 = 5",
+					"name": "Multiple increments"
+				},
+				{
+					"description": "['increment','increment','reset','get'] -> 0",
+					"name": "With reset"
+				},
+				{
+					"description": "['get','increment','get','increment','get','reset','increment','get'] -> 0+1+2+1 = 4",
+					"name": "Complex"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,130 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "value",
+			"type_hint": 2
+		},
+		{
+			"name": "min_val",
+			"type_hint": 2
+		},
+		{
+			"name": "max_val",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "clamp_value",
+	"method_name": "clamp_value",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				5.0,
+				0.0,
+				10.0
+			],
+			"description": "clamp(5, 0, 10) = 5",
+			"expected": 5.0,
+			"name": "Within range"
+		},
+		{
+			"arguments": [
+				-5.0,
+				0.0,
+				10.0
+			],
+			"description": "clamp(-5, 0, 10) = 0",
+			"expected": 0.0,
+			"name": "Below minimum"
+		},
+		{
+			"arguments": [
+				15.0,
+				0.0,
+				10.0
+			],
+			"description": "clamp(15, 0, 10) = 10",
+			"expected": 10.0,
+			"name": "Above maximum"
+		},
+		{
+			"arguments": [
+				50.0,
+				50.0,
+				100.0
+			],
+			"description": "clamp(50, 50, 100) = 50",
+			"expected": 50.0,
+			"name": "At minimum"
+		},
+		{
+			"arguments": [
+				100.0,
+				50.0,
+				100.0
+			],
+			"description": "clamp(100, 50, 100) = 100",
+			"expected": 100.0,
+			"name": "At maximum"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die eine Zahl in einen bestimmten Bereich begrenzt. Wenn die Zahl kleiner als min ist, gib min zurueck. Wenn sie groesser als max ist, gib max zurueck. Sonst gib die Zahl selbst zurueck.",
+			"hints": "Du kannst clamp() nutzen oder if-Abfragen.",
+			"name": "Zahl in Bereich",
+			"tests": [
+				{
+					"description": "clamp(5, 0, 10) = 5",
+					"name": "In Bereich"
+				},
+				{
+					"description": "clamp(-5, 0, 10) = 0",
+					"name": "Unter Minimum"
+				},
+				{
+					"description": "clamp(15, 0, 10) = 10",
+					"name": "Ueber Maximum"
+				},
+				{
+					"description": "clamp(50, 50, 100) = 50",
+					"name": "Am Minimum"
+				},
+				{
+					"description": "clamp(100, 50, 100) = 100",
+					"name": "Am Maximum"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that clamps a number to a given range. If the number is smaller than min, return min. If it is greater than max, return max. Otherwise return the number itself.",
+			"hints": "You can use clamp() or simple if conditions.",
+			"name": "Clamp Value",
+			"tests": [
+				{
+					"description": "clamp(5, 0, 10) = 5",
+					"name": "Within range"
+				},
+				{
+					"description": "clamp(-5, 0, 10) = 0",
+					"name": "Below minimum"
+				},
+				{
+					"description": "clamp(15, 0, 10) = 10",
+					"name": "Above maximum"
+				},
+				{
+					"description": "clamp(50, 50, 100) = 50",
+					"name": "At minimum"
+				},
+				{
+					"description": "clamp(100, 50, 100) = 100",
+					"name": "At maximum"
+				}
+			]
+		}
+	}
+}

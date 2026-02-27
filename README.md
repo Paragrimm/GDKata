@@ -8,10 +8,11 @@ A kata is a small coding exercise designed to improve your programming skills th
 
 ## Features
 
+- **Dock-First Workflow** - No extra main-screen tab, optimized for Godot's script editor flow
 - **128+ Coding Challenges** - From basic algorithms to design patterns
-- **Bilingual Support** - Katas available in German and English
-- **Integrated Test Runner** - Immediate feedback on your solutions
-- **Progress Tracking** - Track your completed katas locally
+- **Unified Kata JSON** - Status and i18n live in a single kata file
+- **Integrated Test Runner** - Run tests and inspect detailed results in the right dock
+- **Progress Tracking** - `todo / in_progress / done` status is stored directly in each kata JSON
 - **Difficulty Levels** - Challenges range from beginner to advanced
 
 ## Installation
@@ -26,12 +27,13 @@ A kata is a small coding exercise designed to improve your programming skills th
 
 ## Usage
 
-1. After enabling the plugin, you'll see a new **Kata** tab in the main editor
-2. The **Kata Selector** dock (left side) shows all available katas
-3. Select a kata and click **Start** to begin
-4. Implement the required function in the generated script
-5. Click **Run Tests** to check your solution
-6. The **Results** dock (right side) shows test outcomes
+1. Enable the plugin and use the two docks:
+   - **Left:** Kata selection, filters, hints
+   - **Right:** Run tests, inspect results, submit/cancel active kata
+2. Select a kata and click **Start Kata**
+3. Implement the required function in the generated script file
+4. Run tests in the right dock
+5. Submit with **Submit completed Kata** once all tests pass
 
 ## Kata Categories
 
@@ -59,25 +61,47 @@ addons/gdkata/
 │   ├── docks/          # UI panels (Selector, Results)
 │   └── ui_components/  # Reusable UI elements
 ├── katas/
-│   ├── 1_todo/         # Available katas (JSON definitions)
-│   ├── 2_in_progress/  # Currently active kata (user workspace)
-│   └── 3_done/         # Completed katas with solutions
+│   ├── catalog/        # Unified kata JSON files (status + i18n)
+│   ├── workspace/      # Active script + last result
+│   └── ...
 ├── plugin.cfg          # Plugin configuration
 └── gdkata.gd           # Main plugin script
 ```
 
 ## Creating Custom Katas
 
-You can create your own katas using the `KataGenerator.tres` resource:
+Create a JSON in `addons/gdkata/katas/catalog/` with:
 
-1. Open `addons/gdkata/katas/KataGenerator.tres`
-2. Fill in the kata details:
-   - `method_name`: Function name to implement
-   - `name`: Display name of the kata
-   - `description`: Instructions for the user
-   - `arguments`: Input parameters with types
-   - `tests`: Test cases with expected outputs
-3. Click **Generate JSON** to create the kata file
+- `id`: stable snake_case identifier
+- `status`: `todo`, `in_progress`, or `done`
+- `method_name`, `expected_type_hint`, `difficulty`, `arguments`, `tests`
+- `translations`: locale dictionary (`en`, `de`, ...) with `name`, `description`, `hints` and optional localized test labels
+
+If you still have an old project state with `1_todo/2_in_progress/3_done`, the plugin can migrate it to `catalog/`.
+
+### Legacy Migration (How it works)
+
+Migration runs automatically on plugin startup (`_enter_tree`) via `GDKataDefinition.ensure_catalog_initialized()`.
+
+It runs only when `addons/gdkata/katas/catalog/` does not contain any JSON files yet.
+
+During migration, the plugin:
+
+1. Reads legacy katas from:
+   - `1_todo/*.json`
+   - `2_in_progress/*.json`
+   - `3_done/*.json`
+   - `3_done/*/kata.json`
+2. Merges language variants of the same kata into one unified entry (based on method/type/difficulty/arguments/test inputs+expected values).
+3. Writes one file per kata to `katas/catalog/<kata_id>.json` with:
+   - `status` (`todo`, `in_progress`, `done`)
+   - `translations` (`en`, `de`, ...)
+   - normalized tests/arguments metadata.
+4. Copies the first legacy in-progress script (`2_in_progress/*.gd`) into `katas/workspace/` if present.
+
+Important:
+- Legacy folders are not deleted automatically.
+- If `catalog/` already contains JSON files, migration is skipped.
 
 ## Contributing
 

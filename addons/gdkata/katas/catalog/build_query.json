@@ -1,0 +1,148 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "operations",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 8,
+	"expected_type_hint": 4,
+	"id": "build_query",
+	"method_name": "build_query",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"select",
+						"name"
+					],
+					[
+						"from",
+						"users"
+					]
+				]
+			],
+			"description": "select + from",
+			"expected": "SELECT name FROM users",
+			"name": "Simple"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"select",
+						"*"
+					],
+					[
+						"from",
+						"users"
+					],
+					[
+						"where",
+						"age > 18"
+					]
+				]
+			],
+			"description": "select + from + where",
+			"expected": "SELECT * FROM users WHERE age > 18",
+			"name": "With where"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"select",
+						"name, age"
+					],
+					[
+						"from",
+						"users"
+					],
+					[
+						"where",
+						"active = 1"
+					],
+					[
+						"orderby",
+						"name"
+					]
+				]
+			],
+			"description": "all clauses",
+			"expected": "SELECT name, age FROM users WHERE active = 1 ORDER BY name",
+			"name": "Complete"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"select",
+						"*"
+					],
+					[
+						"from",
+						"products"
+					],
+					[
+						"orderby",
+						"price"
+					]
+				]
+			],
+			"description": "without where clause",
+			"expected": "SELECT * FROM products ORDER BY price",
+			"name": "No where"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere ein SQL Query Builder Pattern. Gegeben Operationen wie ['select', 'name,age'], ['from', 'users'], ['where', 'age > 18'], ['orderby', 'name'], baue einen SQL-Query-String. Gib die komplette Query zurueck.",
+			"hints": "Baue die Query Schritt fuer Schritt, fuege jede Klausel an. Das Builder Pattern trennt Konstruktion von Repraesentation.",
+			"name": "Builder Pattern",
+			"tests": [
+				{
+					"description": "select + from",
+					"name": "Einfach"
+				},
+				{
+					"description": "select + from + where",
+					"name": "Mit Where"
+				},
+				{
+					"description": "alle Klauseln",
+					"name": "Komplett"
+				},
+				{
+					"description": "ohne where Klausel",
+					"name": "Ohne Where"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a SQL query builder pattern. Given operations like ['select', 'name,age'], ['from', 'users'], ['where', 'age > 18'], ['orderby', 'name'], build a SQL query string. Return the complete query.",
+			"hints": "Build the query step by step, appending each clause. The builder pattern separates construction from representation.",
+			"name": "Builder Pattern",
+			"tests": [
+				{
+					"description": "select + from",
+					"name": "Simple"
+				},
+				{
+					"description": "select + from + where",
+					"name": "With where"
+				},
+				{
+					"description": "all clauses",
+					"name": "Complete"
+				},
+				{
+					"description": "without where clause",
+					"name": "No where"
+				}
+			]
+		}
+	}
+}

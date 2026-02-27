@@ -1,0 +1,152 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 5,
+	"expected_type_hint": 28,
+	"id": "quick_sort",
+	"method_name": "quick_sort",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					5.0,
+					3.0,
+					1.0,
+					4.0,
+					2.0
+				]
+			],
+			"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0,
+				4.0,
+				5.0
+			],
+			"name": "Unsorted"
+		},
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[1,2,3] -> [1,2,3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Already sorted"
+		},
+		{
+			"arguments": [
+				[
+					3.0,
+					2.0,
+					1.0
+				]
+			],
+			"description": "[3,2,1] -> [1,2,3]",
+			"expected": [
+				1.0,
+				2.0,
+				3.0
+			],
+			"name": "Reverse"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> []",
+			"expected": [],
+			"name": "Empty"
+		},
+		{
+			"arguments": [
+				[
+					2.0,
+					1.0,
+					3.0,
+					1.0,
+					2.0
+				]
+			],
+			"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+			"expected": [
+				1.0,
+				1.0,
+				2.0,
+				2.0,
+				3.0
+			],
+			"name": "Duplicates"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere den Quick Sort Algorithmus. Waehle ein Pivot-Element, partitioniere das Array so dass kleinere Elemente vor und groessere nach dem Pivot kommen, dann sortiere die Partitionen rekursiv.",
+			"hints": "Waehle das letzte Element als Pivot fuer Einfachheit. Erstelle Partitionen indem du durchiterierst und Elemente kleiner als Pivot nach links tauschst.",
+			"name": "Quick Sort",
+			"tests": [
+				{
+					"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+					"name": "Unsortiert"
+				},
+				{
+					"description": "[1,2,3] -> [1,2,3]",
+					"name": "Schon sortiert"
+				},
+				{
+					"description": "[3,2,1] -> [1,2,3]",
+					"name": "Rueckwaerts"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Leer"
+				},
+				{
+					"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+					"name": "Duplikate"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement the Quick Sort algorithm. Choose a pivot element, partition the array so elements smaller than pivot come before it and larger elements come after, then recursively sort the partitions.",
+			"hints": "Choose the last element as pivot for simplicity. Create partitions by iterating through and swapping elements smaller than pivot to the left side.",
+			"name": "Quick Sort",
+			"tests": [
+				{
+					"description": "[5,3,1,4,2] -> [1,2,3,4,5]",
+					"name": "Unsorted"
+				},
+				{
+					"description": "[1,2,3] -> [1,2,3]",
+					"name": "Already sorted"
+				},
+				{
+					"description": "[3,2,1] -> [1,2,3]",
+					"name": "Reverse"
+				},
+				{
+					"description": "[] -> []",
+					"name": "Empty"
+				},
+				{
+					"description": "[2,1,3,1,2] -> [1,1,2,2,3]",
+					"name": "Duplicates"
+				}
+			]
+		}
+	}
+}

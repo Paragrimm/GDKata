@@ -1,0 +1,116 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "structure",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 9,
+	"expected_type_hint": 2,
+	"id": "calculate_total_size",
+	"method_name": "calculate_total_size",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"hallo"
+					]
+				]
+			],
+			"description": "['hello'] -> 5",
+			"expected": 5.0,
+			"name": "Single file"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"hallo",
+						"welt"
+					]
+				]
+			],
+			"description": "['hello', 'world'] -> 10",
+			"expected": 9.0,
+			"name": "Multiple files"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"hallo",
+						[
+							"ordner",
+							"welt",
+							"test!"
+						]
+					]
+				]
+			],
+			"description": "['hello', ['folder', 'world', 'test!']] -> 15",
+			"expected": 14.0,
+			"name": "Nested folder"
+		},
+		{
+			"arguments": [
+				[
+					[]
+				]
+			],
+			"description": "[] -> 0",
+			"expected": 0.0,
+			"name": "Leerer Ordner"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere ein Dateisystem mit dem Composite Pattern. Gegeben eine Struktur als verschachtelte Arrays wobei Strings Dateien sind (Groesse = Laenge) und Arrays Ordner, berechne die Gesamtgroesse. Beispiel: ['a.txt', ['unterordner', 'b.txt']] wobei Ordnergroesse = Summe der Inhalte.",
+			"hints": "Durchlaufe die Struktur rekursiv. Dateien (Strings) geben ihre Laenge zurueck. Ordner (Arrays) geben die Summe der Groessen ihrer Kinder zurueck. Das Composite Pattern behandelt einzelne Objekte und Kompositionen einheitlich.",
+			"name": "Composite Pattern",
+			"tests": [
+				{
+					"description": "['hallo'] -> 5",
+					"name": "Einzelne Datei"
+				},
+				{
+					"description": "['hallo', 'welt'] -> 9",
+					"name": "Mehrere Dateien"
+				},
+				{
+					"description": "['hallo', ['ordner', 'welt', 'test!']] -> 14",
+					"name": "Verschachtelter Ordner"
+				},
+				{
+					"description": "[] -> 0",
+					"name": "Leerer Ordner"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a file system using the composite pattern. Given a structure as nested arrays where strings are files (size = length) and arrays are folders, calculate the total size. Example: ['a.txt', ['subfolder', 'b.txt']] where folder size = sum of contents.",
+			"hints": "Recursively traverse the structure. Files (strings) return their length. Folders (arrays) return the sum of their children's sizes. The composite pattern treats individual objects and compositions uniformly.",
+			"name": "Composite Pattern",
+			"tests": [
+				{
+					"description": "['hello'] -> 5",
+					"name": "Single file"
+				},
+				{
+					"description": "['hello', 'world'] -> 10",
+					"name": "Multiple files"
+				},
+				{
+					"description": "['hello', ['folder', 'world', 'test!']] -> 15",
+					"name": "Nested folder"
+				},
+				{
+					"description": "[] -> 0",
+					"name": "Leerer Ordner"
+				}
+			]
+		}
+	}
+}

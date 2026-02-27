@@ -1,0 +1,86 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "arr",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "last_element",
+	"method_name": "last_element",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					1.0,
+					2.0,
+					3.0
+				]
+			],
+			"description": "[1, 2, 3] -> 3",
+			"expected": 3.0,
+			"name": "Normal array"
+		},
+		{
+			"arguments": [
+				[]
+			],
+			"description": "[] -> -1",
+			"expected": -1.0,
+			"name": "Empty array"
+		},
+		{
+			"arguments": [
+				[
+					42.0
+				]
+			],
+			"description": "[42] -> 42",
+			"expected": 42.0,
+			"name": "Single element"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die das letzte Element eines Integer-Arrays zurueckgibt. Gib -1 zurueck wenn das Array leer ist.",
+			"hints": "Nutze arr[-1] oder arr[arr.size() - 1] fuer das letzte Element.",
+			"name": "Letztes Element",
+			"tests": [
+				{
+					"description": "[1, 2, 3] -> 3",
+					"name": "Normales Array"
+				},
+				{
+					"description": "[] -> -1",
+					"name": "Leeres Array"
+				},
+				{
+					"description": "[42] -> 42",
+					"name": "Ein Element"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that returns the last element of an integer array. Return -1 if the array is empty.",
+			"hints": "Use arr[-1] or arr[arr.size() - 1] for the last element.",
+			"name": "Last Element",
+			"tests": [
+				{
+					"description": "[1, 2, 3] -> 3",
+					"name": "Normal array"
+				},
+				{
+					"description": "[] -> -1",
+					"name": "Empty array"
+				},
+				{
+					"description": "[42] -> 42",
+					"name": "Single element"
+				}
+			]
+		}
+	}
+}

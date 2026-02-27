@@ -1,0 +1,128 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "n",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 3,
+	"expected_type_hint": 2,
+	"id": "fibonacci",
+	"method_name": "fibonacci",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				0.0
+			],
+			"description": "fib(0) = 0",
+			"expected": 0.0,
+			"name": "Fibonacci 0"
+		},
+		{
+			"arguments": [
+				1.0
+			],
+			"description": "fib(1) = 1",
+			"expected": 1.0,
+			"name": "Fibonacci 1"
+		},
+		{
+			"arguments": [
+				2.0
+			],
+			"description": "fib(2) = 1",
+			"expected": 1.0,
+			"name": "Fibonacci 2"
+		},
+		{
+			"arguments": [
+				5.0
+			],
+			"description": "fib(5) = 5",
+			"expected": 5.0,
+			"name": "Fibonacci 5"
+		},
+		{
+			"arguments": [
+				10.0
+			],
+			"description": "fib(10) = 55",
+			"expected": 55.0,
+			"name": "Fibonacci 10"
+		},
+		{
+			"arguments": [
+				12.0
+			],
+			"description": "fib(12) = 144",
+			"expected": 144.0,
+			"name": "Fibonacci 12"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die die n-te Fibonacci-Zahl berechnet. Die Fibonacci-Folge beginnt mit 0, 1 und jede weitere Zahl ist die Summe der beiden vorherigen: 0, 1, 1, 2, 3, 5, 8, 13, ... Dabei ist fib(0) = 0 und fib(1) = 1.",
+			"hints": "Nutze eine Schleife mit zwei Variablen fuer die letzten beiden Zahlen, oder Rekursion.",
+			"name": "Fibonacci Zahl",
+			"tests": [
+				{
+					"description": "fib(0) = 0",
+					"name": "Fibonacci 0"
+				},
+				{
+					"description": "fib(1) = 1",
+					"name": "Fibonacci 1"
+				},
+				{
+					"description": "fib(2) = 1",
+					"name": "Fibonacci 2"
+				},
+				{
+					"description": "fib(5) = 5",
+					"name": "Fibonacci 5"
+				},
+				{
+					"description": "fib(10) = 55",
+					"name": "Fibonacci 10"
+				},
+				{
+					"description": "fib(12) = 144",
+					"name": "Fibonacci 12"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that returns the n-th Fibonacci number. The Fibonacci sequence starts with 0, 1 and each next value is the sum of the two previous values: 0, 1, 1, 2, 3, 5, 8, 13, ... where fib(0) = 0 and fib(1) = 1.",
+			"hints": "Use a loop with two variables for the previous values, or use recursion.",
+			"name": "Fibonacci Number",
+			"tests": [
+				{
+					"description": "fib(0) = 0",
+					"name": "Fibonacci 0"
+				},
+				{
+					"description": "fib(1) = 1",
+					"name": "Fibonacci 1"
+				},
+				{
+					"description": "fib(2) = 1",
+					"name": "Fibonacci 2"
+				},
+				{
+					"description": "fib(5) = 5",
+					"name": "Fibonacci 5"
+				},
+				{
+					"description": "fib(10) = 55",
+					"name": "Fibonacci 10"
+				},
+				{
+					"description": "fib(12) = 144",
+					"name": "Fibonacci 12"
+				}
+			]
+		}
+	}
+}

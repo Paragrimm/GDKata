@@ -1,0 +1,129 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "program",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 9,
+	"expected_type_hint": 27,
+	"id": "interpret_program",
+	"method_name": "interpret_program",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"SET x 5",
+						"PRINT x"
+					]
+				]
+			],
+			"description": "SET x 5, PRINT x -> {x: 5}",
+			"expected": {
+				"x": 5.0
+			},
+			"name": "Set and print"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"SET x 5",
+						"ADD x 3",
+						"PRINT x"
+					]
+				]
+			],
+			"description": "SET x 5, ADD x 3, PRINT x -> {x: 8}",
+			"expected": {
+				"x": 8.0
+			},
+			"name": "Add"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"SET x 10",
+						"SET y 20",
+						"PRINT x",
+						"PRINT y"
+					]
+				]
+			],
+			"description": "Two variables",
+			"expected": {
+				"x": 10.0,
+				"y": 20.0
+			},
+			"name": "Multiple vars"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"SET a 5",
+						"ADD a 10",
+						"PRINT a"
+					]
+				]
+			],
+			"description": "Multiple operations",
+			"expected": {
+				"a": 15.0
+			},
+			"name": "Complex"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere einen einfachen Interpreter fuer eine Mini-Sprache. Befehle: 'SET x 5' (Variable setzen), 'ADD x 3' (zu Variable addieren), 'PRINT x' (Wert ausgeben). Gib ein Dictionary aller PRINTed Werte als {variable: wert} zurueck.",
+			"hints": "Parse jede Zeile, verwalte ein Variablen-Dictionary. Das Interpreter Pattern definiert eine Grammatik und interpretiert Saetze in dieser Sprache.",
+			"name": "Interpreter Pattern",
+			"tests": [
+				{
+					"description": "SET x 5, PRINT x -> {x: 5}",
+					"name": "Set und Print"
+				},
+				{
+					"description": "SET x 5, ADD x 3, PRINT x -> {x: 8}",
+					"name": "Add"
+				},
+				{
+					"description": "Zwei Variablen",
+					"name": "Mehrere Vars"
+				},
+				{
+					"description": "Mehrere Operationen",
+					"name": "Komplex"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a simple interpreter for a mini-language. Commands: 'SET x 5' (set variable), 'ADD x 3' (add to variable), 'PRINT x' (output value). Return a dictionary of all PRINTed values as {variable: value}.",
+			"hints": "Parse each line, maintain a variable dictionary. The interpreter pattern defines a grammar and interprets sentences in that language.",
+			"name": "Interpreter Pattern",
+			"tests": [
+				{
+					"description": "SET x 5, PRINT x -> {x: 5}",
+					"name": "Set and print"
+				},
+				{
+					"description": "SET x 5, ADD x 3, PRINT x -> {x: 8}",
+					"name": "Add"
+				},
+				{
+					"description": "Two variables",
+					"name": "Multiple vars"
+				},
+				{
+					"description": "Multiple operations",
+					"name": "Complex"
+				}
+			]
+		}
+	}
+}

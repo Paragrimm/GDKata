@@ -1,0 +1,161 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "users",
+			"type_hint": 28
+		},
+		{
+			"name": "messages",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 9,
+	"expected_type_hint": 28,
+	"id": "chat_mediator",
+	"method_name": "chat_mediator",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					"A",
+					"B",
+					"C"
+				],
+				[
+					[
+						"A",
+						"send",
+						"Hallo"
+					]
+				]
+			],
+			"description": "A sends to all",
+			"expected": [
+				[
+					"B",
+					"A",
+					"Hallo"
+				],
+				[
+					"C",
+					"A",
+					"Hallo"
+				]
+			],
+			"name": "Broadcast"
+		},
+		{
+			"arguments": [
+				[
+					"A",
+					"B",
+					"C"
+				],
+				[
+					[
+						"A",
+						"private",
+						"B",
+						"Geheim"
+					]
+				]
+			],
+			"description": "A to B only",
+			"expected": [
+				[
+					"B",
+					"A",
+					"Geheim"
+				]
+			],
+			"name": "Private"
+		},
+		{
+			"arguments": [
+				[
+					"A",
+					"B",
+					"C"
+				],
+				[
+					[
+						"A",
+						"send",
+						"Hi"
+					],
+					[
+						"B",
+						"send",
+						"Hey"
+					]
+				]
+			],
+			"description": "Multiple messages",
+			"expected": [
+				[
+					"B",
+					"A",
+					"Hi"
+				],
+				[
+					"C",
+					"A",
+					"Hi"
+				],
+				[
+					"A",
+					"B",
+					"Hey"
+				],
+				[
+					"C",
+					"B",
+					"Hey"
+				]
+			],
+			"name": "Multiple"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere einen Chatraum-Mediator. Gegeben Nachrichten als [sender, 'send'/'private', content/empfaenger, nachricht?], leitet der Mediator Nachrichten weiter. 'send' sendet an alle ausser Sender. 'private' sendet nur an Empfaenger. Gib alle empfangenen Nachrichten als [empfaenger, sender, nachricht] zurueck.",
+			"hints": "Der Mediator zentralisiert Kommunikation. Verfolge Benutzer und leite Nachrichten durch den Mediator statt direkter Benutzer-zu-Benutzer Kommunikation.",
+			"name": "Mediator Pattern",
+			"tests": [
+				{
+					"description": "A sendet an alle",
+					"name": "Broadcast"
+				},
+				{
+					"description": "A nur an B",
+					"name": "Privat"
+				},
+				{
+					"description": "Mehrere Nachrichten",
+					"name": "Mehrere"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a chat room mediator. Given messages as [sender, 'send'/'private', content/recipient, message?], the mediator routes messages. 'send' broadcasts to all except sender. 'private' sends only to recipient. Return all received messages as [recipient, sender, message].",
+			"hints": "The mediator centralizes communication. Track users and route messages through the mediator rather than direct user-to-user communication.",
+			"name": "Mediator Pattern",
+			"tests": [
+				{
+					"description": "A sends to all",
+					"name": "Broadcast"
+				},
+				{
+					"description": "A to B only",
+					"name": "Private"
+				},
+				{
+					"description": "Multiple messages",
+					"name": "Multiple"
+				}
+			]
+		}
+	}
+}

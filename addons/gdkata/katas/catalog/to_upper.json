@@ -1,0 +1,96 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "text",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 4,
+	"id": "to_upper",
+	"method_name": "to_upper",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"hallo"
+			],
+			"description": "'hello' -> 'HELLO'",
+			"expected": "HALLO",
+			"name": "Lower to upper"
+		},
+		{
+			"arguments": [
+				"HALLO"
+			],
+			"description": "'HELLO' -> 'HELLO'",
+			"expected": "HALLO",
+			"name": "Already upper"
+		},
+		{
+			"arguments": [
+				"Hello World"
+			],
+			"description": "'Hello World' -> 'HELLO WORLD'",
+			"expected": "HELLO WORLD",
+			"name": "Mixed"
+		},
+		{
+			"arguments": [
+				""
+			],
+			"description": "'' -> ''",
+			"expected": "",
+			"name": "Empty"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die einen String in Grossbuchstaben umwandelt.",
+			"hints": "Nutze die to_upper() Methode des Strings.",
+			"name": "String zu Grossbuchstaben",
+			"tests": [
+				{
+					"description": "'hallo' -> 'HALLO'",
+					"name": "Klein zu gross"
+				},
+				{
+					"description": "'HALLO' -> 'HALLO'",
+					"name": "Schon gross"
+				},
+				{
+					"description": "'Hello World' -> 'HELLO WORLD'",
+					"name": "Gemischt"
+				},
+				{
+					"description": "'' -> ''",
+					"name": "Leer"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that converts a string to uppercase.",
+			"hints": "Use the to_upper() method of the string.",
+			"name": "To Uppercase",
+			"tests": [
+				{
+					"description": "'hello' -> 'HELLO'",
+					"name": "Lower to upper"
+				},
+				{
+					"description": "'HELLO' -> 'HELLO'",
+					"name": "Already upper"
+				},
+				{
+					"description": "'Hello World' -> 'HELLO WORLD'",
+					"name": "Mixed"
+				},
+				{
+					"description": "'' -> ''",
+					"name": "Empty"
+				}
+			]
+		}
+	}
+}

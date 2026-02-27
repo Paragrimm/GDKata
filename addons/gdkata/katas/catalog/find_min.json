@@ -1,0 +1,104 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "a",
+			"type_hint": 2
+		},
+		{
+			"name": "b",
+			"type_hint": 2
+		}
+	],
+	"difficulty": 1,
+	"expected_type_hint": 2,
+	"id": "find_min",
+	"method_name": "find_min",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				5.0,
+				10.0
+			],
+			"description": "min(5, 10) = 5",
+			"expected": 5.0,
+			"name": "First smaller"
+		},
+		{
+			"arguments": [
+				20.0,
+				15.0
+			],
+			"description": "min(20, 15) = 15",
+			"expected": 15.0,
+			"name": "Second smaller"
+		},
+		{
+			"arguments": [
+				7.0,
+				7.0
+			],
+			"description": "min(7, 7) = 7",
+			"expected": 7.0,
+			"name": "Both equal"
+		},
+		{
+			"arguments": [
+				-5.0,
+				0.0
+			],
+			"description": "min(-5, 0) = -5",
+			"expected": -5.0,
+			"name": "With negative"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die zwei Zahlen vergleicht und die kleinere zurueckgibt.",
+			"hints": "Nutze eine if-else Verzweigung oder die min() Funktion.",
+			"name": "Minimum finden",
+			"tests": [
+				{
+					"description": "min(5, 10) = 5",
+					"name": "Erste kleiner"
+				},
+				{
+					"description": "min(20, 15) = 15",
+					"name": "Zweite kleiner"
+				},
+				{
+					"description": "min(7, 7) = 7",
+					"name": "Beide gleich"
+				},
+				{
+					"description": "min(-5, 0) = -5",
+					"name": "Mit Negativ"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that compares two numbers and returns the smaller one.",
+			"hints": "Use an if-else statement or the min() function.",
+			"name": "Find Minimum",
+			"tests": [
+				{
+					"description": "min(5, 10) = 5",
+					"name": "First smaller"
+				},
+				{
+					"description": "min(20, 15) = 15",
+					"name": "Second smaller"
+				},
+				{
+					"description": "min(7, 7) = 7",
+					"name": "Both equal"
+				},
+				{
+					"description": "min(-5, 0) = -5",
+					"name": "With negative"
+				}
+			]
+		}
+	}
+}

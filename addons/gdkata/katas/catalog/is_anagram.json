@@ -1,0 +1,121 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "s1",
+			"type_hint": 4
+		},
+		{
+			"name": "s2",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 3,
+	"expected_type_hint": 1,
+	"id": "is_anagram",
+	"method_name": "is_anagram",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"listen",
+				"silent"
+			],
+			"description": "'listen' and 'silent' are anagrams",
+			"expected": true,
+			"name": "Listen Silent"
+		},
+		{
+			"arguments": [
+				"rat",
+				"tar"
+			],
+			"description": "'rat' and 'tar' are anagrams",
+			"expected": true,
+			"name": "Rat Tar"
+		},
+		{
+			"arguments": [
+				"hello",
+				"world"
+			],
+			"description": "'hello' and 'world' are not anagrams",
+			"expected": false,
+			"name": "Hello World"
+		},
+		{
+			"arguments": [
+				"Listen",
+				"Silent"
+			],
+			"description": "'Listen' and 'Silent' are anagrams",
+			"expected": true,
+			"name": "Case insensitive"
+		},
+		{
+			"arguments": [
+				"",
+				""
+			],
+			"description": "'' and '' are anagrams",
+			"expected": true,
+			"name": "Empty"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Schreibe eine Funktion, die prueft ob zwei Strings Anagramme sind. Zwei Strings sind Anagramme, wenn sie die gleichen Buchstaben in unterschiedlicher Reihenfolge enthalten. Ignoriere Gross- und Kleinschreibung.",
+			"hints": "Sortiere beide Strings alphabetisch und vergleiche sie. Oder zaehle die Haeufigkeit jedes Buchstabens.",
+			"name": "Anagramm pruefen",
+			"tests": [
+				{
+					"description": "'listen' und 'silent' sind Anagramme",
+					"name": "Listen Silent"
+				},
+				{
+					"description": "'rat' und 'tar' sind Anagramme",
+					"name": "Rat Tar"
+				},
+				{
+					"description": "'hello' und 'world' sind keine Anagramme",
+					"name": "Hello World"
+				},
+				{
+					"description": "'Listen' und 'Silent' sind Anagramme",
+					"name": "Gross Klein"
+				},
+				{
+					"description": "'' und '' sind Anagramme",
+					"name": "Leer"
+				}
+			]
+		},
+		"en": {
+			"description": "Write a function that checks if two strings are anagrams. Two strings are anagrams if they contain the same characters in a different order. Ignore case.",
+			"hints": "Sort both strings alphabetically and compare them. Or count the frequency of each character.",
+			"name": "Is Anagram",
+			"tests": [
+				{
+					"description": "'listen' and 'silent' are anagrams",
+					"name": "Listen Silent"
+				},
+				{
+					"description": "'rat' and 'tar' are anagrams",
+					"name": "Rat Tar"
+				},
+				{
+					"description": "'hello' and 'world' are not anagrams",
+					"name": "Hello World"
+				},
+				{
+					"description": "'Listen' and 'Silent' are anagrams",
+					"name": "Case insensitive"
+				},
+				{
+					"description": "'' and '' are anagrams",
+					"name": "Empty"
+				}
+			]
+		}
+	}
+}

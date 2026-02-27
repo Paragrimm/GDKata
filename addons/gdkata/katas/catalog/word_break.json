@@ -1,0 +1,118 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "s",
+			"type_hint": 4
+		},
+		{
+			"name": "word_dict",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 6,
+	"expected_type_hint": 1,
+	"id": "word_break",
+	"method_name": "word_break",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"leetcode",
+				[
+					"leet",
+					"code"
+				]
+			],
+			"description": "'leetcode', ['leet','code'] -> true",
+			"expected": true,
+			"name": "Leetcode"
+		},
+		{
+			"arguments": [
+				"applepenapple",
+				[
+					"apple",
+					"pen"
+				]
+			],
+			"description": "'applepenapple', ['apple','pen'] -> true",
+			"expected": true,
+			"name": "Applepenapple"
+		},
+		{
+			"arguments": [
+				"catsandog",
+				[
+					"cats",
+					"dog",
+					"sand",
+					"and",
+					"cat"
+				]
+			],
+			"description": "'catsandog', ['cats','dog','sand','and','cat'] -> false",
+			"expected": false,
+			"name": "Catsandog"
+		},
+		{
+			"arguments": [
+				"",
+				[
+					"a"
+				]
+			],
+			"description": "'', ['a'] -> true",
+			"expected": true,
+			"name": "Empty string"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Gegeben ein String und ein Woerterbuch, bestimme ob der String in durch Leerzeichen getrennte Woerter aus dem Woerterbuch segmentiert werden kann.",
+			"hints": "Nutze dynamische Programmierung. dp[i] ist true wenn s[0:i] segmentiert werden kann. Fuer jede Position pruefe alle moeglichen Wortenden.",
+			"name": "Wort Trennung",
+			"tests": [
+				{
+					"description": "'autohaus', ['auto','haus'] -> true",
+					"name": "Autohaus"
+				},
+				{
+					"description": "'apfelbaumapfel', ['apfel','baum'] -> true",
+					"name": "Apfelbaum"
+				},
+				{
+					"description": "'katzedog', ['katze','hund','und'] -> false",
+					"name": "Unmoeglich"
+				},
+				{
+					"description": "'', ['a'] -> true",
+					"name": "Leerer String"
+				}
+			]
+		},
+		"en": {
+			"description": "Given a string and a dictionary of words, determine if the string can be segmented into space-separated words from the dictionary.",
+			"hints": "Use dynamic programming. dp[i] is true if s[0:i] can be segmented. For each position, check all possible word endings.",
+			"name": "Word Break",
+			"tests": [
+				{
+					"description": "'leetcode', ['leet','code'] -> true",
+					"name": "Leetcode"
+				},
+				{
+					"description": "'applepenapple', ['apple','pen'] -> true",
+					"name": "Applepenapple"
+				},
+				{
+					"description": "'catsandog', ['cats','dog','sand','and','cat'] -> false",
+					"name": "Catsandog"
+				},
+				{
+					"description": "'', ['a'] -> true",
+					"name": "Empty string"
+				}
+			]
+		}
+	}
+}

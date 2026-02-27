@@ -1,0 +1,112 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "expression",
+			"type_hint": 4
+		}
+	],
+	"difficulty": 9,
+	"expected_type_hint": 2,
+	"id": "evaluate_expression",
+	"method_name": "evaluate_expression",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				"3 + 4"
+			],
+			"description": "'3 + 4' -> 7",
+			"expected": 7.0,
+			"name": "Simple addition"
+		},
+		{
+			"arguments": [
+				"2 + 3 * 4"
+			],
+			"description": "'2 + 3 * 4' -> 14",
+			"expected": 14.0,
+			"name": "Precedence"
+		},
+		{
+			"arguments": [
+				"(2 + 3) * 4"
+			],
+			"description": "'(2 + 3) * 4' -> 20",
+			"expected": 20.0,
+			"name": "Parentheses"
+		},
+		{
+			"arguments": [
+				"((2 + 3) * 2) / 5"
+			],
+			"description": "'((2 + 3) * 2) / 5' -> 2",
+			"expected": 2.0,
+			"name": "Nested parens"
+		},
+		{
+			"arguments": [
+				"10 - 2 * 3 + 4 / 2"
+			],
+			"description": "'10 - 2 * 3 + 4 / 2' -> 6",
+			"expected": 6.0,
+			"name": "Complex"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere einen mathematischen Ausdrucks-Parser der Ausdruecke mit +, -, *, / und Klammern auswertet. Behandle Operator-Praezedenz korrekt (* und / vor + und -). Gib das Integer-Ergebnis zurueck.",
+			"hints": "Nutze den Shunting Yard Algorithmus oder rekursives Abstiegs-Parsing. Behandle Operator-Praezedenz mit einem Stack-basierten Ansatz oder indem du Multiplikation/Division zuerst parst.",
+			"name": "Ausdruck Parser",
+			"tests": [
+				{
+					"description": "'3 + 4' -> 7",
+					"name": "Einfache Addition"
+				},
+				{
+					"description": "'2 + 3 * 4' -> 14",
+					"name": "Praezedenz"
+				},
+				{
+					"description": "'(2 + 3) * 4' -> 20",
+					"name": "Klammern"
+				},
+				{
+					"description": "'((2 + 3) * 2) / 5' -> 2",
+					"name": "Verschachtelte Klammern"
+				},
+				{
+					"description": "'10 - 2 * 3 + 4 / 2' -> 6",
+					"name": "Komplex"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a mathematical expression parser that evaluates expressions with +, -, *, / and parentheses. Handle operator precedence correctly (* and / before + and -). Return the integer result.",
+			"hints": "Use the Shunting Yard algorithm or recursive descent parsing. Handle operator precedence with a stack-based approach or by parsing multiplication/division first.",
+			"name": "Expression Parser",
+			"tests": [
+				{
+					"description": "'3 + 4' -> 7",
+					"name": "Simple addition"
+				},
+				{
+					"description": "'2 + 3 * 4' -> 14",
+					"name": "Precedence"
+				},
+				{
+					"description": "'(2 + 3) * 4' -> 20",
+					"name": "Parentheses"
+				},
+				{
+					"description": "'((2 + 3) * 2) / 5' -> 2",
+					"name": "Nested parens"
+				},
+				{
+					"description": "'10 - 2 * 3 + 4 / 2' -> 6",
+					"name": "Complex"
+				}
+			]
+		}
+	}
+}

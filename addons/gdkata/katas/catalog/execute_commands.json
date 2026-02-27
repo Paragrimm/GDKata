@@ -1,0 +1,177 @@
+{
+	"active_script_filename": "",
+	"arguments": [
+		{
+			"name": "commands",
+			"type_hint": 28
+		}
+	],
+	"difficulty": 8,
+	"expected_type_hint": 2,
+	"id": "execute_commands",
+	"method_name": "execute_commands",
+	"status": "todo",
+	"tests": [
+		{
+			"arguments": [
+				[
+					[
+						"add",
+						10.0
+					],
+					[
+						"add",
+						5.0
+					]
+				]
+			],
+			"description": "add(10), add(5) -> 15",
+			"expected": 15.0,
+			"name": "Simple ops"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"add",
+						10.0
+					],
+					[
+						"add",
+						5.0
+					],
+					[
+						"undo",
+						0.0
+					]
+				]
+			],
+			"description": "add(10), add(5), undo -> 10",
+			"expected": 10.0,
+			"name": "With undo"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"add",
+						10.0
+					],
+					[
+						"multiply",
+						2.0
+					]
+				]
+			],
+			"description": "add(10), multiply(2) -> 20",
+			"expected": 20.0,
+			"name": "Multiply"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"add",
+						10.0
+					],
+					[
+						"multiply",
+						2.0
+					],
+					[
+						"undo",
+						0.0
+					]
+				]
+			],
+			"description": "add(10), multiply(2), undo -> 10",
+			"expected": 10.0,
+			"name": "Undo multiply"
+		},
+		{
+			"arguments": [
+				[
+					[
+						"add",
+						5.0
+					],
+					[
+						"subtract",
+						2.0
+					],
+					[
+						"multiply",
+						3.0
+					],
+					[
+						"undo",
+						0.0
+					],
+					[
+						"add",
+						1.0
+					]
+				]
+			],
+			"description": "add(5), subtract(2), multiply(3), undo, add(1) -> 4",
+			"expected": 4.0,
+			"name": "Complex"
+		}
+	],
+	"translations": {
+		"de": {
+			"description": "Implementiere ein Command Pattern mit Undo. Gegeben Befehle als [aktion, wert] wobei aktion 'add', 'subtract', 'multiply' oder 'undo' ist, wende sie auf Startwert 0 an und gib das Endergebnis zurueck. 'undo' macht die letzte Operation rueckgaengig.",
+			"hints": "Speichere jeden Befehl und seine Umkehrung. Verwalte einen History-Stack fuer Undo-Operationen. Das Command Pattern kapselt Operationen als Objekte.",
+			"name": "Command Pattern",
+			"tests": [
+				{
+					"description": "add(10), add(5) -> 15",
+					"name": "Einfache Ops"
+				},
+				{
+					"description": "add(10), add(5), undo -> 10",
+					"name": "Mit Undo"
+				},
+				{
+					"description": "add(10), multiply(2) -> 20",
+					"name": "Multiplizieren"
+				},
+				{
+					"description": "add(10), multiply(2), undo -> 10",
+					"name": "Undo Multiply"
+				},
+				{
+					"description": "add(5), subtract(2), multiply(3), undo, add(1) -> 4",
+					"name": "Komplex"
+				}
+			]
+		},
+		"en": {
+			"description": "Implement a command pattern with undo. Given commands as [action, value] where action is 'add', 'subtract', 'multiply', or 'undo', apply them to starting value 0 and return the final result. 'undo' reverts the last operation.",
+			"hints": "Store each command and its inverse. Maintain a history stack for undo operations. The command pattern encapsulates operations as objects.",
+			"name": "Command Pattern",
+			"tests": [
+				{
+					"description": "add(10), add(5) -> 15",
+					"name": "Simple ops"
+				},
+				{
+					"description": "add(10), add(5), undo -> 10",
+					"name": "With undo"
+				},
+				{
+					"description": "add(10), multiply(2) -> 20",
+					"name": "Multiply"
+				},
+				{
+					"description": "add(10), multiply(2), undo -> 10",
+					"name": "Undo multiply"
+				},
+				{
+					"description": "add(5), subtract(2), multiply(3), undo, add(1) -> 4",
+					"name": "Complex"
+				}
+			]
+		}
+	}
+}

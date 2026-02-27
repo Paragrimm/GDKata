@@ -4,21 +4,15 @@ extends EditorPlugin
 
 const CONFIG_PATH := "res://addons/gdkata/gdkata.cfg"
 
-var main_screen: GDKataMainScreen
 var dock_selector: GDKataSelector
 var dock_result_view: GDKataResultView
 
-var _kata_active: bool = false
-var _main_screen_visible: bool = false
 var _current_kata: GDKataDefinition
+var _last_result: GDKataResultDefinition
 
 
 func _has_main_screen() -> bool:
-	return true
-
-
-func _get_plugin_name() -> String:
-	return GDKataDefinition.MAINSCREEN_NAME
+	return false
 
 
 func _get_plugin_icon() -> Texture2D:
@@ -29,211 +23,242 @@ func _get_plugin_icon() -> Texture2D:
 
 func _enter_tree() -> void:
 	GDKataTr.setup()
-
-	main_screen = preload("res://addons/gdkata/core/KataMainScreen.tscn").instantiate()
-	EditorInterface.get_editor_main_screen().add_child(main_screen)
-	main_screen.visible = false
-	main_screen.tests_completed.connect(_on_tests_completed)
-	main_screen.kata_cancelled.connect(_on_kata_cancelled)
+	GDKataDefinition.ensure_catalog_initialized()
 
 	dock_selector = preload("res://addons/gdkata/core/docks/KataSelector.tscn").instantiate()
-	add_control_to_dock(DOCK_SLOT_LEFT_UR, dock_selector)
-	dock_selector.kata_started.connect(_on_kata_started)
+	if dock_selector:
+		add_control_to_dock(DOCK_SLOT_LEFT_UR, dock_selector)
+		dock_selector.kata_start_requested.connect(_on_kata_start_requested)
+		dock_selector.refresh_requested.connect(_on_selector_refresh_requested)
+	else:
+		printerr("[GDKata] Failed to instantiate KataSelector dock scene.")
 
 	dock_result_view = preload("res://addons/gdkata/core/docks/ResultView.tscn").instantiate()
-	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock_result_view)
-	dock_result_view.kata_submitted.connect(_on_kata_submitted)
-
-	_set_docks_visible(false)
-	_update_highlights()
-
-	# Validierung erst nach dem initialen Dateisystem-Scan ausfuehren,
-	# sonst kollidiert unser scan() mit Godots first_scan_filesystem.
-	if EditorInterface.get_resource_filesystem().is_scanning():
-		EditorInterface.get_resource_filesystem().filesystem_changed.connect(
-			_on_initial_scan_done, CONNECT_ONE_SHOT
-		)
+	if dock_result_view:
+		add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock_result_view)
+		dock_result_view.run_tests_requested.connect(_on_run_tests_requested)
+		dock_result_view.kata_cancel_requested.connect(_on_kata_cancel_requested)
+		dock_result_view.kata_submit_requested.connect(_on_kata_submit_requested)
 	else:
-		_validate_in_progress()
-		_restore_active_kata()
+		printerr("[GDKata] Failed to instantiate ResultView dock scene.")
+
+	if dock_selector and dock_result_view:
+		_restore_state()
 
 
 func _exit_tree() -> void:
 	GDKataTr.teardown()
 
-	if main_screen:
-		main_screen.queue_free()
-	remove_control_from_docks(dock_selector)
-	remove_control_from_docks(dock_result_view)
-	dock_selector.queue_free()
-	dock_result_view.queue_free()
+	if dock_selector:
+		remove_control_from_docks(dock_selector)
+	if dock_result_view:
+		remove_control_from_docks(dock_result_view)
+
+	if dock_selector:
+		dock_selector.queue_free()
+	if dock_result_view:
+		dock_result_view.queue_free()
 
 
-func _make_visible(visible: bool) -> void:
-	_main_screen_visible = visible
-	if main_screen:
-		main_screen.visible = visible
-	_update_dock_visibility()
-	if visible and _kata_active:
-		_select_dock_tabs()
+func _make_visible(_visible: bool) -> void:
+	if dock_selector:
+		dock_selector.visible = true
+	if dock_result_view:
+		dock_result_view.visible = true
 
 
-func _on_initial_scan_done() -> void:
-	_validate_in_progress()
-	_restore_active_kata()
+func _restore_state() -> void:
+	dock_selector.reload_data()
 
+	var active := GDKataDefinition.load_in_progress()
+	if active and active.active_script_filename.is_empty():
+		active.active_script_filename = GDKataDefinition.get_script_filename(
+			active.get_display_name()
+		)
+		GDKataDefinition.save_kata(active)
 
-func _validate_in_progress() -> void:
-	if GDKataDefinition.has_valid_in_progress():
-		return
+	if active and not FileAccess.file_exists(active.get_script_path()):
+		active.status = GDKataDefinition.STATUS_TODO
+		active.active_script_filename = ""
+		GDKataDefinition.save_kata(active)
+		active = null
 
-	# Inkonsistenter Zustand: nicht beide Dateien vorhanden -> aufraumen
-	_wipe_in_progress_folder()
+	_current_kata = active
+	_last_result = null
 
-
-func _restore_active_kata() -> void:
-	if not GDKataDefinition.has_valid_in_progress():
-		return
-
-	var kata := GDKataDefinition.load_in_progress()
-	if not kata:
-		return
-
-	_kata_active = true
-	_current_kata = kata
-	main_screen.set_kata(kata)
-	dock_result_view.set_current_kata(kata)
-	main_screen.show_external_editor_hint(GDKataDefinition.is_external_editor_configured())
-	_update_highlights()
-
-
-func _on_kata_started(kata: GDKataDefinition) -> void:
-	_kata_active = true
-	_current_kata = kata
-	main_screen.set_kata(kata)
-	dock_result_view.set_current_kata(kata)
-	_update_dock_visibility()
-	_update_highlights()
-
-	if GDKataDefinition.is_external_editor_configured():
-		main_screen.show_external_editor_hint(true)
-		if not _main_screen_visible:
-			EditorInterface.set_main_screen_editor(GDKataDefinition.MAINSCREEN_NAME)
-		_select_dock_tabs_delayed()
-	else:
-		main_screen.show_external_editor_hint(false)
-		_open_kata_script()
-
-
-func _on_kata_cancelled(kata: GDKataDefinition) -> void:
-	var source := GDKataDefinition.get_config_path()
-	var target := "%s%s.json" % [GDKataDefinition.TODO_PATH, kata.name]
-	if FileAccess.file_exists(source):
-		DirAccess.rename_absolute(source, target)
-
-	_wipe_in_progress_folder()
-
-	_kata_active = false
-	_current_kata = null
 	dock_result_view.clear_current_kata()
-	dock_selector.on_kata_finished()
+	if _current_kata:
+		dock_result_view.set_current_kata(_current_kata)
+		var result := GDKataResultDefinition.load_from_file()
+		if result:
+			_last_result = result
+			dock_result_view.update_results(result, _current_kata.is_completed_by_result(result))
+
+	dock_selector.set_active_kata_id(_current_kata.id if _current_kata else "")
+	dock_selector.reload_data(_current_kata.id if _current_kata else "")
 	_update_highlights()
-	EditorInterface.set_main_screen_editor(GDKataDefinition.MAINSCREEN_NAME)
 
 
-func _on_kata_submitted(_kata: GDKataDefinition) -> void:
-	_kata_active = false
-	_current_kata = null
-	main_screen.show_no_kata_state()
-	dock_selector.on_kata_finished()
+func _on_selector_refresh_requested() -> void:
+	_restore_state()
+
+
+func _on_kata_start_requested(kata_id: String) -> void:
+	if kata_id.is_empty():
+		return
+
+	var katas := GDKataDefinition.load_catalog()
+	var selected: GDKataDefinition
+
+	for kata in katas:
+		if kata.id == kata_id:
+			selected = kata
+			kata.status = GDKataDefinition.STATUS_IN_PROGRESS
+		elif kata.status == GDKataDefinition.STATUS_IN_PROGRESS:
+			kata.status = GDKataDefinition.STATUS_TODO
+			kata.active_script_filename = ""
+
+	if not selected:
+		return
+
+	selected.active_script_filename = GDKataDefinition.get_script_filename(
+		selected.get_display_name()
+	)
+	GDKataDefinition.save_catalog(katas)
+	_create_template_script(selected)
+	GDKataDefinition.clear_workspace_result()
+
+	_current_kata = selected
+	_last_result = null
+
+	dock_selector.set_active_kata_id(selected.id)
+	dock_selector.reload_data(selected.id)
+	dock_result_view.set_current_kata(selected)
 	_update_highlights()
-	EditorInterface.set_main_screen_editor(GDKataDefinition.MAINSCREEN_NAME)
+	_open_kata_script()
 
 
-func _on_tests_completed(result: GDKataResultDefinition) -> void:
-	dock_result_view.update_results(result)
+func _on_run_tests_requested() -> void:
+	if not _current_kata:
+		return
+
+	_current_kata.apply_locale(TranslationServer.get_locale())
+	var result := GDKataTestRunner.run_tests(_current_kata)
+	GDKataTestRunner.save_results(result)
+	_last_result = result
+	dock_result_view.update_results(result, _current_kata.is_completed_by_result(result))
 	_update_highlights_after_test(result)
 
 
-func _open_kata_script() -> void:
-	await EditorInterface.get_resource_filesystem().filesystem_changed
+func _on_kata_cancel_requested() -> void:
 	if not _current_kata:
 		return
+
+	var script_filename := _current_kata.active_script_filename
+	_current_kata.status = GDKataDefinition.STATUS_TODO
+	_current_kata.active_script_filename = ""
+	GDKataDefinition.save_kata(_current_kata)
+	GDKataDefinition.delete_workspace_script(script_filename)
+	GDKataDefinition.clear_workspace_result()
+
+	_current_kata = null
+	_last_result = null
+
+	dock_result_view.clear_current_kata()
+	dock_selector.set_active_kata_id("")
+	dock_selector.reload_data()
+	_update_highlights()
+
+
+func _on_kata_submit_requested() -> void:
+	if not _current_kata:
+		return
+	if not _current_kata.is_completed_by_result(_last_result):
+		return
+
+	var script_filename := _current_kata.active_script_filename
+	_current_kata.status = GDKataDefinition.STATUS_DONE
+	_current_kata.active_script_filename = ""
+	GDKataDefinition.save_kata(_current_kata)
+	GDKataDefinition.delete_workspace_script(script_filename)
+	GDKataDefinition.clear_workspace_result()
+
+	_current_kata = null
+	_last_result = null
+
+	dock_result_view.clear_current_kata()
+	dock_selector.set_active_kata_id("")
+	dock_selector.reload_data()
+	_update_highlights()
+
+
+func _create_template_script(kata: GDKataDefinition) -> void:
+	var template_file := FileAccess.open(GDKataDefinition.TEMPLATE_PATH, FileAccess.READ)
+	if not template_file:
+		return
+
+	var template := template_file.get_as_text()
+	template_file.close()
+	template = template.replace(GDKataDefinition.TEMPLATE_METHOD_NAME_PLACEHOLDER, kata.method_name)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_EXPECTED_TYPE_PLACEHOLDER, type_string(kata.expected_type_hint)
+	)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_ARGUMENTS_PLACEHOLDER, _build_arguments_string(kata)
+	)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_TITLE_PLACEHOLDER, kata.get_display_name()
+	)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_DESCRIPTION_PLACEHOLDER, kata.get_display_description()
+	)
+	template = template.replace(
+		GDKataDefinition.TEMPLATE_DEFAULT_RETURN_PLACEHOLDER,
+		GDKataDefinition.get_default_return_for_type(kata.expected_type_hint)
+	)
+
+	var script_path := kata.get_script_path()
+	var dest_file := FileAccess.open(script_path, FileAccess.WRITE)
+	if not dest_file:
+		printerr("[GDKata] Could not write script: ", script_path)
+		return
+	dest_file.store_string(template)
+	dest_file.close()
+	EditorInterface.get_resource_filesystem().scan()
+
+
+func _build_arguments_string(kata: GDKataDefinition) -> String:
+	var parts: PackedStringArray = []
+	for i in range(kata.arguments.size()):
+		var arg := kata.arguments[i]
+		var letter := arg.name if not arg.name.is_empty() else char(ord("a") + i)
+		var type := type_string(arg.type_hint)
+		parts.append("%s: %s" % [letter, type])
+	return ", ".join(parts)
+
+
+func _open_kata_script() -> void:
+	if not _current_kata:
+		return
+
+	await get_tree().process_frame
 	var script: Script = load(_current_kata.get_script_path())
 	if script:
 		EditorInterface.edit_script(script)
 		EditorInterface.set_main_screen_editor(GDKataDefinition.MAINSCREEN_SCRIPT)
-		_select_dock_tabs_delayed()
-
-
-func _wipe_in_progress_folder() -> void:
-	var dir := DirAccess.open(GDKataDefinition.IN_PROGRESS_PATH)
-	if not dir:
-		return
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir():
-			DirAccess.remove_absolute(GDKataDefinition.IN_PROGRESS_PATH + file_name)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-	EditorInterface.get_resource_filesystem().scan()
-
-
-func _update_dock_visibility() -> void:
-	_set_docks_visible(_main_screen_visible or _kata_active)
-
-
-func _set_docks_visible(visible: bool) -> void:
-	if dock_selector:
-		dock_selector.visible = visible
-	if dock_result_view:
-		dock_result_view.visible = visible
 
 
 func _update_highlights() -> void:
-	if not _kata_active:
-		# Kein Kata aktiv: Selector heller, MainScreen und ResultView dunkler
+	if not _current_kata:
 		dock_selector.set_highlight(true)
-		main_screen.set_highlight(false)
 		dock_result_view.set_highlight(false)
 	else:
-		# Kata aktiv: MainScreen heller, Selector und ResultView dunkler
 		dock_selector.set_highlight(false)
-		main_screen.set_highlight(true)
-		dock_result_view.set_highlight(false)
+		dock_result_view.set_highlight(true)
 
 
 func _update_highlights_after_test(result: GDKataResultDefinition) -> void:
 	if not result:
 		return
-	if result.error:
-		# Fehler (z.B. falscher Methodenname): nur MainScreen hell
-		dock_selector.set_highlight(false)
-		main_screen.set_highlight(true)
-		dock_result_view.set_highlight(false)
-	else:
-		# Ergebnis vorhanden: MainScreen und ResultView hell
-		dock_selector.set_highlight(false)
-		main_screen.set_highlight(true)
-		dock_result_view.set_highlight(true)
-
-
-func _select_dock_tabs_delayed() -> void:
-	_select_dock_tabs()
-	get_tree().create_timer(0.3).timeout.connect(_select_dock_tabs)
-
-
-func _select_dock_tabs() -> void:
-	_activate_dock_tab(dock_selector)
-	_activate_dock_tab(dock_result_view)
-
-
-func _activate_dock_tab(dock: Control) -> void:
-	var parent := dock.get_parent()
-	while parent:
-		if parent.get_parent() is TabContainer:
-			var tab_container: TabContainer = parent.get_parent()
-			tab_container.current_tab = parent.get_index()
-			return
-		parent = parent.get_parent()
+	dock_selector.set_highlight(false)
+	dock_result_view.set_highlight(true)

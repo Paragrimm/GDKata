@@ -4,12 +4,17 @@ extends PanelContainer
 
 const CONFIG_SECTION := "selector"
 
-signal kata_started(kata: GDKataDefinition)
+signal kata_start_requested(kata_id: String)
+signal refresh_requested
 
-@export var dropdown_language: OptionButton
 @export var dropdown_difficulty: OptionButton
 @export var dropdown_katas: OptionButton
+@export var checkbox_show_completed: CheckButton
 @export var label_description: Label
+@export var button_toggle_hints: Button
+@export var hints_container: VBoxContainer
+@export var label_hints: Label
+@export var label_hints_header: Label
 @export var label_in_progress: Label
 @export var button_run: Button
 @export var button_refresh: Button
@@ -20,22 +25,28 @@ static var instance: GDKataSelector
 var _all_katas: Array[GDKataDefinition] = []
 var _filtered_katas: Array[GDKataDefinition] = []
 var _selected_kata: GDKataDefinition
-var _available_languages: Array[String] = []
 var _available_difficulties: Array[int] = []
+var _active_kata_id: String = ""
+var _difficulty_filter: int = -1
+var _hints_expanded := false
 
 
 func _ready() -> void:
 	button_refresh.icon = EditorInterface.get_editor_theme().get_icon(
 		GDKataDefinition.EDITOR_ICON_RELOAD, GDKataDefinition.EDITOR_ICON_CATEGORY
 	)
-	dropdown_language.item_selected.connect(_on_filter_changed)
-	dropdown_difficulty.item_selected.connect(_on_filter_changed)
+	dropdown_difficulty.item_selected.connect(_on_difficulty_filter_changed)
 	dropdown_katas.item_selected.connect(_on_item_selected)
+	checkbox_show_completed.toggled.connect(_on_show_completed_toggled)
+	button_toggle_hints.pressed.connect(_on_toggle_hints_pressed)
 	button_run.pressed.connect(_on_run)
 	button_refresh.pressed.connect(_on_refresh)
 	button_run.text = GDKataTr.translate("SELECTOR_BUTTON_START_KATA")
 	label_in_progress.text = GDKataTr.translate("SELECTOR_LABEL_IN_PROGRESS")
-	_load()
+	checkbox_show_completed.text = GDKataTr.translate("SELECTOR_FILTER_SHOW_COMPLETED")
+	label_hints_header.text = GDKataTr.translate("MAINSCREEN_LABEL_HINTS")
+	_set_hints_expanded(false)
+	reload_data()
 
 
 func _enter_tree() -> void:
@@ -48,8 +59,20 @@ func _exit_tree() -> void:
 		instance = null
 
 
-func on_kata_finished() -> void:
-	_load()
+func set_active_kata_id(value: String) -> void:
+	_active_kata_id = value
+	_update_state()
+
+
+func reload_data(preferred_kata_id: String = "") -> void:
+	label_description.text = ""
+	label_hints.text = ""
+	_set_hints_expanded(false)
+	_load_katas()
+	_init_filter_dropdowns()
+	_load_config()
+	_apply_filters(preferred_kata_id)
+	_update_state()
 
 
 func set_highlight(active: bool) -> void:
@@ -61,147 +84,109 @@ func set_highlight(active: bool) -> void:
 	add_theme_stylebox_override("panel", style)
 
 
-func _load() -> void:
-	label_description.text = ""
-	_load_katas()
-	_init_filter_dropdowns()
-	_load_config()
-	_apply_filters()
-	_update_state()
-
-
 func _load_katas() -> void:
-	_all_katas.clear()
-	_available_languages.clear()
+	_all_katas = GDKataDefinition.load_catalog()
 	_available_difficulties.clear()
-	var directory := DirAccess.open(GDKataDefinition.TODO_PATH)
-	if not directory:
-		return
-	for file: String in directory.get_files():
-		var resource: Resource = load(GDKataDefinition.TODO_PATH + file)
-		if resource:
-			var kata := GDKataDefinition.from_json(resource)
-			_all_katas.append(kata)
-			if kata.language and kata.language not in _available_languages:
-				_available_languages.append(kata.language)
-			if kata.difficulty not in _available_difficulties:
-				_available_difficulties.append(kata.difficulty)
-	_available_languages.sort()
+
+	for kata in _all_katas:
+		if kata.difficulty not in _available_difficulties:
+			_available_difficulties.append(kata.difficulty)
+
 	_available_difficulties.sort()
 
 
 func _init_filter_dropdowns() -> void:
-	dropdown_language.clear()
-	dropdown_language.add_item(GDKataTr.translate("SELECTOR_FILTER_ALL_LANGUAGES"))
-	for lang: String in _available_languages:
-		dropdown_language.add_item(lang)
-
 	dropdown_difficulty.clear()
 	dropdown_difficulty.add_item(GDKataTr.translate("SELECTOR_FILTER_ALL_DIFFICULTIES"))
-	for diff: int in _available_difficulties:
-		dropdown_difficulty.add_item(str(diff))
+	dropdown_difficulty.set_item_metadata(0, -1)
+	for difficulty in _available_difficulties:
+		dropdown_difficulty.add_item(str(difficulty))
+		dropdown_difficulty.set_item_metadata(dropdown_difficulty.item_count - 1, difficulty)
 
 
-func _apply_filters() -> void:
+func _apply_filters(preferred_kata_id: String = "") -> void:
 	_filtered_katas.clear()
-	var selected_lang_idx := dropdown_language.selected
-	var selected_diff_idx := dropdown_difficulty.selected
+	var include_done := checkbox_show_completed.button_pressed
 
-	var filter_language: String = ""
-	if selected_lang_idx > 0:
-		filter_language = _available_languages[selected_lang_idx - 1]
-
-	var filter_difficulty: int = -1
-	if selected_diff_idx > 0:
-		filter_difficulty = _available_difficulties[selected_diff_idx - 1]
-
-	for kata: GDKataDefinition in _all_katas:
-		var lang_match := filter_language.is_empty() or kata.language == filter_language
-		var diff_match := filter_difficulty < 0 or kata.difficulty == filter_difficulty
-		if lang_match and diff_match:
+	for kata in _all_katas:
+		var difficulty_match := _difficulty_filter < 0 or kata.difficulty == _difficulty_filter
+		var status_match := include_done or kata.status != GDKataDefinition.STATUS_DONE
+		if difficulty_match and status_match:
 			_filtered_katas.append(kata)
 
-	_init_kata_dropdown()
+	_filtered_katas.sort_custom(_sort_by_name)
+	_init_kata_dropdown(preferred_kata_id)
 
 
-func _init_kata_dropdown() -> void:
+func _sort_by_name(a: GDKataDefinition, b: GDKataDefinition) -> bool:
+	return a.get_display_name().nocasecmp_to(b.get_display_name()) < 0
+
+
+func _init_kata_dropdown(preferred_kata_id: String) -> void:
 	dropdown_katas.clear()
 	_selected_kata = null
+	_set_hints_expanded(false)
+
 	if _filtered_katas.is_empty():
 		return
-	for kata: GDKataDefinition in _filtered_katas:
-		dropdown_katas.add_item(kata.name)
-	_selected_kata = _filtered_katas[0]
-	_on_item_selected(0)
+
+	for kata in _filtered_katas:
+		dropdown_katas.add_item(_build_kata_dropdown_label(kata))
+
+	var preferred_id := preferred_kata_id
+	if preferred_id.is_empty() and not _active_kata_id.is_empty():
+		preferred_id = _active_kata_id
+
+	var target_index := _find_filtered_index_by_id(preferred_id)
+	if target_index < 0:
+		target_index = 0
+
+	dropdown_katas.select(target_index)
+	_on_item_selected(target_index)
+
+
+func _build_kata_dropdown_label(kata: GDKataDefinition) -> String:
+	var label := kata.get_display_name()
+	if kata.status == GDKataDefinition.STATUS_DONE:
+		return "%s ✓" % label
+	if kata.status == GDKataDefinition.STATUS_IN_PROGRESS:
+		return "%s •" % label
+	return label
+
+
+func _find_filtered_index_by_id(kata_id: String) -> int:
+	if kata_id.is_empty():
+		return -1
+	for i in range(_filtered_katas.size()):
+		if _filtered_katas[i].id == kata_id:
+			return i
+	return -1
 
 
 func _update_state() -> void:
-	var enabled := not GDKataDefinition.has_valid_in_progress()
-	dropdown_language.disabled = not enabled
+	var enabled := _active_kata_id.is_empty()
 	dropdown_difficulty.disabled = not enabled
 	dropdown_katas.disabled = not enabled
-	button_run.disabled = not enabled
+	checkbox_show_completed.disabled = not enabled
+	button_toggle_hints.disabled = _selected_kata == null
+	button_run.disabled = not enabled or _selected_kata == null
 	label_in_progress.visible = not enabled
+
 	if not enabled:
-		label_description.text = ""
+		var active_index := _find_filtered_index_by_id(_active_kata_id)
+		if active_index >= 0:
+			dropdown_katas.select(active_index)
+			_on_item_selected(active_index)
 
 
-func _move_selected_kata() -> void:
-	var source := "%s%s.json" % [GDKataDefinition.TODO_PATH, _selected_kata.name]
-	var dest := GDKataDefinition.get_config_path()
-	var err := DirAccess.rename_absolute(source, dest)
-	if err != OK:
-		printerr("Failed to move Kata to In Progress")
-	EditorInterface.get_resource_filesystem().scan()
+func _on_difficulty_filter_changed(index: int) -> void:
+	_difficulty_filter = _difficulty_from_index(index)
+	_apply_filters(_selected_kata.id if _selected_kata else "")
+	_save_config()
 
 
-func _create_template_script() -> void:
-	var dest := _selected_kata.get_script_path()
-	var template_file := FileAccess.open(GDKataDefinition.TEMPLATE_PATH, FileAccess.READ)
-
-	var template := template_file.get_as_text()
-	template_file.close()
-	template = template.replace(
-		GDKataDefinition.TEMPLATE_METHOD_NAME_PLACEHOLDER, _selected_kata.method_name
-	)
-	template = template.replace(
-		GDKataDefinition.TEMPLATE_EXPECTED_TYPE_PLACEHOLDER,
-		type_string(_selected_kata.expected_type_hint)
-	)
-	template = template.replace(
-		GDKataDefinition.TEMPLATE_ARGUMENTS_PLACEHOLDER, _build_arguments_string()
-	)
-	template = template.replace(GDKataDefinition.TEMPLATE_TITLE_PLACEHOLDER, _selected_kata.name)
-	template = template.replace(
-		GDKataDefinition.TEMPLATE_DESCRIPTION_PLACEHOLDER, _selected_kata.description
-	)
-	template = template.replace(
-		GDKataDefinition.TEMPLATE_DEFAULT_RETURN_PLACEHOLDER,
-		GDKataDefinition.get_default_return_for_type(_selected_kata.expected_type_hint)
-	)
-
-	var dest_file := FileAccess.open(dest, FileAccess.WRITE)
-	dest_file.store_string(template)
-	dest_file.close()
-
-	EditorInterface.get_resource_filesystem().scan()
-
-
-func _build_arguments_string() -> String:
-	var parts: PackedStringArray = []
-	for i in range(_selected_kata.arguments.size()):
-		var letter := (
-			_selected_kata.arguments[i].name
-			if not _selected_kata.arguments[i].name.is_empty()
-			else char(ord("a") + i)
-		)
-		var type := type_string(_selected_kata.arguments[i].type_hint)
-		parts.append("%s: %s" % [letter, type])
-	return ", ".join(parts)
-
-
-func _on_filter_changed(_index: int) -> void:
-	_apply_filters()
+func _on_show_completed_toggled(_toggled: bool) -> void:
+	_apply_filters(_selected_kata.id if _selected_kata else "")
 	_save_config()
 
 
@@ -209,69 +194,74 @@ func _on_item_selected(index: int) -> void:
 	if index < 0 or index >= _filtered_katas.size():
 		return
 	_selected_kata = _filtered_katas[index]
-	label_description.text = _selected_kata.description
+	label_description.text = _selected_kata.get_display_description()
+	label_hints.text = _selected_kata.get_display_hints()
+	_set_hints_expanded(false)
+
+
+func _on_toggle_hints_pressed() -> void:
+	_set_hints_expanded(not _hints_expanded)
 
 
 func _on_run() -> void:
 	if not _selected_kata:
 		return
-	_move_selected_kata()
-	_create_template_script()
-	_update_state()
-	kata_started.emit(_selected_kata)
+	kata_start_requested.emit(_selected_kata.id)
 
 
 func _on_refresh() -> void:
-	_load()
+	refresh_requested.emit()
 
 
 func _save_config() -> void:
 	var config := ConfigFile.new()
 	config.load(GDKata.CONFIG_PATH)
-	_save_config_language(config)
-	_save_config_difficulty(config)
+	config.set_value(CONFIG_SECTION, "difficulty", str(_difficulty_filter))
+	config.set_value(CONFIG_SECTION, "show_completed", checkbox_show_completed.button_pressed)
 	config.save(GDKata.CONFIG_PATH)
-
-
-func _save_config_language(config: ConfigFile) -> void:
-	var language_text := (
-		dropdown_language.get_item_text(dropdown_language.selected)
-		if dropdown_language.selected >= 0
-		else ""
-	)
-	config.set_value(CONFIG_SECTION, "language", language_text)
-
-
-func _save_config_difficulty(config: ConfigFile) -> void:
-	var difficulty_text := (
-		dropdown_difficulty.get_item_text(dropdown_difficulty.selected)
-		if dropdown_difficulty.selected >= 0
-		else ""
-	)
-	config.set_value(CONFIG_SECTION, "difficulty", difficulty_text)
 
 
 func _load_config() -> void:
 	var config := ConfigFile.new()
 	if config.load(GDKata.CONFIG_PATH) != OK:
 		return
-	_load_config_language(config)
-	_load_config_difficulty(config)
 
-
-func _load_config_language(config: ConfigFile) -> void:
-	var language_text: String = config.get_value(CONFIG_SECTION, "language", "")
-
-	for i in range(dropdown_language.item_count):
-		if dropdown_language.get_item_text(i) == language_text:
-			dropdown_language.select(i)
-			break
-
-
-func _load_config_difficulty(config: ConfigFile) -> void:
-	var difficulty_text: String = config.get_value(CONFIG_SECTION, "difficulty", "")
-
+	var difficulty_filter := _normalize_difficulty_filter_value(
+		config.get_value(CONFIG_SECTION, "difficulty", -1)
+	)
+	_difficulty_filter = difficulty_filter
 	for i in range(dropdown_difficulty.item_count):
-		if dropdown_difficulty.get_item_text(i) == difficulty_text:
+		if _difficulty_from_index(i) == difficulty_filter:
 			dropdown_difficulty.select(i)
 			break
+
+	checkbox_show_completed.button_pressed = bool(
+		config.get_value(CONFIG_SECTION, "show_completed", false)
+	)
+
+
+func _difficulty_from_index(index: int) -> int:
+	if index < 0 or index >= dropdown_difficulty.item_count:
+		return -1
+	var value: Variant = dropdown_difficulty.get_item_metadata(index)
+	if typeof(value) == TYPE_INT:
+		return int(value)
+	return -1
+
+
+func _normalize_difficulty_filter_value(raw_value: Variant) -> int:
+	if typeof(raw_value) == TYPE_INT:
+		return int(raw_value)
+	if typeof(raw_value) == TYPE_STRING:
+		var text := str(raw_value).strip_edges()
+		if text.is_valid_int():
+			return int(text)
+	return -1
+
+
+func _set_hints_expanded(expanded: bool) -> void:
+	_hints_expanded = expanded and _selected_kata != null
+	button_toggle_hints.disabled = _selected_kata == null
+	hints_container.visible = _hints_expanded
+	var key := "MAINSCREEN_BUTTON_HIDE_HINTS" if _hints_expanded else "MAINSCREEN_BUTTON_SHOW_HINTS"
+	button_toggle_hints.text = GDKataTr.translate(key)
